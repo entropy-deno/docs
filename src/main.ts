@@ -2,7 +2,18 @@ async function serveHttp(connection: Deno.Conn) {
   const httpConnection = Deno.serveHttp(connection);
 
   for await (const { request, respondWith } of httpConnection) {
-    respondWith(new Response('Coming soon...'));
+    if (new URL(request.url).pathname === '/') {
+      respondWith(
+        new Response(
+          '<h1>Entropy framework for Deno</h1><p>Coming soon... [currently under development]</p>',
+          {
+            headers: {
+              'content-type': 'text/html; charset=utf-8',
+            },
+          },
+        ),
+      );
+    }
   }
 }
 
