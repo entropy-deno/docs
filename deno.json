@@ -20,7 +20,7 @@
     "singleQuote": true
   },
   "imports": {
-    "@entropy": "https://deno.land/x/entropy@1.0.0-alpha.0/src/mod.ts",
+    "@entropy": "https://deno.land/x/entropy@1.0.0-alpha.1/src/mod.ts",
     "@std/": "https://deno.land/std@0.192.0/"
   },
   "tasks": {
