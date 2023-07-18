@@ -8,3 +8,4 @@
 *.sln
 *.sqlite
 *coverage
+node_modules
