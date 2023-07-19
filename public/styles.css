@@ -9,15 +9,19 @@
 :root {
   --bg: #000;
   --bg-block: #181818;
+  --bg-navbar: rgba(0, 0, 0, 0.2);
   --border: #404040;
   --font-mono: 'Roboto Mono', monospace;
   --font-sans: 'Inter', sans-serif;
   --text: #f5f5f5;
+  --text-gray: #b2b2b2;
   --theme: #9868ff;
+  --theme-light: #a981ff;
 }
 
 body {
   font-family: var(--font-sans);
+  font-size: 15px;
   background: var(--bg);
   color: var(--text);
   height: 100vh;
@@ -36,8 +40,59 @@ main {
   letter-spacing: -1.2px;
 }
 
-.theme {
+.text-gray {
+  color: var(--text-gray);
+}
+
+.text-theme {
   color: var(--theme);
+}
+
+.text-theme--light {
+  color: var(--theme-light);
+}
+
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 68px;
+  padding: 32px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  -webkit-backdrop-filter: blur(6px) saturate(180%);
+  backdrop-filter: blur(6px) saturate(180%);
+  background: var(--bg-navbar);
+  z-index: 50;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-img {
+  width: 128px;
+}
+
+.navbar__links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.navbar__link-item {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.navbar__link-item:hover {
+  opacity: 0.8;
 }
 
 .hero {
@@ -56,6 +111,7 @@ main {
   max-width: 420px;
   text-align: center;
   margin-bottom: 18px;
+  font-size: 16px;
 }
 
 .code {
@@ -63,7 +119,7 @@ main {
   background: var(--bg-block);
   padding: 10px 12px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   border: 1px solid var(--border);
   border-bottom-width: 2px;
 }

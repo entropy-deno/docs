@@ -20,10 +20,28 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar">
+        <a href="/" class="navbar__logo">
+          <img src="/logo-full.png" alt="Entropy logo" class="navbar__logo-img">
+        </a>
+
+        <ul class="navbar__links">
+          <li class="navbar__link">
+            <a href="/" class="navbar__link-item">Home</a>
+          </li>
+
+          <li class="navbar__link">
+            <a href="/docs" class="navbar__link-item">Documentation</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
     <main>
       <section class="hero">
         <h1 class="header hero__header">
-          A <span class="theme">declarative</span> web application framework for Deno
+          A <span class="text-theme">declarative</span> web application framework for Deno
         </h1>
 
         <p class="hero__info">
@@ -31,7 +49,7 @@
         </p>
 
         <code class="code">
-          deno run -A https://deno.land/x/entropy_cli/init.ts
+          <span class="text-theme--light">deno</span> run <span class="text-gray">-A</span> https://deno.land/x/entropy_cli/init.ts
         </code>
       </section>
     </main>
