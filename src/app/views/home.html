@@ -12,28 +12,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Roboto+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto+Mono&display=swap"
     >
     <link rel="stylesheet" href="/styles.css">
 
     [hotReload]
   </head>
 
-  <body class="selection:bg-sky-300 dark:selection:bg-gray-600/40 dark:bg-gray-950">
-    <main class="text-gray-700 flex flex-col h-screen items-center justify-center gap-5 dark:text-slate-200">
-      <img class="w-36 h-36 motion-safe:animate-bounce" src="/logo.png" alt="Entropy Logo">
-  
-      <h1 class="font-bold text-5xl mt-4 mb-2">Declarative framework for Deno</h1>
+  <body>
+    <main>
+      <section class="hero">
+        <h1 class="header hero__header">
+          A <span class="theme">declarative</span> web application framework for Deno
+        </h1>
 
-      <p>Coming soon... [currently under development]</p>
+        <p class="hero__info">
+          Entropy helps you in building performant and scalable web apps
+        </p>
 
-      <a
-        class="flex bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-900 border-0 border-b-2 border-purple-600 dark:border-purple-500 hover:opacity-95 px-8 py-3 mt-4 rounded-lg"
-        href="https://github.com/entropy-deno"
-        target="_blank"
-      >
-        Entropy GitHub
-      </a>
+        <code class="code">
+          deno run -A https://deno.land/x/entropy_cli/init.ts
+        </code>
+      </section>
     </main>
   </body>
 </html>
