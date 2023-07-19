@@ -22,6 +22,8 @@
     <img src="https://shield.deno.dev/deno/%5E1.35.0" alt="Required minimal Deno version">
     &nbsp;
     <img src="https://shield.deno.dev/x/entropy" alt="Latest Entropy version">
+    <br>
+    <img src="https://entropy.deno.dev/badges/Docs" alt="Made with Entropy">
   </a>
 
 <br>
