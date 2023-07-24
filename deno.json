@@ -21,9 +21,9 @@
     "singleQuote": true
   },
   "imports": {
-    "@entropy": "https://deno.land/x/entropy@1.0.0-alpha.2/src/mod.ts",
+    "@entropy": "https://deno.land/x/entropy@1.0.0-alpha.3/src/mod.ts",
     "@prisma": "./database/client/deno/edge.ts",
-    "@std/": "https://deno.land/std@0.194.0/"
+    "@std/": "https://deno.land/std@0.195.0/"
   },
   "lock": false,
   "tasks": {
