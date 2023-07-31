@@ -35,7 +35,8 @@
     "db:setup": "deno run -A --unstable npm:prisma@5.0.0 generate --schema=./database/schema.prisma",
     "dev": "deno run -A --watch ./src/main.ts --dev --open",
     "prod": "deno run -A ./src/main.ts",
-    "test": "export TESTING=true ; deno test -A --no-check --parallel --watch",
-    "test:cov": "export TESTING=true ; deno test -A --coverage=coverage"
+    "test": "export TESTING=true ; deno test -A --no-check --parallel",
+    "test:cov": "export TESTING=true ; deno test -A --coverage=coverage",
+    "test:watch": "export TESTING=true ; deno test -A --no-check --parallel --watch"
   }
 }
