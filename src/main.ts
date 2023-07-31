@@ -7,6 +7,7 @@ if (import.meta.main) {
     config: {
       cspAllowedOrigins: [
         'https://www.clarity.ms',
+        'https://s.clarity.ms',
       ],
       envFile: false,
     },
