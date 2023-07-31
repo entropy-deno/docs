@@ -5,6 +5,9 @@ import { BadgeModule } from './badges/badge.module.ts';
 if (import.meta.main) {
   const server = createServer({
     config: {
+      cspAllowedOrigins: [
+        'https://www.clarity.ms',
+      ],
       envFile: false,
     },
     modules: [

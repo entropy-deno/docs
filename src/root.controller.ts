@@ -1,8 +1,8 @@
-import { Controller, render, Route } from '@entropy';
+import { Controller, Route } from '@entropy';
 
-export class RootController implements Controller {
+export class RootController extends Controller {
   @Route.Get('/')
-  public async index() {
-    return await render('home');
+  public index() {
+    return this.renderView('home');
   }
 }

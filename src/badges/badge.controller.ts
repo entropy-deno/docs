@@ -1,6 +1,6 @@
 import { Controller, Route } from '@entropy';
 
-export class BadgeController implements Controller {
+export class BadgeController extends Controller {
   @Route.Get('/badges/:name')
   public index(name: string) {
     return new Response(
