@@ -6,7 +6,7 @@ if (import.meta.main) {
   const server = createServer({
     config: {
       cspAllowedOrigins: [
-        'https://www.clarity.ms',
+        'https://fonts.googleapis.com',
         'https://*.clarity.ms',
       ],
       envFile: false,
