@@ -9,7 +9,6 @@ if (import.meta.main) {
         'https://fonts.googleapis.com',
         'https://*.clarity.ms',
       ],
-      envFile: false,
     },
     modules: [
       RootModule,

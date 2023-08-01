@@ -21,7 +21,7 @@
     "singleQuote": true
   },
   "imports": {
-    "@entropy": "https://deno.land/x/entropy@1.0.0-alpha.4/src/mod.ts",
+    "@entropy": "https://deno.land/x/entropy@1.0.0-alpha.5/src/mod.ts",
     "@prisma": "./database/client/deno/edge.ts",
     "@std/": "https://deno.land/std@0.196.0/"
   },
