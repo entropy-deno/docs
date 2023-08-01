@@ -9,6 +9,7 @@ if (import.meta.main) {
         'https://fonts.googleapis.com',
         'https://*.clarity.ms',
       ],
+      host: 'entropy.deno.dev',
     },
     modules: [
       RootModule,
