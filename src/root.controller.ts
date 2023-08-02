@@ -1,4 +1,5 @@
-import { Controller, Route } from '@entropy';
+import { Controller } from '@entropy/http';
+import { Route } from '@entropy/router';
 
 export class RootController extends Controller {
   @Route.Get('/')
