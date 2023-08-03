@@ -35,7 +35,7 @@
     "@entropy/validator": "https://deno.land/x/entropy@1.0.0-alpha.6/src/validator/validator.module.ts",
     "@entropy/websocket": "https://deno.land/x/entropy@1.0.0-alpha.6/src/web_socket/web_socket.module.ts",
     "@prisma": "./database/client/deno/edge.ts",
-    "@std/": "https://deno.land/std@0.196.0/"
+    "@std/": "https://deno.land/std@0.197.0/"
   },
   "lock": false,
   "tasks": {
