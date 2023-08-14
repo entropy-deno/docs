@@ -16,7 +16,9 @@ if (import.meta.main) {
           'https://*.clarity.ms',
         ],
       },
-      host: configurator.entries.isProduction ? 'entropy.deno.dev' : 'localhost',
+      host: configurator.entries.isProduction
+        ? 'entropy.deno.dev'
+        : 'localhost',
     },
     modules: [
       RootModule,
