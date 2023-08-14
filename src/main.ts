@@ -12,9 +12,6 @@ if (import.meta.main) {
         ],
       },
       host: 'entropy.deno.dev',
-      webSocket: {
-        enabled: false,
-      },
     },
     modules: [
       RootModule,
