@@ -85,8 +85,8 @@ body {
 .navbar__logo-badge {
   border: 1px solid var(--theme-light);
   color: var(--theme-light);
-  padding: 2px 6px;
-  font-size: 12px;
+  padding: 1px 5px;
+  font-size: 11px;
   border-radius: 18px;
   margin-left: 5px;
 }
@@ -95,7 +95,7 @@ body {
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 80px;
 }
 
 .navbar__link-item {
@@ -184,9 +184,9 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-top: 1px solid var(--border);
   font-size: 14px;
   border-radius: 22px 22px 0 0;
+  background: var(--bg);
   opacity: 0.85;
   gap: 22px;
 }
