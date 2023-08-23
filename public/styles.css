@@ -37,6 +37,10 @@ body {
   letter-spacing: -1.2px;
 }
 
+.header--small {
+  font-size: 40px;
+}
+
 .text-gray {
   color: var(--text-gray);
 }
@@ -69,10 +73,6 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-}
-
-.navbar__logo-img {
-  width: 128px;
 }
 
 .navbar__logo-badge {
@@ -244,10 +244,6 @@ main {
   border-radius: 22px 22px 0 0;
   background: var(--bg);
   gap: 22px;
-}
-
-.footer__logo {
-  width: 164px;
 }
 
 .footer__info {
