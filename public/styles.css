@@ -193,8 +193,8 @@ main {
 
 .code-block__code {
   font-family: var(--font-mono);
-  height: 322px;
   display: block;
+  line-height: 1.7;
 }
 
 .code {
