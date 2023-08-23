@@ -123,11 +123,10 @@ main {
 
 .home__info {
   opacity: 0.6;
-  max-width: 520px;
+  max-width: 500px;
   text-align: center;
   margin-bottom: 18px;
   font-size: 16px;
-  letter-spacing: 0.1px;
   line-height: 1.5;
 }
 
@@ -191,6 +190,7 @@ main {
   font-family: var(--font-mono);
   display: block;
   line-height: 1.7;
+  color: #dde2ed;
 }
 
 .code {
