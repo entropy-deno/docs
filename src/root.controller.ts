@@ -4,6 +4,8 @@ import { Route } from '@entropy/router';
 export class RootController extends Controller {
   @Route.Get('/')
   public index() {
-    return this.renderView('home');
+    return this.renderView('pages/home', {
+      pageTitle: 'Home',
+    });
   }
 }
