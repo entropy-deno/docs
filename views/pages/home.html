@@ -33,9 +33,9 @@
 import { RootController } from './root.controller.ts';
 
 export class RootModule implements Module {
-public readonly controllers = [
-RootController,
-];
+  public readonly controllers = [
+    RootController,
+  ];
 }</code></pre><pre class="code-block">
             <header class="code-block__header">
               <div class="code-block__control"></div>
@@ -47,17 +47,17 @@ RootController,
 import { Route } from '@entropy/router';
 
 export class RootController extends Controller {
-@Route.Get('/')
-public index() {
-return this.renderView('home', {
-message: 'Hello, world!',
-});
-}
+  @Route.Get('/')
+  public index() {
+    return this.renderView('home', {
+      message: 'Hello, world!',
+    });
+  }
 
-@Route.Error(HttpStatus.NotFound)
-public notFound() {
-return this.renderView('404');
-}
+  @Route.Error(HttpStatus.NotFound)
+  public notFound() {
+    return this.renderView('404');
+  }
 }</code></pre>
     </div>
   </section>
