@@ -1,11 +1,11 @@
+*.log
+*.sln
+*.sqlite
+*coverage
 .DS_Store
 .env*
 !.env.example
 .fleet
 .idea
 .vscode
-*.log
-*.sln
-*.sqlite
-*coverage
 node_modules
