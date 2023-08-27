@@ -42,11 +42,15 @@
 
         <ul class="navbar__links">
           <li class="navbar__link">
-            <a href="/" class="navbar__link-item">Home</a>
+            <a href="/" class="navbar__link-item{{ $request.path === '/' ? ' navbar__link-item--active' : '' }}">
+              Home
+            </a>
           </li>
 
           <li class="navbar__link">
-            <a href="/docs" class="navbar__link-item">Documentation</a>
+            <a href="/docs" class="navbar__link-item{{ $request.path.includes('/docs') ? ' navbar__link-item--active' : '' }}">
+              Documentation
+            </a>
           </li>
         </ul>
       </nav>

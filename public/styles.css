@@ -94,7 +94,8 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.navbar__link-item:hover {
+.navbar__link-item:hover,
+.navbar__link-item--active {
   opacity: 0.8;
 }
 
