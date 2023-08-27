@@ -1,5 +1,6 @@
 import { createServer } from '@entropy/server';
 import { RootModule } from './root.module.ts';
+import { DocsModule } from './docs/docs.module.ts';
 import { BadgeModule } from './badges/badge.module.ts';
 
 if (import.meta.main) {
@@ -14,6 +15,7 @@ if (import.meta.main) {
     },
     modules: [
       RootModule,
+      DocsModule,
       BadgeModule,
     ],
   });
