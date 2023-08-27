@@ -6,7 +6,7 @@ export class BadgeController extends Controller {
   public index(name: string) {
     return new Response(
       `
-      <svg viewBox="0 0 240 32" width="240" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Made with Entropy">
+      <svg viewBox="0 0 240 32" width="240" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/2009/xlink" role="img" aria-label="Made with Entropy">
         <title>${name}</title>
 
         <clipPath id="r">
