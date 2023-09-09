@@ -18,7 +18,7 @@
 
   <section class="home__features">
     <h1 class="header header--small">
-      The <span class="text-theme">number one</span> choice for Deno apps
+      The <span class="text-theme">number one</span> for Deno applications
     </h1>
 
     <div class="home__features-examples">
@@ -49,14 +49,14 @@ import { Route } from '@entropy/router';
 export class RootController extends Controller {
   @Route.Get('/')
   public index() {
-    return this.renderView('home', {
+    return this.render('home', {
       message: 'Hello, world!',
     });
   }
 
   @Route.Error(HttpStatus.NotFound)
   public notFound() {
-    return this.renderView('404');
+    return this.render('404');
   }
 }</code></pre>
     </div>
