@@ -4,7 +4,7 @@ import { Route } from '@entropy/router';
 export class DocsController extends Controller {
   @Route.Get('/docs')
   public index() {
-    return this.renderView('pages/docs/index', {
+    return this.render('pages/docs/index', {
       pageTitle: 'Docs',
     });
   }

@@ -1,11 +1,14 @@
-import { Controller } from '@entropy/http';
+import { Controller, Headers } from '@entropy/http';
 import { Route } from '@entropy/router';
 
 export class BadgeController extends Controller {
   @Route.Get('/badges/:name')
+  @Headers({
+    'content-type': 'image/svg+xml; charset=utf-8',
+    'cache-control': 'max-age=100, s-maxage=100, must-revalidate',
+  })
   public index(name: string) {
-    return new Response(
-      `
+    return `
       <svg viewBox="0 0 240 32" width="240" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/2009/xlink" role="img" aria-label="Made with Entropy">
         <title>${name}</title>
 
@@ -23,13 +26,6 @@ export class BadgeController extends Controller {
           <text x="100" y="20">Made with Entropy</text>
         </g>
       </svg>
-    `,
-      {
-        headers: {
-          'content-type': 'image/svg+xml; charset=utf-8',
-          'cache-control': 'max-age=100, s-maxage=100, must-revalidate',
-        },
-      },
-    );
+    `;
   }
 }

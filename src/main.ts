@@ -12,6 +12,10 @@ if (import.meta.main) {
           'https://*.clarity.ms',
         ],
       },
+      seo: {
+        robots: true,
+        sitemap: true,
+      },
     },
     modules: [
       RootModule,
