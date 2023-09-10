@@ -1,11 +1,12 @@
-import { Controller, Headers } from '@entropy/http';
+import { Controller } from '@entropy/http';
 import { Route } from '@entropy/router';
 
 export class BadgeController extends Controller {
-  @Route.Get('/badges/:name')
-  @Headers({
-    'content-type': 'image/svg+xml; charset=utf-8',
-    'cache-control': 'max-age=100, s-maxage=100, must-revalidate',
+  @Route.Get('/badges/:name', {
+    headers: {
+      'content-type': 'image/svg+xml; charset=utf-8',
+      'cache-control': 'max-age=100, s-maxage=100, must-revalidate',
+    },
   })
   public index(name: string) {
     return `
