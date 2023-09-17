@@ -3,6 +3,7 @@
 *.sqlite
 *coverage
 .DS_Store
+.entropy
 .env*
 !.env.example
 .fleet
