@@ -11,7 +11,8 @@
 
   --bg: #030712;
   --bg-block: #111827;
-  --bg-navbar: rgba(0, 0, 0, 0.2);
+  --bg-soft: #0f1522;
+  --bg-navbar: rgba(11, 11, 13, 0.2);
   --border: #4b5563;
   --font-mono: 'Roboto Mono', monospace;
   --font-sans: 'Noto Sans', sans-serif;
@@ -114,7 +115,7 @@ main {
 }
 
 .home {
-  background-image: url('/background_pattern.webp');
+  background: var(--bg-soft);
 }
 
 .home__hero,
@@ -148,7 +149,6 @@ main {
 .home__features-examples {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 26px;
   margin-top: 38px;
 }
@@ -167,7 +167,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   padding-top: 4px;
   gap: 7px;
 }
@@ -202,7 +202,7 @@ main {
   font-family: var(--font-mono);
   display: block;
   line-height: 1.6;
-  color: #dde2ed;
+  color: #c5cbd8;
 }
 
 .code {
