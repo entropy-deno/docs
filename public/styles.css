@@ -85,13 +85,14 @@ body {
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: 50px;
 }
 
 .navbar__link-item {
   text-decoration: none;
   color: inherit;
   opacity: 0.7;
+  font-weight: 500;
   transition: opacity 0.2s ease;
   position: relative;
 }
@@ -152,6 +153,44 @@ main {
   justify-content: center;
   gap: 26px;
   margin-top: 38px;
+}
+
+.docs {
+  padding: 92px;
+}
+
+.docs__content {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  gap: 14px;
+
+  & h1 {
+    font-size: 30px;
+  }
+
+  & h2 {
+    margin: 16px 0 8px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: var(--theme-light);
+    font-weight: 500;
+  }
+
+  & :is(p, li) {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  & li {
+    margin-left: 20px;
+  }
+
+  & li::marker {
+    color: var(--theme-light);
+  }
 }
 
 .code-block {

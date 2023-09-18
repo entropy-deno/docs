@@ -35,7 +35,7 @@
     [hotReload]
   </head>
 
-  <body class="{{ $request.path === '/' ? 'home' : '' }}">
+  <body class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
     <header>
       <nav class="navbar">
         <a href="/" class="navbar__logo">
@@ -52,7 +52,7 @@
 
           <li class="navbar__link">
             <a href="/docs" class="navbar__link-item{{ $request.path.includes('/docs') ? ' navbar__link-item--active' : '' }}">
-              Documentation
+              Docs
             </a>
           </li>
         </ul>
