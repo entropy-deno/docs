@@ -37,6 +37,11 @@
     "@entropy/websocket": "https://deno.land/x/entropy@1.0.0-beta.0/src/web_socket/web_socket.module.ts",
     "@std/": "https://deno.land/std@0.201.0/"
   },
+  "lint": {
+    "exclude": [
+      "public/"
+    ]
+  },
   "lock": false,
   "tasks": {
     "dev": "deno run -A --watch ./src/main.ts --dev --open",
