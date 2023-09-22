@@ -46,9 +46,9 @@
   "tasks": {
     "dev": "deno run -A --watch ./src/main.ts --dev --open",
     "prod": "deno run -A ./src/main.ts",
-    "repl": "deno repl -A --eval 'import * as entropy from \"@entropy\"'",
-    "test": "export TESTING=true ; deno test -A --no-check --parallel",
-    "test:cov": "export TESTING=true ; deno test -A --coverage=coverage",
-    "test:watch": "export TESTING=true ; deno test -A --no-check --parallel --watch"
+    "repl": "deno repl -A --eval 'import * as Entropy from \"@entropy\"'",
+    "test": "deno test -A --no-check --parallel",
+    "test:cov": "deno test -A --coverage=coverage",
+    "test:watch": "deno test -A --no-check --parallel --watch"
   }
 }

@@ -6,6 +6,7 @@
 .entropy
 .env*
 !.env.example
+!.env.testing
 .fleet
 .idea
 .vscode
