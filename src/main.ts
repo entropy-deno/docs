@@ -4,7 +4,7 @@ import { DocsModule } from './docs/docs.module.ts';
 import { BadgeModule } from './badges/badge.module.ts';
 
 if (import.meta.main) {
-  using server = createServer({
+  const server = createServer({
     config: {
       contentSecurityPolicy: {
         allowedOrigins: [
