@@ -15,16 +15,16 @@
   --bg-navbar: rgba(7, 7, 9, 0.25);
   --border: #4b5563;
   --font-mono: 'Roboto Mono', monospace;
-  --font-sans: 'Hind', sans-serif;
+  --font-sans: 'Urbanist', sans-serif;
   --text: #f3f4f6;
   --text-gray: #b2b9c5;
   --theme: #4f46e5;
-  --theme-light: #5c54ee;
+  --theme-light: #6962ef;
 }
 
 body {
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 16px;
   background: var(--bg);
   color: var(--text);
   height: 100vh;
@@ -33,7 +33,6 @@ body {
 .header {
   font-size: 48px;
   line-height: 54px;
-  font-weight: 500;
   letter-spacing: -1px;
 }
 
@@ -75,7 +74,7 @@ body {
 .navbar__logo-badge {
   border: 1px solid var(--theme-light);
   color: var(--theme-light);
-  padding: 0 5px 1px;
+  padding: 2px 6px;
   font-size: 11px;
   border-radius: 18px;
   margin-left: 5px;
@@ -92,7 +91,6 @@ body {
   text-decoration: none;
   color: inherit;
   opacity: 0.7;
-  font-weight: 500;
   transition: opacity 0.2s ease;
   position: relative;
 }
@@ -167,20 +165,22 @@ main {
 
   & h1 {
     font-size: 30px;
+    margin: 20px 0 12px;
+    font-weight: 600;
   }
 
   & h2 {
-    margin: 16px 0 8px;
+    margin: 20px 0 12px;
+    font-weight: 600;
   }
 
   & a {
     text-decoration: none;
     color: var(--theme-light);
-    font-weight: 500;
   }
 
   & :is(p, li) {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
   }
 
