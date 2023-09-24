@@ -1,16 +1,28 @@
 [layout('../../layouts/master')]
+  <nav class="docs__nav">
+    <p>Table of Contents</p>
+
+    <a class="docs__nav-link{{ $request.path === '/docs' ? ' docs__nav-link--active' : '' }}" href="/docs">Introducing Entropy</a>
+  </nav>
+
   <section class="docs__content">
-    <h1>What is Entropy? (docs currently in beta)</h1>
+    <h1>Introducing Entropy (docs currently in beta)</h1>
 
     <p>Entropy is a modern and declarative backend framework for <a href="https://deno.com" target="_blank" rel="noopener noreferrer">Deno</a>. It makes it easy to create fast and secure web applications with awesome developer experience.</p>
+
+    <h2>Philosophy and features</h2>
+
+    <p>Entropy provides a strong architecture which makes it easier to create highly scalable apps.</p>
+
+    <p>The framework uses <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a> to provide best type safety. We believe that this language is the best option for secure Deno app development.</p>
 
     <h2>Prerequisites</h2>
 
     <p>To learn Entropy you will need to have a basic knowlege of:</p>
 
     <ul>
-      <li><a href="https://deno.com" target="_blank" rel="noopener noreferrer">Deno runtime</a></li>
-      <li><a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a></li>
+      <li>Deno runtime</li>
+      <li>TypeScript language</li>
     </ul>
   </section>
 [/layout]

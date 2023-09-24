@@ -36,7 +36,7 @@
     [hotReload]
   </head>
 
-  <body class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
+  <body>
     <header>
       <nav class="navbar">
         <a href="/" class="navbar__logo">
@@ -58,7 +58,7 @@
           </li>
 
           <li class="navbar__link">
-            <a href="https://github.com/entropy-deno" target="_blank" class="navbar__link-item">
+            <a href="https://github.com/entropy-deno" target="_blank" rel="noopener noreferrer" class="navbar__link-item">
               GitHub
             </a>
           </li>
@@ -66,14 +66,16 @@
       </nav>
     </header>
 
-    <main>
+    <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
       [slot]
     </main>
 
     <footer class="footer">
       <img src="/logo_full.png" alt="Entropy logo" width="164">
 
-      <p class="footer__info">Copyright © {{ new Date().getFullYear() }} Dominik Rajkowski</p>
+      <p class="footer__info">
+        Copyright © {{ new Date().getFullYear() }} Dominik Rajkowski
+      </p>
     </footer>
   </body>
 </html>
