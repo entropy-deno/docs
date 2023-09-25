@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&family=Roboto+Mono:wght@400&display=swap"
     >
 
     [embed('/styles.css')]
@@ -67,6 +67,18 @@
     </header>
 
     <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
+      [if ($request.path.includes('docs'))]
+        <nav class="docs__nav">
+          <p>Table of Contents</p>
+
+          [each (item in [['', 'Introducing Entropy'], ['/directory-structure', 'Directory Structure']])]
+            <a class="docs__nav-link{{ $request.path === `/docs${item[0]}` ? ' docs__nav-link--active' : '' }}" href="/docs{{ item[0] }}">
+              {{ item[1] }}
+            </a>
+          [/each]
+        </nav>
+      [/if]
+
       [slot]
     </main>
 
