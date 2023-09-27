@@ -35,7 +35,7 @@
     "@entropy/utils": "https://deno.land/x/entropy@1.0.0-beta.1/src/utils/utils.module.ts",
     "@entropy/validator": "https://deno.land/x/entropy@1.0.0-beta.1/src/validator/validator.module.ts",
     "@entropy/websocket": "https://deno.land/x/entropy@1.0.0-beta.1/src/web_socket/web_socket.module.ts",
-    "@std/": "https://deno.land/std@0.202.0/"
+    "@std/": "https://deno.land/std@0.203.0/"
   },
   "lint": {
     "exclude": [
