@@ -71,9 +71,9 @@
         <nav class="docs__nav">
           <p>Table of Contents</p>
 
-          [each (item in [['', 'Introducing Entropy'], ['/directory-structure', 'Directory Structure']])]
-            <a class="docs__nav-link{{ $request.path === `/docs${item[0]}` ? ' docs__nav-link--active' : '' }}" href="/docs{{ item[0] }}">
-              {{ item[1] }}
+          [each ([link, label] in [['', 'Introducing Entropy'], ['/directory-structure', 'Directory Structure']])]
+            <a class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}" href="/docs{{ link }}">
+              {{ label }}!
             </a>
           [/each]
         </nav>
