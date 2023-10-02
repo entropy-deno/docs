@@ -23,9 +23,9 @@
     [embed('/styles.css')]
     [embed('/prism.css')]
 
-    <script src="/prism.js" [nonceProp] defer></script>
+    <script src="/prism.js" @nonceProp defer></script>
 
-    <script [nonceProp]>
+    <script @nonceProp>
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -67,19 +67,19 @@
     </header>
 
     <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
-      [if ($request.path.includes('docs'))]
+      @if ($request.path.includes('docs'))
         <nav class="docs__nav">
           <p>Table of Contents</p>
 
-          [each ([link, label] in [['', 'Introducing Entropy'], ['/directory-structure', 'Directory Structure']])]
+          @each ([link, label] in [['', 'Introducing Entropy'], ['/directory-structure', 'Directory Structure']])
             <a class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}" href="/docs{{ link }}">
               {{ label }}!
             </a>
-          [/each]
+          @/each
         </nav>
-      [/if]
+      @/if
 
-      [slot]
+      @slot
     </main>
 
     <footer class="footer">
