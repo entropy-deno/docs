@@ -19,7 +19,8 @@
   --text: #f3f4f6;
   --text-gray: #b2b9c5;
   --theme: #4f46e5;
-  --theme-light: #726bf0;
+  --theme-light: #6760ed;
+  --green: #10b981;
 }
 
 body {
@@ -72,8 +73,8 @@ body {
 }
 
 .navbar__logo-badge {
-  border: 1px solid var(--theme-light);
-  color: var(--theme-light);
+  border: 1px solid var(--green);
+  color: var(--green);
   padding: 2px 6px;
   font-size: 11px;
   border-radius: 18px;
@@ -124,7 +125,7 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   height: 720px;
 }
 
@@ -138,7 +139,7 @@ main {
   max-width: 500px;
   text-align: center;
   margin-bottom: 18px;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
 }
 
@@ -163,7 +164,7 @@ main {
   width: 280px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   position: sticky;
 }
 
