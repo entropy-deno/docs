@@ -47,19 +47,30 @@
 
         <ul class="navbar__links">
           <li class="navbar__link">
-            <a href="/" class="navbar__link-item{{ $request.path === '/' ? ' navbar__link-item--active' : '' }}">
+            <a
+              href="/"
+              class="navbar__link-item{{ $request.path === '/' ? ' navbar__link-item--active' : '' }}"
+            >
               Home
             </a>
           </li>
 
           <li class="navbar__link">
-            <a href="/docs" class="navbar__link-item{{ $request.path.includes('/docs') ? ' navbar__link-item--active' : '' }}">
+            <a
+              href="/docs"
+              class="navbar__link-item{{ $request.path.includes('/docs') ? ' navbar__link-item--active' : '' }}"
+            >
               Docs
             </a>
           </li>
 
           <li class="navbar__link">
-            <a href="https://github.com/entropy-deno" target="_blank" rel="noopener noreferrer" class="navbar__link-item">
+            <a
+              href="https://github.com/entropy-deno"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="navbar__link-item"
+            >
               GitHub
             </a>
           </li>
@@ -73,7 +84,10 @@
           <p>Table of Contents</p>
 
           @each ([link, label] in [['', 'Introducing Entropy'], ['/essentials/directory-structure', 'Directory Structure']])
-            <a class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}" href="/docs{{ link }}">
+            <a
+              class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
+              href="/docs{{ link }}"
+            >
               {{ label }}
             </a>
           @/each
