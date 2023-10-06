@@ -28,13 +28,15 @@
           <div class="code-block__control"></div>
           <div class="code-block__control"></div>
 
-          <p class="code-block__file">src/root.module.ts</p>
+          <p class="code-block__file">src/user.module.ts</p>
         </header><code class="code-block__code language-typescript">import { Module } from '@entropy/server';
-import { RootController } from './root.controller.ts';
+import { UserController } from './user.controller.ts';
 
-export class RootModule implements Module {
+export class UserModule implements Module {
+  public readonly channels = [];
+
   public readonly controllers = [
-    RootController,
+    UserController,
   ];
 }</code></pre><pre class="code-block">
             <header class="code-block__header">
@@ -42,21 +44,16 @@ export class RootModule implements Module {
               <div class="code-block__control"></div>
               <div class="code-block__control"></div>
 
-              <p class="code-block__file">src/root.controller.ts</p>
-            </header><code class="code-block__code language-typescript">import { Controller, HttpStatus } from '@entropy/http';
+              <p class="code-block__file">src/user.controller.ts</p>
+            </header><code class="code-block__code language-typescript">import { Controller } from '@entropy/http';
 import { Route } from '@entropy/router';
 
-export class RootController extends Controller {
-  @Route.Get('/')
-  public index() {
-    return this.render('home', {
-      message: 'Hello, world!',
+export class UserController extends Controller {
+  @Route.Get('/users/:id')
+  public show(id: string) {
+    return this.render('pages/users/profile', {
+      id,
     });
-  }
-
-  @Route.Error(HttpStatus.NotFound)
-  public notFound() {
-    return this.render('404');
   }
 }</code></pre>
     </div>

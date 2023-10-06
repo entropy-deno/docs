@@ -152,6 +152,10 @@ main {
   justify-content: center;
   gap: 26px;
   margin-top: 38px;
+
+  & .code-block {
+    width: 530px;
+  }
 }
 
 .docs {
