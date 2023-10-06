@@ -3,7 +3,6 @@
 *.sqlite
 *coverage
 .DS_Store
-.entropy
 .env*
 !.env.example
 !.env.testing

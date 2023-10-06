@@ -6,6 +6,7 @@
       "dom",
       "dom.asynciterable",
       "dom.iterable",
+      "deno.unstable",
       "esnext"
     ],
     "strict": true
@@ -21,20 +22,20 @@
     "singleQuote": true
   },
   "imports": {
-    "@entropy": "https://deno.land/x/entropy@1.0.0-beta.2/src/mod.ts",
-    "@entropy/configurator": "https://deno.land/x/entropy@1.0.0-beta.2/src/configurator/configurator.module.ts",
-    "@entropy/encrypter": "https://deno.land/x/entropy@1.0.0-beta.2/src/encrypter/encrypter.module.ts",
-    "@entropy/http": "https://deno.land/x/entropy@1.0.0-beta.2/src/http/http.module.ts",
-    "@entropy/injector": "https://deno.land/x/entropy@1.0.0-beta.2/src/injector/injector.module.ts",
-    "@entropy/localizator": "https://deno.land/x/entropy@1.0.0-beta.2/src/localizator/localizator.module.ts",
-    "@entropy/logger": "https://deno.land/x/entropy@1.0.0-beta.2/src/logger/logger.module.ts",
-    "@entropy/router": "https://deno.land/x/entropy@1.0.0-beta.2/src/router/router.module.ts",
-    "@entropy/server": "https://deno.land/x/entropy@1.0.0-beta.2/src/server/server.module.ts",
-    "@entropy/templates": "https://deno.land/x/entropy@1.0.0-beta.2/src/templates/templates.module.ts",
-    "@entropy/testing": "https://deno.land/x/entropy@1.0.0-beta.2/src/testing/testing.module.ts",
-    "@entropy/utils": "https://deno.land/x/entropy@1.0.0-beta.2/src/utils/utils.module.ts",
-    "@entropy/validator": "https://deno.land/x/entropy@1.0.0-beta.2/src/validator/validator.module.ts",
-    "@entropy/websocket": "https://deno.land/x/entropy@1.0.0-beta.2/src/web_socket/web_socket.module.ts",
+    "@entropy": "https://deno.land/x/entropy@1.0.0-beta.3/src/mod.ts",
+    "@entropy/configurator": "https://deno.land/x/entropy@1.0.0-beta.3/src/configurator/configurator.module.ts",
+    "@entropy/encrypter": "https://deno.land/x/entropy@1.0.0-beta.3/src/encrypter/encrypter.module.ts",
+    "@entropy/http": "https://deno.land/x/entropy@1.0.0-beta.3/src/http/http.module.ts",
+    "@entropy/injector": "https://deno.land/x/entropy@1.0.0-beta.3/src/injector/injector.module.ts",
+    "@entropy/localizator": "https://deno.land/x/entropy@1.0.0-beta.3/src/localizator/localizator.module.ts",
+    "@entropy/logger": "https://deno.land/x/entropy@1.0.0-beta.3/src/logger/logger.module.ts",
+    "@entropy/router": "https://deno.land/x/entropy@1.0.0-beta.3/src/router/router.module.ts",
+    "@entropy/server": "https://deno.land/x/entropy@1.0.0-beta.3/src/server/server.module.ts",
+    "@entropy/templates": "https://deno.land/x/entropy@1.0.0-beta.3/src/templates/templates.module.ts",
+    "@entropy/testing": "https://deno.land/x/entropy@1.0.0-beta.3/src/testing/testing.module.ts",
+    "@entropy/utils": "https://deno.land/x/entropy@1.0.0-beta.3/src/utils/utils.module.ts",
+    "@entropy/validator": "https://deno.land/x/entropy@1.0.0-beta.3/src/validator/validator.module.ts",
+    "@entropy/websocket": "https://deno.land/x/entropy@1.0.0-beta.3/src/web_socket/web_socket.module.ts",
     "@std/": "https://deno.land/std@0.203.0/"
   },
   "lint": {
@@ -44,8 +45,8 @@
   },
   "lock": false,
   "tasks": {
-    "dev": "deno run -A --watch ./src/main.ts --dev --open",
-    "prod": "deno run -A ./src/main.ts",
+    "dev": "deno run -A --unstable --watch ./src/main.ts --dev --open",
+    "prod": "deno run -A --unstable ./src/main.ts",
     "repl": "deno repl -A --eval 'import * as Entropy from \"@entropy\"'",
     "test": "deno test -A --no-check --parallel",
     "test:cov": "deno test -A --coverage=coverage",
