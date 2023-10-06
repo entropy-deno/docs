@@ -2,10 +2,15 @@ import { Controller } from '@entropy/http';
 import { Route } from '@entropy/router';
 
 export class DocsController extends Controller {
-  @Route.Get('/docs/:page?')
-  public show(page = 'index') {
-    return this.render(`pages/docs/${page}`, {
-      pageTitle: 'Docs',
-    });
+  @Route.Get('/docs/:section?/:page?')
+  public show(section?: string, page?: string) {
+    return this.render(
+      !section || !page
+        ? 'pages/docs/index'
+        : `pages/docs/${section}/${page.replaceAll('-', '_')}`,
+      {
+        pageTitle: 'Docs',
+      },
+    );
   }
 }
