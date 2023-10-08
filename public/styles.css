@@ -79,6 +79,7 @@ body {
   font-size: 11px;
   border-radius: 18px;
   margin-left: 5px;
+  opacity: 0.8;
 }
 
 .navbar__links {
@@ -161,14 +162,17 @@ main {
 .docs {
   padding: 92px;
   display: flex;
-  gap: 16px;
+  gap: 26px;
 }
 
 .docs__nav {
-  width: 280px;
+  width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 7px;
+  background: var(--bg-block);
+  border-radius: 14px;
+  padding: 32px;
   position: sticky;
 }
 
@@ -180,18 +184,27 @@ main {
 .docs__nav-link {
   text-decoration: none;
   color: inherit;
+  padding: 10px 14px;
+  border-radius: 8px;
   opacity: 0.9;
+
+  &:not(.docs__nav-link--active):hover {
+    background: var(--bg-block);
+  }
 }
 
 .docs__nav-link--active {
-  color: var(--theme-light);
+  background: var(--theme-light);
   font-weight: 500;
 }
 
 .docs__content {
+  background: var(--bg-block);
+  border-radius: 14px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: 1200px;
   gap: 14px;
 
   & h1 {
