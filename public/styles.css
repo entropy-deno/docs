@@ -247,6 +247,28 @@ main {
   }
 }
 
+.pager {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.pager__link {
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--theme-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  & svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 .code-block {
   background: var(--bg-block);
   border-radius: 18px;
