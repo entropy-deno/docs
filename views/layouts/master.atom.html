@@ -83,7 +83,7 @@
         <nav class="docs__nav">
           <p>Sections</p>
 
-          @each ([link, label] in [['', 'Getting Started'], ['/essentials/overview', 'Overview'], ['/essentials/configuration', 'Configuration'], ['/essentials/modules', 'Modules']])
+          @each ([link, label] in navigationLinks)
             <a
               class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
