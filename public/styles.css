@@ -12,7 +12,7 @@
   --bg: #111827;
   --bg-block: #161f33;
   --bg-soft: #161f33;
-  --bg-navbar: rgba(7, 7, 9, 0.25);
+  --bg-navbar: rgba(7, 7, 8, 0.25);
   --border: #4b5563;
   --font-mono: 'Roboto Mono', monospace;
   --font-sans: 'Urbanist', sans-serif;
@@ -25,7 +25,7 @@
 body {
   font-family: var(--font-sans);
   font-size: 16px;
-  background: var(--bg);
+  background: var(--bg-soft);
   color: var(--text);
   height: 100vh;
 }
@@ -158,7 +158,7 @@ main {
 .docs {
   padding: 92px;
   display: flex;
-  gap: 26px;
+  gap: 44px;
 }
 
 .docs__nav {
@@ -166,7 +166,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  background: var(--bg-block);
+  background: var(--bg);
   border-radius: 14px;
   padding: 32px;
   position: sticky;
@@ -191,13 +191,12 @@ main {
 
 .docs__nav-link--active {
   background: var(--theme);
+  color: var(--text-dark);
   font-weight: 500;
 }
 
 .docs__content {
   background: var(--bg-block);
-  border-radius: 14px;
-  padding: 32px;
   display: flex;
   flex-direction: column;
   max-width: 1200px;
@@ -222,6 +221,8 @@ main {
   & a {
     text-decoration: none;
     color: var(--theme);
+    font-weight: 500;
+    transition: opacity 0.2s ease-in-out;
   }
 
   & a:hover {
@@ -248,11 +249,11 @@ main {
   justify-content: flex-end;
   align-items: center;
   gap: 18px;
-  margin-top: 32px;
+  margin-top: 46px;
 }
 
 .pager__link {
-  padding: 16px;
+  padding: 14px 16px;
   border-radius: 12px;
   border: 2px solid var(--theme);
   display: flex;
