@@ -10,7 +10,7 @@
   color-scheme: dark;
 
   --bg: #111827;
-  --bg-block: #161f33;
+  --bg-block: #1b263e;
   --bg-soft: #161f33;
   --bg-navbar: rgba(7, 7, 8, 0.25);
   --border: #4b5563;
@@ -196,10 +196,9 @@ main {
 }
 
 .docs__content {
-  background: var(--bg-block);
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 960px;
   gap: 14px;
 
   & h1 {
@@ -242,6 +241,15 @@ main {
   & li::marker {
     color: var(--theme);
   }
+
+  .code-block {
+    background: var(--bg);
+  }
+
+  .code-block__header {
+    background: var(--bg-block);
+    margin-top: -18px;
+  }
 }
 
 .pager {
@@ -267,9 +275,8 @@ main {
 }
 
 .code-block {
-  background: var(--bg-block);
+  background: var(--bg-soft);
   border-radius: 18px;
-  padding: 22px;
   padding-top: 0;
   overflow-x: auto;
   font-size: 15px;
@@ -280,8 +287,8 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
-  padding-top: 4px;
+  padding: 8px 20px;
+  border-radius: 18px 18px 0 0;
   gap: 7px;
 }
 
@@ -316,6 +323,7 @@ main {
   display: block;
   line-height: 1.6;
   color: #c5cbd8;
+  padding: 12px 20px;
 }
 
 .code {

@@ -10,11 +10,6 @@ pre[class*="language-"] {
   overflow: auto;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: var(--bg-block);
-}
-
 .token.comment,
 .token.block-comment,
 .token.prolog,

@@ -83,7 +83,7 @@
         <nav class="docs__nav">
           <p>Table of Contents</p>
 
-          @each ([link, label] in [['', 'Introducing Entropy'], ['/essentials/directory-structure', 'Directory Structure']])
+          @each ([link, label] in [['', 'Getting Started'], ['/essentials/overview', 'Overview']])
             <a
               class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
