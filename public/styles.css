@@ -162,7 +162,7 @@ main {
 }
 
 .docs {
-  padding: 96px 122px;
+  padding: 96px 142px;
   display: flex;
   gap: 44px;
 }
@@ -174,7 +174,7 @@ main {
   top: 166px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 2px;
   background: var(--bg);
   border-radius: 14px;
   padding: 32px;
@@ -183,14 +183,15 @@ main {
 
 .docs__nav p {
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .docs__nav-link {
   text-decoration: none;
   color: inherit;
-  padding: 10px 14px;
+  padding: 9px 12px;
   border-radius: 8px;
+  font-size: 15px;
   opacity: 0.9;
   user-select: none;
 
@@ -200,9 +201,9 @@ main {
 }
 
 .docs__nav-link--active {
-  background: var(--theme);
-  color: var(--text-dark);
-  font-weight: 500;
+  background: var(--bg-soft);
+  color: var(--theme);
+  font-weight: 600;
 }
 
 .docs__content {
@@ -264,6 +265,7 @@ main {
 
   .code-block {
     background: var(--bg);
+    width: 700px;
   }
 
   .code-block__header {
