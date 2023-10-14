@@ -16,10 +16,16 @@
   --border: #4b5563;
   --font-mono: 'Roboto Mono', monospace;
   --font-sans: 'Urbanist', sans-serif;
+  --selection: #2eade3;
   --text: #f3f4f6;
   --text-gray: #c4cbd9;
   --text-dark: #052133;
   --theme: #38bdf8;
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--text-dark);
 }
 
 body {
@@ -156,13 +162,16 @@ main {
 }
 
 .docs {
-  padding: 92px;
+  padding: 96px 122px;
   display: flex;
   gap: 44px;
 }
 
 .docs__nav {
   width: 320px;
+  max-height: calc(100vh - 220px);
+  position: sticky;
+  top: 166px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -183,6 +192,7 @@ main {
   padding: 10px 14px;
   border-radius: 8px;
   opacity: 0.9;
+  user-select: none;
 
   &:not(.docs__nav-link--active):hover {
     background: var(--bg-block);
@@ -299,6 +309,7 @@ main {
   align-items: center;
   padding: 8px 20px;
   border-radius: 18px 18px 0 0;
+  user-select: none;
   gap: 7px;
 }
 
