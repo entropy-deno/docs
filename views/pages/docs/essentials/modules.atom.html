@@ -1,0 +1,95 @@
+@layout('../../../layouts/master')
+  <section class="docs__content">
+    <h1>Modules</h1>
+
+    <p>The most basic pieces of Entropy apps are modules. Module is a simple chunk of code in a separate directory in the <code>src/</code> folder. Each module should have a corresponding <code>.module.ts</code> file and represent single app feature part.</p>
+
+    <h2>Creating a module</h2>
+
+    <p>To create a new module, you can leverage the CLI:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">terminal</p>
+      </header><code class="code-block__code language-sh">entropy make module chat</code></pre>
+
+    <h2>Module structure</h2>
+
+    <p>Each feature module file has a similar structure:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/chats/chat.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Module } from '@entropy/server';
+import { ChatChannel } from './chat.channel.ts';
+import { ChatController } from './chat.controller.ts';
+
+export class ChatModule implements Module {
+  public readonly channels = [
+    ChatChannel,
+  ];
+
+  public readonly controllers = [
+    ChatController,
+  ];
+}</code></pre>
+
+    <h2>Registering modules</h2>
+
+    <p>Every module should be registered in the <code>src/main.ts</code> file in modules section like so:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-ts">import { createServer } from '@entropy/server';
+import { RootModule } from './root.module.ts';
+
+if (import.meta.main) {
+  using server = await createServer({
+    modules: [RootModule],
+  });
+
+  await server.start();
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/configuration">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Configuration
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/controllers_and_routes">
+        Controllers and Routes
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/layout

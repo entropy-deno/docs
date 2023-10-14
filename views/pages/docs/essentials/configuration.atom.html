@@ -6,7 +6,7 @@
 
     <h2>Environment configuration</h2>
 
-    <p>A default Northle project contains a file called .env. This file is the place where things like database credentials and environment-specific settings should be stored. Northle automatically reads all .env variables. The default .env file contains following variables:</p>
+    <p>A default Entropy project contains a file called .env. This file is the place where things like database credentials and environment-specific settings should be stored. Entropy automatically reads all .env variables. The default .env file contains following variables:</p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -14,7 +14,7 @@
         <div class="code-block__control"></div>
         <div class="code-block__control"></div>
 
-        <p class="code-block__file">.env</p>
+        <p class="code-block__file">src/main.ts</p>
       </header><code class="code-block__code language-js">import { env } from '@entropy/configurator';
 
 const port = env&lt;number>('PORT');  // 7000
@@ -52,7 +52,7 @@ SESSION_LIFETIME=30  # days</code></pre>
         <div class="code-block__control"></div>
         <div class="code-block__control"></div>
 
-        <p class="code-block__file">.env</p>
+        <p class="code-block__file">src/main.ts</p>
       </header><code class="code-block__code language-ts">import { createServer } from '@entropy/server';
 import { RootModule } from './root.module.ts';
 
