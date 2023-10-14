@@ -81,9 +81,9 @@
     <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
       @if ($request.path.includes('docs'))
         <nav class="docs__nav">
-          <p>Table of Contents</p>
+          <p>Sections</p>
 
-          @each ([link, label] in [['', 'Getting Started'], ['/essentials/overview', 'Overview']])
+          @each ([link, label] in [['', 'Getting Started'], ['/essentials/overview', 'Overview'], ['/essentials/configuration', 'Configuration'], ['/essentials/modules', 'Modules']])
             <a
               class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"

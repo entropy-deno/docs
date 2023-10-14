@@ -17,7 +17,7 @@
   --font-mono: 'Roboto Mono', monospace;
   --font-sans: 'Urbanist', sans-serif;
   --text: #f3f4f6;
-  --text-gray: #b2b9c5;
+  --text-gray: #c4cbd9;
   --text-dark: #052133;
   --theme: #38bdf8;
 }
@@ -85,13 +85,13 @@ body {
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 28px;
 }
 
 .navbar__link-item {
   text-decoration: none;
   color: inherit;
-  padding: 7px 10px;
+  padding: 7px 12px;
   opacity: 0.7;
   border-radius: 10px;
   transition: opacity 0.2s ease;
@@ -202,7 +202,7 @@ main {
   gap: 14px;
 
   & h1 {
-    font-size: 36px;
+    font-size: 38px;
     margin: 38px 0 12px;
     font-weight: 600;
   }
@@ -240,6 +240,16 @@ main {
 
   & li::marker {
     color: var(--theme);
+  }
+
+  & code:not(.code-block__code) {
+    font-size: 14px;
+    font-family: var(--font-mono);
+    color: var(--text-gray);
+    border-radius: 5px;
+    padding: 3px 6px;
+    margin: 0 2px;
+    background: var(--bg);
   }
 
   .code-block {

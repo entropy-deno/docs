@@ -1,0 +1,108 @@
+@layout('../../../layouts/master')
+  <section class="docs__content">
+    <h1>Configuration</h1>
+
+    <p>App configuration in Entropy is stored in two main files: <code>src/main.ts</code> and <code>.env</code>.</p>
+
+    <h2>Environment configuration</h2>
+
+    <p>A default Northle project contains a file called .env. This file is the place where things like database credentials and environment-specific settings should be stored. Northle automatically reads all .env variables. The default .env file contains following variables:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">.env</p>
+      </header><code class="code-block__code language-js">import { env } from '@entropy/configurator';
+
+const port = env&lt;number>('PORT');  // 7000
+const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
+
+    <h2>Reading environment data</h2>
+
+    <p>You can read environment variables using <code>env</code> generic function:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">.env</p>
+      </header><code class="code-block__code language-ts">HOST=localhost
+PORT=5050
+DATABASE_URL=mysql://root:@localhost/entropy
+ENCRYPTION_KEY=
+COOKIE_MAX_AGE=30  # days
+SESSION_LIFETIME=30  # days</code></pre>
+
+    <h2>Example .env file</h2>
+
+    <p>Developers often use version control systems like Git to work in teams. You should remember not to store <code>.env</code> files in repositories for security reasons (they contain database passwords etc.). That's why we should exclude these files from version control and only publish an example <code>.env.example</code> file synced with the original one.</p>
+
+    <h2>App configuration</h2>
+
+    <p>Any other, app-specific configuration is passed into the <code>createServer</code> function in <code>src/main.ts</code> file. The configuration looks like this:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">.env</p>
+      </header><code class="code-block__code language-ts">import { createServer } from '@entropy/server';
+import { RootModule } from './root.module.ts';
+
+if (import.meta.main) {
+  using server = await createServer({
+    config: {
+      contentSecurityPolicy: {
+        allowedOrigins: [
+          'https://fonts.googleapis.com',
+        ],
+      },
+      envFile: '.env',
+      locales: {
+        default: 'en',
+      },
+    },
+    modules: [RootModule],
+  });
+
+  await server.start();
+}</code></pre>
+
+    <p>To customize app settings, pass configuration options through the <code>config</code> field.</p>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/overview">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Overview
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/modules">
+        Modules
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/layout
