@@ -165,11 +165,12 @@ main {
 .docs {
   padding: 96px 162px;
   display: flex;
-  gap: 44px;
+  justify-content: center;
+  gap: 72px;
 }
 
 .docs__nav {
-  width: 320px;
+  width: 310px;
   max-height: calc(100vh - 220px);
   position: sticky;
   top: 166px;
@@ -210,7 +211,7 @@ main {
 .docs__content {
   display: flex;
   flex-direction: column;
-  max-width: 700px;
+  max-width: 720px;
   gap: 14px;
 
   & h1 {
@@ -264,7 +265,7 @@ main {
     color: var(--theme);
     padding: 16px 18px;
     border-radius: 12px;
-    width: 700px;
+    width: 720px;
     font-size: 16px;
 
     &::before {
@@ -285,7 +286,7 @@ main {
     color: var(--green);
     padding: 16px 18px;
     border-radius: 12px;
-    width: 700px;
+    width: 720px;
     font-size: 16px;
 
     &::before {
@@ -313,7 +314,7 @@ main {
 
   .code-block {
     background: var(--bg);
-    width: 700px;
+    width: 720px;
     margin: 20px 0 10px;
   }
 
