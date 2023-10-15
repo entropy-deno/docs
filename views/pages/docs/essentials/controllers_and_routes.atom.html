@@ -1,0 +1,214 @@
+@layout('../../../layouts/master')
+  <section class="docs__content">
+    <h1>Controllers and Routes</h1>
+
+    <p>Typically, web applications are based on route mappings. Route, or an endpoint is an URL with assigned function called when user asks for the URL.</p>
+
+    <p>Routing system in Entropy is based on <strong>controller classes</strong>.</p>
+
+    <h2>Controllers</h2>
+
+    <p>Basically, a controller is just a class with methods assigned to URLs. Each route handles incoming requests. Controllers contain methods decorated with appropriate HTTP verbs.</p>
+
+    <h3>Controller structure</h3>
+
+    <p>Entropy comes with one controller in <code>src/root.controller.ts</code> file by default.</p>
+
+    <p>The app controller defines an <code>index</code> method which is decorated with <code>Route.Get</code> decorator. This decorator tells Entropy that the <code>index</code> method should be called when the user requests for the <code>/</code> route.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
+import { Route } from '@entropy/router';
+
+export class RootController extends Controller {
+  @Route.Get('/')
+  public index() {
+    return this.render('home', {
+      message: 'Hello, world!',
+    });
+  }
+
+  @Route.Error(HttpStatus.NotFound)
+  public notFound() {
+    return this.render('404');
+  }
+}</code></pre>
+
+    <div class="info">
+      Controller methods should always return some value. Entropy automatically sends proper headers based on returned data. In case of object or array, the response has the JSON type. When returned value is text or a view object, it will be rendered as HTML.
+    </div>
+
+    <h3>Creating and registering controllers</h3>
+
+    <p>It is recommended to use the CLI to create new controllers:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">terminal</p>
+      </header><code class="code-block__code language-sh">entropy make controller post</code></pre>
+
+    <p>The place where every controller should be registered are <strong>modules</strong>. Every time you create a new controller, you need to import it into a module:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/posts/post.module.ts</p>
+      </header><code class="code-block__code language-ts">import { Module } from '@entropy/server';
+import { PostController } from './post.controller.ts';
+
+export class PostModule implements Module {
+  public readonly channels = [];
+
+  public readonly controllers = [
+    PostController,
+  ];
+}</code></pre>
+
+    <h2>Routes</h2>
+
+    <p>In order to declare application routes, add new controller method and decorate it with a proper HTTP verb decorator:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
+import { Route } from '@entropy/router';
+
+export class RootController extends Controller {
+  @Route.Get('/users')
+  public index() {
+    // ...
+  }
+
+  @Route.Post('/users')
+  public store() {
+    // ...
+  }
+
+  @Route.Delete('/users/:id')
+  public destroy() {
+    // ...
+  }
+}</code></pre>
+
+    <div class="info">
+      Use the <code>Route.Any</code> decorator to accept all HTTP verbs and the <code>Route.Methods</code> decorator to handle multiple chosen HTTP verbs.
+    </div>
+
+    <div class="tip">
+      Controller action methods should be as short as possible - they are only responsible for handling web requests and returning a response. To add more business logic you can familiarize yourself with the concept of <strong>services</strong>.
+    </div>
+
+    <h3>URL patterns</h3>
+
+    <p>Routes in Entropy can be dynamic. This means that you can use the <code>:param</code> syntax to declare a dynamic route URL that accepts multiple values:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">// Match paths like `/users/james_bond` or `/users/56328`
+@Route.Get('/users/:name')</code></pre>
+
+    <h3>Optional parameters</h3>
+
+    <p>To make a paramater optional, use the question mark. The following route will match both <code>/users</code> and <code>/users/luke_skywalker</code> paths:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">@Route.Get('/users/:name?')</code></pre>
+
+    <h3>Regular expressions</h3>
+
+    <p>You can also define RegExp patterns for route parameters:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">// This route will accept only numeric params
+@Route.Get('/posts/:id(^\\d+)')
+
+// This route will accept IDs in form of `aaa-bbb`
+@Route.Get('/users/:id(^\\d{3}-\\d{3})')</code></pre>
+
+    <h2>Error handler routes</h2>
+
+    <p>A typical web app often returns errors like <code>404 Not Found</code> or <code>500 Internal Server Error</code>. The framework exposes a simple API for custom error handling logic.</p>
+
+    <p>You can customize the <code>404</code> page by adding a special <code>Error</code> route:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
+import { Route } from '@entropy/router';
+
+export class RootController {
+  @Route.Error(HttpStatus.NotFound)
+    public notFound() {
+      return this.render('404');
+    }
+  }</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/configuration">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Configuration
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/controllers_and_routes">
+        Controllers and Routes
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/layout

@@ -21,6 +21,7 @@
   --text-gray: #c4cbd9;
   --text-dark: #052133;
   --theme: #38bdf8;
+  --green: #34d399;
 }
 
 ::selection {
@@ -162,7 +163,7 @@ main {
 }
 
 .docs {
-  padding: 96px 142px;
+  padding: 96px 162px;
   display: flex;
   gap: 44px;
 }
@@ -209,7 +210,7 @@ main {
 .docs__content {
   display: flex;
   flex-direction: column;
-  max-width: 960px;
+  max-width: 700px;
   gap: 14px;
 
   & h1 {
@@ -228,6 +229,11 @@ main {
     font-weight: 600;
   }
 
+  & h3 {
+    font-size: 20px;
+    margin: 22px 0 10px;
+  }
+
   & a {
     text-decoration: none;
     color: var(--theme);
@@ -239,7 +245,7 @@ main {
     opacity: 0.9;
   }
 
-  & :is(p, li) {
+  & :is(p, li, .info, .tip) {
     font-size: 17px;
     line-height: 1.6;
     opacity: 0.8;
@@ -251,6 +257,48 @@ main {
 
   & li::marker {
     color: var(--theme);
+  }
+
+  & .info {
+    border: 2px solid var(--theme);
+    color: var(--theme);
+    padding: 16px 18px;
+    border-radius: 12px;
+    width: 700px;
+    font-size: 16px;
+
+    &::before {
+      content: 'Info';
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    & code {
+      color: var(--theme) !important;
+    }
+  }
+
+  & .tip {
+    border: 2px solid var(--green);
+    color: var(--green);
+    padding: 16px 18px;
+    border-radius: 12px;
+    width: 700px;
+    font-size: 16px;
+
+    &::before {
+      content: 'Tip';
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    & code {
+      color: var(--green) !important;
+    }
   }
 
   & code:not(.code-block__code) {
@@ -266,6 +314,7 @@ main {
   .code-block {
     background: var(--bg);
     width: 700px;
+    margin: 20px 0 10px;
   }
 
   .code-block__header {

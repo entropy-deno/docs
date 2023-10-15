@@ -9,6 +9,7 @@ export class DocsController extends Controller {
       ['/essentials/overview', 'Overview'],
       ['/essentials/configuration', 'Configuration'],
       ['/essentials/modules', 'Modules'],
+      ['/essentials/controllers-and-routes', 'Controllers and Routes'],
     ];
 
     return this.render(
