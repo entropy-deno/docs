@@ -183,6 +183,106 @@ export class RootController {
   }
 }</code></pre>
 
+    <h2>Route options</h2>
+
+    <p>You can pass additional options to the <code>Route</code> decorator:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">export class UserController {
+  @Route.Get('/users', {
+    name: 'users.index',
+    redirectTo: '/users/create',
+    statusCode: StatusCode.Ok,
+    middleware: [AuthMiddleware],
+    headers: {
+      'X-Custom-Header': 'Value',
+    },
+  })
+  public index() {
+    // ...
+  }
+}</code></pre>
+
+    <p>This way you can define a custom route names, status codes, and more. You can use it later to generate URLs and redirects:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">return this.redirect({ name: 'users.index' }});</code></pre>
+
+    <h2>Response types</h2>
+
+    <p>Entropy automatically discovers response type based on the returned value from the controller.</p>
+
+    <p>The following data will set the response type to JSON:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">// text/json MIME type
+return {
+  name: 'Bond. James Bond',
+};</code></pre>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">// text/json MIME type
+return [1, 2, 3];</code></pre>
+
+    <p>But this will return an HTML page:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">// text/html MIME type
+return '<h1>Hello World</h1>';</code></pre>
+
+    <p>This will return a rendered view template:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">// HTML response (text/html MIME type)
+return this.render('./views/profile');</code></pre>
+
+    <p>And this will redirect the user to the <code>/login</code> page:</p>
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">// Redirect response
+return this.redirect('/login');</code></pre>
+
     <section class="pager">
       <a class="pager__link" href="/docs/essentials/configuration">
         <svg
