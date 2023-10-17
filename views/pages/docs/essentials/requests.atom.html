@@ -1,0 +1,188 @@
+@layout('../../../layouts/master')
+  <section class="docs__content">
+    <h1>Requests</h1>
+
+    <p>Entropy provides a fluent API for dealing with web requests. The framework provides several ways to return responses. Each client request is represented by <code>Request</code> object.</p>
+
+    <h2>Request object</h2>
+
+    <p>In order to get access to the request object, you need to explicitly inject it:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest, InjectRequest } from '@entropy/http';
+import { Route } from '@entropy/router';
+
+export class UserController extends Controller {
+  @Route.Get('/users')
+  @InjectRequest()
+  public index(request: HttpRequest) {
+    return this.render('users/index', {
+      path: request.path,
+    });
+  }
+}</code></pre>
+
+    <h2>HTTP methods</h2>
+
+    <p>Entropy recognizes basically all available HTTP verbs / methods:</p>
+
+    <div class="table">
+      <div class="table__row">
+        <div>HTTP method</div>
+        <div>Description</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>COPY</code></div>
+        <div>Copy the resource</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>DELETE</code></div>
+        <div>Delete the resource</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>GET</code></div>
+        <div>Get the resource content</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>HEAD</code></div>
+        <div>Get request headers</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>LOCK</code></div>
+        <div>Lock the resource</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>MKCOL</code></div>
+        <div>Create resource collection</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>MOVE</code></div>
+        <div>Move the resource</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>OPTIONS</code></div>
+        <div>Get server options</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>POST</code></div>
+        <div>Post a resource</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>PROPFIND</code></div>
+        <div>Find resource property</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>PROPPATCH</code></div>
+        <div>Edit resource property</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>PATCH</code></div>
+        <div>Update the resource partially</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>PUT</code></div>
+        <div>Update the resource</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>TRACE</code></div>
+        <div>Perform a trace call</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>UNLOCK</code></div>
+        <div>Unlock the resource</div>
+      </div>
+    </div>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/chats/chat.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Module } from '@entropy/server';
+import { ChatChannel } from './chat.channel.ts';
+import { ChatController } from './chat.controller.ts';
+
+export class ChatModule implements Module {
+  public readonly channels = [
+    ChatChannel,
+  ];
+
+  public readonly controllers = [
+    ChatController,
+  ];
+}</code></pre>
+
+    <h2>Registering modules</h2>
+
+    <p>Every module should be registered in the <code>src/main.ts</code> file in modules section like so:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-ts">import { createServer } from '@entropy/server';
+import { RootModule } from './root.module.ts';
+
+if (import.meta.main) {
+  using server = await createServer({
+    modules: [RootModule],
+  });
+
+  await server.start();
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/configuration">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Configuration
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/controllers-and-routes">
+        Controllers and Routes
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/layout

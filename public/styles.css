@@ -302,6 +302,43 @@ main {
     }
   }
 
+  & .table {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    border-radius: 12px;
+    
+    & .table__row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      &:first-child {
+        font-weight: 600;
+        color: var(--theme);
+        border-radius: 12px 12px 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 12px 12px;
+      }
+
+      &:nth-child(even) {
+        background: var(--bg-block);
+      }
+
+      & div {
+        min-width: 160px;
+        padding: 14px 18px;
+      }
+
+      & code {
+        background: var(--bg-soft);
+        color: var(--theme);
+      }
+    }
+  }
+
   & code:not(.code-block__code) {
     font-size: 14px;
     font-family: var(--font-mono);
