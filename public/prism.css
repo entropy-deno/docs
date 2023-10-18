@@ -23,7 +23,6 @@ pre[class*="language-"] {
 }
 
 .token.tag,
-.token.attr-name,
 .token.namespace,
 .token.deleted {
   color: #e2777a;
@@ -39,6 +38,7 @@ pre[class*="language-"] {
   color: #61afef;
 }
 
+.token.attr-name,
 .token.property,
 .token.class-name,
 .token.constant,
