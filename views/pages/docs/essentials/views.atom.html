@@ -1,0 +1,60 @@
+@layout('../../../layouts/master')
+  <section class="docs__content">
+    <h1>Views</h1>
+
+    <p>Entropy comes with handy built-in view template engine. View templates in your app are placed in <code>/views</code> directory and inside modules and have the <code>*.html</code> extension.</p>
+
+    <h2>Template engine</h2>
+
+    <p>Entropy template engine allows you to create loops, conditionals and variable interpolation.</p>
+
+    <p>An example view template may look like this:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;main>
+  @each (post in posts)
+    &lt;article class="post">{{ post.content }}&lt;/article>
+  @/each
+
+  @if (!posts.length)
+    &lt;p>There are no posts yet.&lt;/p>
+  @/if
+&lt;/main></code></pre>
+    @/raw
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/configuration">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Configuration
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/controllers-and-routes">
+        Controllers and Routes
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/layout

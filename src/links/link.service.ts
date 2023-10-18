@@ -7,6 +7,7 @@ export class LinkService {
       ['/essentials/modules', 'Modules'],
       ['/essentials/controllers-and-routes', 'Controllers and Routes'],
       ['/essentials/requests', 'Requests'],
+      ['/essentials/views', 'Views'],
     ];
   }
 }
