@@ -46,7 +46,7 @@
   },
   "lock": false,
   "tasks": {
-    "dev": "deno run -A --unstable --watch ./src/main.ts --dev --open",
+    "dev": "deno run -A --unstable --watch --quiet ./src/main.ts --dev --open",
     "prod": "deno run -A --unstable ./src/main.ts",
     "repl": "deno repl -A --eval 'import * as Entropy from \"@entropy\"'",
     "test": "deno test -A --no-check --parallel",
