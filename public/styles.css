@@ -35,16 +35,27 @@ body {
   background: var(--bg-soft);
   color: var(--text);
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .header {
-  font-size: 48px;
-  line-height: 54px;
+  font-size: 36px;
+  line-height: 46px;
   letter-spacing: -1px;
+
+  @media (min-width: 500px) {
+    font-size: 48px;
+    line-height: 54px;
+  }
 }
 
 .header--small {
-  font-size: 40px;
+  font-size: 30px;
+
+  @media (min-width: 500px) {
+    font-size: 40px;
+    line-height: 52px;
+  }
 }
 
 .text-gray {
@@ -129,8 +140,13 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+  padding: 32px 24px;
   gap: 18px;
-  height: 720px;
+
+  @media (min-width: 1162px) {
+    height: 720px;
+  }
 }
 
 .home__hero-header {
@@ -153,12 +169,25 @@ main {
 
 .home__examples-blocks {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 26px;
   margin-top: 38px;
 
   & .code-block {
-    width: 530px;
+    width: calc(100vw - 40px);
+    height: 400px;
+    text-align: left;
+
+    @media (min-width: 572px) {
+      width: 530px;
+      height: auto;
+    }
+  }
+
+  @media (min-width: 1162px) {
+    flex-direction: row;
+    justify-content: center;
   }
 }
 
