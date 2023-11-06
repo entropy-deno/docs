@@ -13,13 +13,15 @@
     <span> · </span>
     <a href="https://entropy.deno.dev/docs" target="_blank">Docs</a>
     <span> · </span>
-    <a href="https://github.com/entropy-deno/docs" target="_blank">Repository</a>
+    <a href="https://github.com/entropy-deno/app-template" target="_blank">Repository</a>
+    <span> · </span>
+    <a href="https://deno.land/x/entropy/src/mod.ts" target="_blank">API Reference</a>
     <span> · </span>
     <a href="https://entropy.deno.dev/docs/more/contributing" target="_blank">Contributing</a>
   </h4>
   <br>
   <a href="https://deno.land/x/entropy" target="_blank">
-    <img src="https://shield.deno.dev/deno/%5E1.37.0" alt="Required Deno version">
+    <img src="https://shield.deno.dev/deno/%5E1.38.0" alt="Required Deno version">
     &nbsp;
     <img src="https://shield.deno.dev/x/entropy" alt="Latest Entropy version">
   </a>
@@ -37,7 +39,7 @@
 
 ## Introducing Entropy
 
-Entropy is a modern and declarative backend development framework for
+**Entropy** is a modern and declarative backend development framework for
 [Deno](https://deno.com). It makes it easy to create fast and secure web
 applications with awesome developer experience.
 
@@ -48,7 +50,7 @@ applications with awesome developer experience.
 
 To run Entropy, your environment has to meet following requirements:
 
-- Deno 1.37.0+
+- Deno 1.38.0+
 
 We recommend to always have the latest version of Deno installed. To update
 Deno, run the following command:
@@ -69,13 +71,12 @@ dom.rajkowski@gmail.com. In case of security vulnerability, please contact
 
 ## Information
 
-- Documentation: [entropy.deno.dev](https://entropy.deno.dev/docs)
-- GitHub repository:
-  [github.com/entropy-deno/app-template](https://github.com/entropy-deno/app-template)
-- GitHub organization:
-  [github.com/entropy-deno](https://github.com/entropy-deno)
 - Author: [Dominik Rajkowski](https://github.com/dominiq007)
-- License: [MIT License](https://github.com/entropy-deno/core/blob/main/LICENSE)
+- Documentation: [entropy.deno.dev](https://entropy.deno.dev)
+- [API Reference](https://deno.land/x/entropy/src/mod.ts)
+- [GitHub repository](https://github.com/entropy-deno/app-template)
+- [GitHub organization](https://github.com/entropy-deno)
+- [MIT License](https://github.com/entropy-deno/core/blob/main/LICENSE)
 
 ## License
 

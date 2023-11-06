@@ -8,7 +8,7 @@
 
     <h2>Request object</h2>
 
-    <p>In order to get access to the request object, you need to explicitly inject it:</p>
+    <p>In order to get access to the request object, you need to explicitly type-hint it:</p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -17,13 +17,12 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/users/user.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { Controller, HttpRequest, InjectRequest } from '@entropy/http';
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest } from '@entropy/http';
 import { Route } from '@entropy/router';
 
 export class UserController extends Controller {
   @Route.Get('/users')
-  @InjectRequest()
-  public index(request: HttpRequest) {
+  public index([], request: HttpRequest) {
     return this.render('users/index', {
       path: request.path,
     });

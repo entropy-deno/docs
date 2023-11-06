@@ -16,11 +16,13 @@
         <div class="code-block__control"></div>
         <div class="code-block__control"></div>
 
-        <p class="code-block__file">src/main.ts</p>
-      </header><code class="code-block__code language-js">import { env } from '@entropy/configurator';
-
-const port = env&lt;number>('PORT');  // 7000
-const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
+        <p class="code-block__file">.env</p>
+      </header><code class="code-block__code language-ts">HOST=localhost
+PORT=5050
+DATABASE_URL=mysql://root:@localhost/entropy
+ENCRYPTION_KEY=
+COOKIE_MAX_AGE=30  # days
+SESSION_LIFETIME=30  # days</code></pre>
 
     <h2>Reading environment data</h2>
 
@@ -32,13 +34,11 @@ const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
         <div class="code-block__control"></div>
         <div class="code-block__control"></div>
 
-        <p class="code-block__file">.env</p>
-      </header><code class="code-block__code language-ts">HOST=localhost
-PORT=5050
-DATABASE_URL=mysql://root:@localhost/entropy
-ENCRYPTION_KEY=
-COOKIE_MAX_AGE=30  # days
-SESSION_LIFETIME=30  # days</code></pre>
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">import { env } from '@entropy/configurator';
+
+const port = env&lt;number>('PORT');  // 7000
+const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
 
     <h2>Example .env file</h2>
 
