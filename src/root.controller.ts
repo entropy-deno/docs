@@ -7,8 +7,8 @@ export class RootController extends Controller {
   private readonly linkService = inject(LinkService);
 
   @Route.Get('/')
-  public index() {
-    return this.render('pages/home', {
+  public async index() {
+    return await this.render('pages/home', {
       pageTitle: 'Home',
       navigationLinks: this.linkService.getNavigationLinks(),
     });
