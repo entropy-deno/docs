@@ -15,7 +15,9 @@ export class DocsController extends Controller {
   public async show([section, page]: [string?, string?]) {
     try {
       return await this.render(
-        !section || !page ? 'pages/docs/index' : `pages/docs/${section}/${page}`,
+        !section || !page
+          ? 'pages/docs/index'
+          : `pages/docs/${section}/${page}`,
         {
           pageTitle: 'Docs',
           navigationLinks: this.linkService.getNavigationLinks(),
