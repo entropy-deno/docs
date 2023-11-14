@@ -21,11 +21,11 @@
 
           <p class="code-block__file">views/home.html</p>
         </header><code class="code-block__code language-html">&lt;main>
-  @each (post in posts)
+  @for (post in posts)
     &lt;article class="post">{{ post.content }}&lt;/article>
   @empty
     &lt;p>There are no posts yet.&lt;/p>
-  @/each
+  @/for
 
   @if (!user)
     &lt;h2>You have to log in.&lt;/h2>

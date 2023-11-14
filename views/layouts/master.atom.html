@@ -83,14 +83,14 @@
         <nav class="docs__nav">
           <p>Sections</p>
 
-          @each ([link, label] in navigationLinks)
+          @for ([link, label] in navigationLinks)
             <a
               class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
             >
               {{ label }}
             </a>
-          @/each
+          @/for
         </nav>
       @/if
 
