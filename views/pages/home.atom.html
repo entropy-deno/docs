@@ -1,5 +1,23 @@
 @layout('../layouts/master')
 
+@push('scripts')
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const headerSlide = document.querySelector('.home__hero-header span');
+
+      const slides = ['declarative', 'performant', 'scalable'];
+
+      let index = 0;
+
+      setInterval(() => {
+        headerSlide.innerHTML = slides[index];
+
+        index = index === slides.length - 1 ? 0 : index + 1;
+      }, 1000);
+    });
+  </script>
+@/push
+
 @section('content')
   <section class="home__hero">
     <h1 class="header home__hero-header">
@@ -26,7 +44,7 @@
 
   <section class="home__examples">
     <h1 class="header header--small">
-      The <span class="text-theme">number one</span> for Deno applications
+      The <strong>number one</strong> choice for Deno applications
     </h1>
 
     <p class="home__info">
