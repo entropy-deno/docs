@@ -1,27 +1,9 @@
 @layout('../layouts/master')
 
-@push('scripts')
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const headerSlide = document.querySelector('.home__hero-header span');
-
-      const slides = ['declarative', 'performant', 'scalable'];
-
-      let index = 0;
-
-      setInterval(() => {
-        headerSlide.innerHTML = slides[index];
-
-        index = index === slides.length - 1 ? 0 : index + 1;
-      }, 1000);
-    });
-  </script>
-@/push
-
 @section('content')
   <section class="home__hero">
     <h1 class="header home__hero-header">
-      A <span class="text-theme">declarative</span> web backend framework for Deno
+      A <div class="home__hero-slider-wrapper"><span class="home__hero-slider text-theme"><span>declarative</span><span>transparent</span><span>performant</span><span>declarative</span></span></div> web backend framework for Deno
     </h1>
 
     <p class="home__info">
@@ -53,13 +35,12 @@
 
     <div class="home__examples-blocks">
       <pre class="code-block">
-        <header class="code-block__header">
-          <div class="code-block__control"></div>
-          <div class="code-block__control"></div>
-          <div class="code-block__control"></div>
-
-          <p class="code-block__file">src/user.module.ts</p>
-        </header><code class="code-block__code language-ts">import { Module } from '@entropy/server';
+<header class="code-block__header">
+<div class="code-block__control"></div>
+<div class="code-block__control"></div>
+<div class="code-block__control"></div>
+<p class="code-block__file">src/user.module.ts</p>
+</header><code class="code-block__code language-ts">import { Module } from '@entropy/server';
 import { UserController } from './user.controller.ts';
 
 export class UserModule implements Module {
@@ -69,13 +50,12 @@ export class UserModule implements Module {
     UserController,
   ];
 }</code></pre><pre class="code-block">
-            <header class="code-block__header">
-              <div class="code-block__control"></div>
-              <div class="code-block__control"></div>
-              <div class="code-block__control"></div>
-
-              <p class="code-block__file">src/user.controller.ts</p>
-            </header><code class="code-block__code language-ts">import { Controller } from '@entropy/http';
+<header class="code-block__header">
+<div class="code-block__control"></div>
+<div class="code-block__control"></div>
+<div class="code-block__control"></div>
+<p class="code-block__file">src/user.controller.ts</p>
+</header><code class="code-block__code language-ts">import { Controller } from '@entropy/http';
 import { Route } from '@entropy/router';
 
 export class UserController extends Controller {
