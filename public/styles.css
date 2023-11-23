@@ -29,6 +29,36 @@
   color: var(--text-dark);
 }
 
+@keyframes slide { 
+  0% {
+    translate: 0 0;
+  }
+
+  16.66% { 
+    translate: 0 calc(var(--line-height) * -1 - 3px);
+  }
+
+  33.32% { 
+    translate: 0 calc(var(--line-height) * -1 - 3px);
+  }
+
+  49.98% {
+    translate: 0 calc(var(--line-height) * -2 - 8px);
+  }
+
+  66.64% {
+    translate: 0 calc(var(--line-height) * -2 - 8px);
+  }
+
+  83.3% {
+    translate: 0 calc(var(--line-height) * -3 - 16px);
+  }
+
+  100% {
+    translate: 0 calc(var(--line-height) * -3 - 16px);
+  }
+}
+
 body {
   font-family: var(--font-sans);
   font-size: 16px;
@@ -158,36 +188,6 @@ main {
   text-align: center;
 }
 
-@keyframes animate { 
-  0% {
-    translate: 0 0;
-  }
-
-  16.66% { 
-    translate: 0 calc(var(--line-height) * -1 - 3px);
-  }
-
-  33.32% { 
-    translate: 0 calc(var(--line-height) * -1 - 3px);
-  }
-
-  49.98% {
-    translate: 0 calc(var(--line-height) * -2 - 8px);
-  }
-
-  66.64% {
-    translate: 0 calc(var(--line-height) * -2 - 8px);
-  }
-
-  83.3% {
-    translate: 0 calc(var(--line-height) * -3 - 16px);
-  }
-
-  100% {
-    translate: 0 calc(var(--line-height) * -3 - 16px);
-  }
-}
-
 .home__hero-slider-wrapper {
   --line-height: 98px;
   overflow: hidden;
@@ -201,7 +201,7 @@ main {
   translate: 0 0;
   display: flex;
   flex-direction: column;
-  animation: animate 10000ms ease infinite;
+  animation: slide 10s ease infinite;
   line-height: 1.3;
 }
 
