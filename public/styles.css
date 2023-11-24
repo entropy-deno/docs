@@ -14,8 +14,8 @@
   --bg-soft: #161f33;
   --bg-navbar: rgba(7, 7, 8, 0.25);
   --border: #4b5563;
-  --font-mono: "Roboto Mono", monospace;
-  --font-sans: "Urbanist", sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --font-sans: 'Urbanist', sans-serif;
   --selection: #2eade3;
   --text: #f3f4f6;
   --text-gray: #c4cbd9;
@@ -52,11 +52,11 @@
   }
 
   83.3% {
-    translate: 0 calc(var(--line-height) * -3 - 16px);
+    translate: 0 calc(var(--line-height) * -3 - 20px);
   }
 
   100% {
-    translate: 0 calc(var(--line-height) * -3 - 16px);
+    translate: 0 calc(var(--line-height) * -3 - 20px);
   }
 }
 
@@ -108,8 +108,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  -webkit-backdrop-filter: blur(6px) saturate(180%);
-  backdrop-filter: blur(6px) saturate(180%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
+  backdrop-filter: blur(6px) saturate(140%);
   background: var(--bg-navbar);
   border-bottom: 1px solid rgba(60, 62, 81, 0.177);
   z-index: 50;
@@ -217,9 +217,9 @@ main {
   --line-height: 98px;
   overflow: hidden;
   display: inline-block;
-  height: calc(var(--line-height) + 2px);
+  height: calc(var(--line-height));
   position: relative;
-  top: 15px;
+  top: 17px;
 }
 
 .home__hero-slider {
