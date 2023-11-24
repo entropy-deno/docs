@@ -22,6 +22,7 @@
   --text-dark: #052133;
   --theme: #38bdf8;
   --green: #34d399;
+  --orange: #f8af27;
 }
 
 ::selection {
@@ -350,10 +351,19 @@ main {
     opacity: 0.9;
   }
 
-  & :is(p, li, .info, .tip) {
+  & :is(p, li, .info, .tip, .warning) {
     font-size: 17px;
     line-height: 1.6;
     opacity: 0.8;
+  }
+
+  & :is(.info, .tip, .warning) {
+    &::before {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
   }
 
   & li {
@@ -374,10 +384,6 @@ main {
 
     &::before {
       content: "Info";
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      text-transform: uppercase;
     }
 
     & code {
@@ -395,10 +401,23 @@ main {
 
     &::before {
       content: "Tip";
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      text-transform: uppercase;
+    }
+
+    & code {
+      color: var(--green) !important;
+    }
+  }
+
+  & .warning {
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    padding: 16px 18px;
+    border-radius: 12px;
+    width: 720px;
+    font-size: 16px;
+
+    &::before {
+      content: "Warning";
     }
 
     & code {

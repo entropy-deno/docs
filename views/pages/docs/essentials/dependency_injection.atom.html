@@ -1,0 +1,95 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Dependency Injection</h1>
+
+    <p>Backend applications often need a solid architecture patterns to manage class dependencies. Entropy provides a common dependency injection (DI) concept implementation.</p>
+
+    <h2>Basic usage</h2>
+
+    <p>In order to use dependency injection, use the <code>inject</code> function. You may use it to create singleton instances of services you create.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller } from '@entropy/http';
+import { UserService } from './users/user.service.ts';
+
+export class RootController extends Controller {
+  private readonly userService = inject(UserService);
+
+  // ...
+}</code></pre>
+
+    <div class="warning">
+      Dependency injection system in Entropy does not support circular dependencies (services dependent on each other). It is a very bad practice so the framework should not resolve circular dependencies.
+    </div>
+
+    <h2>Services</h2>
+
+    <p>We strongly encourage developers to maintain clean code structure divided into small parts (modules, controllers, services etc.).</p>
+
+    <p>We believe that controllers should only be responsible for handling requests and returning a response. All remaining business logic should be placed in services.</p>
+
+    <h2>Creating services</h2>
+
+    <p>It is recommended to use the CLI to create services:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">terminal</p>
+      </header><code class="code-block__code language-sh">entropy make service user</code></pre>
+
+    <p>Service is just an injectable class with methods responsible for processing data. A basic service may look like this:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.service.ts</p>
+      </header><code class="code-block__code language-ts">export class UserService {
+  public getMessage(): string {
+    return 'Hello World!';
+  }
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/views">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Views
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/directory-structure">
+        Directory Structure
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
