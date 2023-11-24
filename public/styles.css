@@ -103,7 +103,7 @@ body {
   top: 0;
   width: 100%;
   height: 74px;
-  padding: 32px;
+  padding: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -112,12 +112,30 @@ body {
   background: var(--bg-navbar);
   border-bottom: 1px solid rgba(60, 62, 81, 0.177);
   z-index: 50;
+
+  @media (min-width: 600px) {
+    padding: 32px;
+  }
 }
 
 .navbar__logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+}
+
+.navbar__logo-image--mobile {
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+
+.navbar__logo-image--desktop {
+  display: none;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
 }
 
 .navbar__logo-badge {
@@ -186,6 +204,15 @@ main {
   line-height: 1;
   margin-bottom: 6px;
   text-align: center;
+  transform: scale(0.7);
+
+  @media (min-width: 446px) {
+    transform: scale(0.8);
+  }
+
+  @media (min-width: 546px) {
+    transform: none;
+  }
 }
 
 .home__hero-slider-wrapper {

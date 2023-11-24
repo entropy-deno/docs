@@ -23,8 +23,6 @@
     @embed('/styles.css')
     @embed('/prism.css')
 
-    @stack('scripts')
-
     <script src="/prism.js" @nonceProp defer></script>
 
     <script @nonceProp>
@@ -42,7 +40,8 @@
     <header>
       <nav class="navbar">
         <a href="/" class="navbar__logo">
-          <img src="/logo_full.png" draggable="false" alt="Entropy logo" width="128">
+          <img class="navbar__logo-image navbar__logo-image--desktop" src="/logo_full.png" draggable="false" alt="Entropy logo" width="128">
+          <img class="navbar__logo-image navbar__logo-image--mobile" src="/logo.png" draggable="false" alt="Entropy logo" width="42">
 
           <div class="navbar__logo-badge">beta</div>
         </a>
