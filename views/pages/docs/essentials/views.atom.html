@@ -252,6 +252,122 @@
 &lt;/head></code></pre>
     @/raw
 
+    <h2>Layouts</h2>
+
+    <p>Entropy's view engine provides support for layouts. You can define a layout template and use it in your views:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/layouts/master.html</p>
+        </header><code class="code-block__code language-html">&lt;!doctype html>
+&lt;html lang="en">
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    &lt;title>{{ title }} | My App&lt;/title>
+
+    ...
+  &lt;/head>
+
+  &lt;body>
+    @include('partials/navigation')
+
+    &lt;main class="content">
+      @slot('content')
+    &lt;/main>
+  &lt;/body>
+&lt;html></code></pre>
+    @/raw
+
+    <p>As you can see, you can use the <code>@raw @slot @/raw</code> directive to render the content of your view inside the layout. To use the layout, you need to add <code>@raw @layout @/raw</code> directive to your view in order to specify the layout file:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/pages/home.html</p>
+        </header><code class="code-block__code language-html">@layout('../layouts/master')
+
+@section('content')
+  &lt;div class="content">
+    <h1>Home page</h1>
+  &lt;/div>
+@/section</code></pre>
+    @/raw
+
+    <h2>Comments</h2>
+
+    <p>To add a comment that will not be renderer in a view, use the following syntax:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/pages/home.html</p>
+        </header><code class="code-block__code language-html">{{-- This is a comment --}}</code></pre>
+    @/raw
+
+    <h2>Global constants</h2>
+
+    <p>Entropy exposes few global constants you can use in your views:</p>
+
+    <div class="table">
+      <div class="table__row">
+        <div>Constant</div>
+        <div>Description</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$DENO_VERSION</code></div>
+        <div>Deno runtime version</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$OS</code></div>
+        <div>Operating system</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$TYPESCRIPT_VERSION</code></div>
+        <div>TypeScript version</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$V8_VERSION</code></div>
+        <div>Deno V8 engine version</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$VERSION</code></div>
+        <div>Entropy framework version</div>
+      </div>
+    </div>
+
+    <p>That you can use in your templates:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/pages/home.html</p>
+        </header><code class="code-block__code language-html">&lt;h1>This app is running on Entropy version {{ $VERSION }}&lt;/h1></code></pre>
+    @/raw
+
     <section class="pager">
       <a class="pager__link" href="/docs/essentials/requests">
         <svg
