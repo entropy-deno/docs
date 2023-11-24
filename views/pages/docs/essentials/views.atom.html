@@ -33,6 +33,225 @@
 &lt;/main></code></pre>
     @/raw
 
+    <h2>Conditional blocks</h2>
+
+    <p>You can specify a conditional block using special @raw<code>@if</code>@/raw directive</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;nav>
+  @if (user.logged)
+    &lt;div>{{ user.name }}&lt;/div>
+  @else
+    &lt;p>You are not logged in.&lt;/p>
+  @/if
+&lt;/nav></code></pre>
+    @/raw
+
+    <h2>Form request methods</h2>
+
+    <p>Entropy lets you to use all HTTP methods in forms thanks to @raw @method @/raw directive. Just pass a method name and you'll be able to use PUT, PATCH, DELETE and other methods in HTML forms.</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="/login" method="post">
+  @method('PATCH')
+&lt;/form></code></pre>
+    @/raw
+
+    <h2>JSON serialization</h2>
+
+    <p>Sometimes you need to pass some data from backend to frontend using HTML &lt;script /> tag. You can accomplish that by converting data to JSON with @raw @json @/raw directive:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;script>
+  window.userData = @json(userData);
+&lt;/script></code></pre>
+    @/raw
+
+    <h2>Partials</h2>
+
+    <p>Entropy provides support for partials. You can split your view into smaller pieces using @raw @include /@raw directive:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;main>
+  @include('partials/content');
+&lt;/main></code></pre>
+    @/raw
+
+    <h2>CSRF token</h2>
+
+    <p>For every user session Entropy generates a unique token to protect your application from Cross-Site Request Forgery attacks.</p>
+
+    <p>Anytime you define HTML forms with method other than GET and HEAD, you need to add a hidden field containing generated token. Otherwise, you won't be able to pass the form and you'll get the 419 Invalid Token error.</p>
+
+    <p>To add the token field just use the @raw @csrf @/raw directive:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="/login" method="post">
+  @csrf
+&lt;/form></code></pre>
+    @/raw
+
+    <h2>Raw template</h2>
+
+    <p>Sometimes you may want to left some parts of code uncompiled. For example, when you are using some frontend framework, you may want not to parse the code with template engine. That's why Entropy comes with a <code>@raw @raw @/raw</code> directive:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">@&#8203;raw
+  {{ content }}
+@&#8203;/raw</code></pre>
+    @/raw
+
+    <h2>Switch</h2>
+
+    <p>Just like <code>switch</code> statements in JavaScript and TypeScript, you can use them in your views:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;main>
+  @switch (role)
+    @case ('user')
+      &lt;p>You are a user&lt;/p>
+    @/case
+
+    @case ('admin')
+      &lt;p>You are an administrator&lt;/p>
+    @/case
+
+    @case ('moderator')
+      &lt;p>You are a moderator&lt;/p>
+    @/case
+
+    @default
+      &lt;p>Invalid role&lt;/p>
+    @/default
+  @/switch
+&lt;/main></code></pre>
+    @/raw
+
+    <h2>@raw @dev and @prod @/raw</h2>
+
+    <p>Entropy comes with two directives which allow you to render content only in development or production environment:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">@dev
+  &lt;script src="/build.development.js">&lt;/script>
+@/dev
+
+@prod
+  &lt;script src="/build.production.js">&lt;/script>
+@/prod</code></pre>
+    @/raw
+
+    <h2>@raw @stack and @push @/raw</h2>
+
+    <p>You can push view blocks to named stacks which will be rendered anywhere in your template using @raw <code>@stack</code> and <code>@push</code> @/raw directives:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;head>
+  ...
+
+  @stack('scripts')
+&lt;/head></code></pre>
+
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">@push('scripts')
+  &lt;script src="/lib.js">&lt;/script>
+@/push
+
+&lt;!-- Somewhere else (child view, etc.): --&gt;
+
+@push('scripts')
+  &lt;script src="/app.js">&lt;/script>
+@/push</code></pre>
+    @/raw
+
+    <h2>@raw @hotReload @/raw</h2>
+
+    <p>You are able to use Hot Reload (auto refresh) in your view files. To enable it, you need to add <code>@raw @hotReload @/raw</code> directive to your <code>&lt;head></code> tag:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;head>
+  ...
+
+  @hotReload
+&lt;/head></code></pre>
+    @/raw
+
     <section class="pager">
       <a class="pager__link" href="/docs/essentials/requests">
         <svg
