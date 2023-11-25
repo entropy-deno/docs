@@ -12,10 +12,12 @@ export class LinkService {
         ['/essentials/dependency-injection', 'Dependency Injection'],
         ['/essentials/session', 'Session'],
         ['/essentials/middleware', 'Middleware'],
+        ['/essentials/cli', 'CLI'],
       ],
       advanced: [
         ['/advanced/http-client', 'HTTP Client'],
         ['/advanced/localization', 'Localization'],
+        ['/advanced/websocket', 'WebSocket'],
         ['/advanced/csrf-protection', 'CSRF Protection'],
         ['/advanced/testing', 'Testing'],
       ],

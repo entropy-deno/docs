@@ -1,0 +1,156 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>WebSocket</h1>
+
+    <p>Modern applications often need an established two-way server connection for receiving real-time data. The best option for that purpose is using WebSocket connection. Northle provides a powerful channel API for dealing with WebSockets.</p>
+
+    <h2>Configuration</h2>
+
+    <p>The configuration for WebSocket integration is stored in the <code>.env</code> file variables:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">.env</p>
+      </header><code class="code-block__code language-ts">PORT=5050</code></pre>
+
+    <h2>WebSocket channels</h2>
+
+    <p>First though, you should be introduced to a concept of WebSocket channels. Channel is a single class used for transmitting events with authorization logic.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/chats/chat.channel.ts</p>
+      </header><code class="code-block__code language-ts">import { Authorizer } from '@entropy/http';
+import { Broadcaster, Channel } from '@entropy/web_socket';
+
+@Channel('chats/:id')
+export class ChatChannel extends Broadcaster implements Authorizer {
+  public authorize(): boolean {
+    return true;
+  }
+
+  public sendMessage(message: string) {
+    this.broadcast({
+      payload: message,
+    });
+  }
+}
+</code></pre>
+
+    <p>String argument passed to decorator is channel name with dynamic parameter. The <code>authorize</code> method is used to determine whether authenticated user is authorized to join the channel on the client side.</p>
+
+    <h2>Emitting events on server</h2>
+
+    <p>Emitting events on the server side can be done using the <code>broadcast</code> method of <code>Broadcaster</code> class.</p>
+
+    <p>For example, if you want to create a live chat, you may create a channel method <code>sendMessage</code> like that:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/chats/chat.channel.ts</p>
+      </header><code class="code-block__code language-ts">// ...
+
+public sendMessage(message: string, id: number) {
+  this.broadcast({
+    payload: message,
+    channel: `chats/${id}`,  // Broadcast to specific channel with dynamic parameter
+  });
+}
+
+// And use it in a controller:
+
+this.chatChannel.sendMessage(`Hello, ${user.name}!`, chat.id);
+</code></pre>
+
+    <h2>Receiving events on the client side</h2>
+
+    <p>Now we are able to receive broadcasts on the client side using JavaScript WebSocket API. The example implementation you can see below:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/chats/chat.atom.html</p>
+        </header><code class="code-block__code language-html">&lt;main>
+  &lt;h1>Chat (ID {{ $request.params.id }})</h1>
+
+  &lt;form id="chat">
+    &lt;input type="text" name="message" placeholder="Enter your message...">
+
+    &lt;button>Send&lt;/button>
+  &lt;/form>
+&lt;/main>
+
+&lt;script>
+  const socket = new WebSocket('ws://localhost:5050');
+  const chatId = '{{ $request.params.id }}';
+
+  const form = document.querySelector('#chat');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch(`/chats/${chatId}`, {
+      method: 'POST',
+      body: data,
+    });
+  });
+
+  socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+
+    if (data.channel === `chats/${chatId}`) {
+      console.log(`Received essage: ${data.payload.message}`);
+    }
+  };
+&lt;/script></code></pre>
+    @/raw
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/advanced/localization">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Localization
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/csrf-protection">
+        CSRF Protection
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
