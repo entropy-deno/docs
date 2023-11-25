@@ -23,11 +23,27 @@
   --theme: #38bdf8;
   --green: #34d399;
   --orange: #f8af27;
+
+  --doc-section-width: 800px;
 }
 
 ::selection {
   background: var(--selection);
   color: var(--text-dark);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    display: none;
+  }
 }
 
 @keyframes slide {
@@ -60,6 +76,16 @@
   }
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   font-family: var(--font-sans);
   font-size: 16px;
@@ -67,6 +93,28 @@ body {
   color: var(--text);
   height: 100vh;
   overflow-x: hidden;
+}
+
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  animation: fade 60ms ease 0.5s forwards;
+  z-index: 1000;
+}
+
+.loader__spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid var(--theme);
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
 }
 
 .header {
@@ -320,7 +368,7 @@ main {
 .docs__content {
   display: flex;
   flex-direction: column;
-  max-width: 720px;
+  max-width: var(--doc-section-width);
   gap: 14px;
 
   & h1 {
@@ -357,7 +405,7 @@ main {
 
   & :is(p:not(.code-block__file), li, .info, .tip, .warning) {
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.8;
     opacity: 0.8;
   }
 
@@ -383,7 +431,7 @@ main {
     color: var(--theme);
     padding: 16px 18px;
     border-radius: 12px;
-    width: 720px;
+    width: var(--doc-section-width);
     font-size: 16px;
 
     &::before {
@@ -400,7 +448,7 @@ main {
     color: var(--green);
     padding: 16px 18px;
     border-radius: 12px;
-    width: 720px;
+    width: var(--doc-section-width);
     font-size: 16px;
 
     &::before {
@@ -417,7 +465,7 @@ main {
     color: var(--orange);
     padding: 16px 18px;
     border-radius: 12px;
-    width: 720px;
+    width: var(--doc-section-width);
     font-size: 16px;
 
     &::before {
@@ -478,7 +526,7 @@ main {
 
   .code-block {
     background: var(--bg);
-    width: 720px;
+    width: var(--doc-section-width);
     margin: 20px 0 10px;
   }
 

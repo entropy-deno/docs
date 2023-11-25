@@ -78,6 +78,10 @@
     </header>
 
     <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
+      <div class="loader">
+        <div class="loader__spinner"></div>
+      </div>
+
       @if ($request.path.includes('docs'))
         <nav class="docs__nav">
           <p>Essentials</p>
