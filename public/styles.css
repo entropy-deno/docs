@@ -11,7 +11,7 @@
 
   --bg: #111827;
   --bg-block: #1b263e;
-  --bg-scrollbar: #293246;
+  --bg-scrollbar: #2f394d;
   --bg-soft: #161f33;
   --bg-navbar: rgba(7, 7, 8, 0.25);
   --border: #4b5563;
@@ -183,8 +183,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  -webkit-backdrop-filter: blur(6px) saturate(140%);
-  backdrop-filter: blur(6px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  backdrop-filter: blur(8px) saturate(140%);
   background: var(--bg-navbar);
   border-bottom: 1px solid rgba(60, 62, 81, 0.177);
   z-index: 50;
