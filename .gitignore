@@ -8,7 +8,7 @@
 !.env.testing
 .fleet
 .idea
+.vim
 .vscode
 node_modules
 vendor
-.vim
