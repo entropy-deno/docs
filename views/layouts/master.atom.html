@@ -20,12 +20,9 @@
       href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Roboto+Mono:wght@400&display=swap"
     >
 
-    @embed('/styles/master.css')
-    @embed('/styles/home.css')
-    @embed('/styles/docs.css')
-    @embed('/styles/prism.css')
+    @embed(['/styles/master.css', '/styles/home.css', '/styles/docs.css', '/styles/prism.css'])
 
-    <script src="/prism.js" @nonceProp defer></script>
+    <script src="/scripts/prism.js" @nonceProp defer></script>
 
     <script @nonceProp>
       (function(c,l,a,r,i,t,y){
