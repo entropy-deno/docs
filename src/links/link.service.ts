@@ -16,6 +16,8 @@ export class LinkService {
       advanced: [
         ['/advanced/http-client', 'HTTP Client'],
         ['/advanced/localization', 'Localization'],
+        ['/advanced/csrf-protection', 'CSRF Protection'],
+        ['/advanced/testing', 'Testing'],
       ],
     };
   }

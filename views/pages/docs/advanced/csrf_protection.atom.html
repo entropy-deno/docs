@@ -1,0 +1,81 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>CSRF Protection</h1>
+
+    <p><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="noopener noreferrer">Cross-Site Request Forgery</a> (CSRF or XSRF) is a type of attack relying on performing actions by the attacker on behalf of currently authenticated user using unsecured endpoints.</p>
+
+    <h2>How do CSRF attacks work?</h2>
+
+    <p>Without CSRF protection, the attacker could prepare a simple HTML form pointing to your application.</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="https://my-app.com/posts/create" method="post">
+  &lt;input type="text" name="body" value="I don't like ice cream">
+&lt;/form></code></pre>
+    @/raw
+
+    <p>When the form is submitted (for example, when attacker sends the user a link to this form and they open it), the authenticated user wil publish a new post without their knowledge.</p>
+
+    <h2>Token protection</h2>
+
+    <p>To prevent CSRF attacks, Entropy generates a unique token for every user session to protect your application.</p>
+
+    <p>Anytime you define forms with method other than <code>GET</code> and <code>HEAD</code>, you have to add a hidden <code>_csrf</code> field containing generated token. Otherwise, you won't be able to pass the form and you will get <code>419 Invalid Token</code> error.</p>
+
+    <p>To add the CSRF token field to your template, just use the <code>@raw @csrf @/raw</code> directive:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="..." method="post">
+  @csrf
+
+  ...
+&lt;/form></code></pre>
+    @/raw
+
+    <p>When this token is present, an unauthorized user is not able to do anything without user knowledge.</p>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/advanced/localization">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Localization
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/testing">
+        Testing
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
