@@ -1,0 +1,133 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Localization</h1>
+
+    <p>Complex web applications are often multi-language. Entropy has many built-in localization features so you can easly support multiple languages without any additional libraries.</p>
+
+    <h2>Setting app locale</h2>
+
+    <p>You can set the default (fallback) app locale in <code>src/main.ts</code> file:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-ts">using server = await createServer({
+  config: {
+    locales: {
+      default: 'en',
+    },
+  },
+
+  // ...
+});</code></pre>
+
+    <h2>Translations</h2>
+
+    <p>Translations are stored in <code>JSON</code> files inside <code>/locales</code> directory. It does not exist by default, but you can create it if you're using localization features.</p>
+
+    <p>For example, if your app supports Polish language with English as default, just create a new <code>locales/pl.json</code> file with translations. To get translated contents, use the <code>translate</code> request method and pass the default message to it:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">locales/pl.json</p>
+      </header><code class="code-block__code language-json">{
+  "Hello World": "Witaj Świecie"
+}</code></pre>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/posts/post.controller.ts</p>
+      </header><code class="code-block__code language-ts">// Locale is automatically detected from request...
+
+const message = request.translate('Hello World');</code></pre>
+
+    <h2>Pluralization</h2>
+
+    <p>You can also use pluralization in your translations. Just pass the quantity as the second argument:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/posts/post.controller.ts</p>
+      </header><code class="code-block__code language-ts">// Automatically determine whether to translate singular or plural word
+
+const message = request.translate('New user', users.length);</code></pre>
+
+    <p>In translation file you can define pluralization rules by using <code>|</code> delimiter and passing an array of translations. The first translation is used for singular, the second for plural:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">locales/pl.json</p>
+      </header><code class="code-block__code language-json">{
+  "New user|New users": ["Nowy użytkownik", "Nowi użytkownicy"]
+}</code></pre>
+
+    <h2>View translations</h2>
+
+    <p>You can also display translated text directly in view templates using <code>$translate</code> function (or its double-underscore <code>__</code> shorthand):</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.html</p>
+        </header><code class="code-block__code language-html">&lt;h1>{{ $translate('Hello World') }}&lt;/h1>
+
+&lt;section>
+  &lt;p>{{ __('New post', posts.length) }}&lt;/p>
+&lt;/section></code></pre>
+  @/raw
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/advanced/http-client">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        HTTP Client
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/csrf-protection">
+        CSRF Protection
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section

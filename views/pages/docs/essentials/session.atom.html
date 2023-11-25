@@ -1,0 +1,113 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Session</h1>
+
+    <p>Since the HTTP protocol is stateless, you cannot simply share data between requests using it. Fortunately, there is a mechanism of session.</p>
+
+    <p>In Entropy you are able to store user information that we can access and share with multiple requests using session client.</p>
+
+    <h2>Configuration</h2>
+
+    <p>The configuration for things like session lifetime is stored in the <code>.env</code> file variables:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">.env</p>
+      </header><code class="code-block__code language-ts">SESSION_LIFETIME=30  # days</code></pre>
+
+    <h2>Storing data</h2>
+
+    <p>To save a variable to the session, use the <code>set</code> method. You only have to provide name for your piece of data and its value:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest } from '@entropy/http';
+
+export class UserController extends Controller {
+  @Route.Get('/users/:id?')
+  public async show([id]: [string?], request: HttpRequest) {
+    await request.session.set('username', 'John Doe');
+
+    // ...
+  }
+}</code></pre>
+
+    <h2>Retrieving data</h2>
+
+    <p>In order to retrieve saved session data, use the <code>get</code> method:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">const username = await request.session.get('username') ?? 'Unknown';</code></pre>
+
+    <h2>Deleting data</h2>
+
+    <p>Use the <code>delete</code> method in order to remove a session value by its key:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">await request.session.delete('username');</code></pre>
+    
+    <h2>Destroying session</h2>
+
+    <p>Sometimes you need to clear all session entries and completely unset the session, for example for logging out the user. In order to do that, use the <code>destroy</code> method:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">await request.session.destroy();</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/dependency-injection">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Dependency Injection
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/middleware">
+        Middleware
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section

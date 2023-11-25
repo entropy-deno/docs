@@ -1,0 +1,91 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Testing</h1>
+
+    <p>Testing your application is a very important aspect of building safe applications. Entropy leverages the power of built-in Deno testing APIs to create a flawless testing experience.</p>
+
+    <h2>Writing tests</h2>
+
+    <p>All test files end with <code>.test.ts</code>. They are typically placed eather in app modules or in the <code>/tests</code> directory.</p>
+
+    <p>Writing tests is very intuitive and simple. All you need is basically the built-in Deno testing API.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.test.ts</p>
+      </header><code class="code-block__code language-ts">import { expect } from '@std/expect/expect.ts';
+import { fetchRoute } from '@entropy/testing';
+import { HttpStatus } from '@entropy/http';
+import { RootController } from './root.controller.ts';
+
+Deno.test('root module', async (test) => {
+  await test.step('root controller returns a proper home page', async () => {
+    const { body, statusCode } = await fetchRoute('/', RootController);
+
+    expect(body).toContain('Hello, world!');
+    expect(statusCode).toBe(HttpStatus.Ok);
+  });
+});
+</code></pre>
+
+    <p>As you can see, all you need is to define test cases and their steps. For testing routes and controllers, use Entropy's <code>fetchRoute</code> function.</p>
+
+    <h2>Running tests</h2>
+
+    <p>To check if your tests are passing, run the following Deno task:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">terminal</p>
+      </header><code class="code-block__code language-sh">deno task test</code></pre>
+
+    <p>And you should see the following message:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">terminal</p>
+      </header><code class="code-block__code language-sh">ok | 1 passed (1 step) | 0 failed (6ms)</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/advanced/csrf-protection">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        CSRF Protection
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/localization">
+        Localization
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section

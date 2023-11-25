@@ -15,21 +15,64 @@
     </h1>
 
     <p class="home__info">
-      Entropy helps you in building performant and scalable web apps with the most modern TypeScript runtime. Awesome developer experience guaranteed.
+    Entropy is a simple backend framework that <span style="color:var(--theme)">transcends</span> the creation and maintenance of awesome web applictions built on the bleeding-edge TypeScript runtime.</p>
+
+    <div class="home__button-strip">
+      <a class="button" href="#information">
+        Get Started
+      </a>
+
+      <a class="button" href="/docs">
+        Entropy Docs
+      </a>
+    </div>
+  </section>
+
+  <section id="information" class="home__examples">
+    <h1 class="header header--small">
+      <strong>Simple</strong> and <strong>transparent</strong>
+    </h1>
+
+    <p class="home__info"> 
+      At <span style="color:var(--theme)">Entropy</span>, our primary goal is
+      to maintain a framework that is both <span
+        style="color:var(--theme)">easy</span> and <span
+        style="color:var(--theme)">simple</span> to use for any kind of
+      developer tackling any kind of project. Thus, we provide you with a
+      solution that facilitates any and all modern web development needs.
     </p>
 
-    <a class="button" href="/docs">
-      Get Started
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
-      </svg>
-    </a>
+    <p class="home__info"> 
+    Entropy allows the developer to express themselves in their <b>HTML</b> code with the use
+      of an intuitive built-in <span style="color:var(--theme)">templating
+        engine</span> designed to handle all simple and sophisticated projects.
+    </p>
+
+    <div class="home__examples-blocks">
+      <pre class="code-block">
+<header class="code-block__header">
+<div class="code-block__control"></div>
+<div class="code-block__control"></div>
+<div class="code-block__control"></div>
+<p class="code-block__file">public/index.html</p>
+@raw
+</header><code class="code-block__code language-html">&lt;main>
+  @for (post in posts)
+    <article class="post">{{ post.content }}</article>
+  @empty
+    <p>There are no posts yet.</p>
+  @/for
+
+  @if (!user)
+    <h2>You have to log in.</h2>
+  @/if
+&lt;/main>
+</code></pre>
+@/raw
+
+      <p style="max-width:20%">
+      </p>
+    </div>
   </section>
 
   <section class="home__examples">
