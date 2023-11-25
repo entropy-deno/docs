@@ -56,7 +56,7 @@
 
     <h2>Form request methods</h2>
 
-    <p>Entropy lets you to use all HTTP methods in forms thanks to @raw @method @/raw directive. Just pass a method name and you'll be able to use PUT, PATCH, DELETE and other methods in HTML forms.</p>
+    <p>Entropy lets you to use all HTTP methods in forms thanks to @raw @method @/raw directive. Just pass a method name and you'll be able to use <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code> and other methods in HTML forms.</p>
 
     @raw
       <pre class="code-block">
@@ -73,7 +73,7 @@
 
     <h2>JSON serialization</h2>
 
-    <p>Sometimes you need to pass some data from backend to frontend using HTML &lt;script /> tag. You can accomplish that by converting data to JSON with @raw @json @/raw directive:</p>
+    <p>Sometimes you need to pass some data from backend to frontend using HTML <code>&lt;script /></code> tag. You can accomplish that by converting data to JSON with <code>@raw @json @/raw</code> directive:</p>
 
     @raw
       <pre class="code-block">
@@ -109,9 +109,9 @@
 
     <p>For every user session Entropy generates a unique token to protect your application from Cross-Site Request Forgery attacks.</p>
 
-    <p>Anytime you define HTML forms with method other than GET and HEAD, you need to add a hidden field containing generated token. Otherwise, you won't be able to pass the form and you'll get the 419 Invalid Token error.</p>
+    <p>Anytime you define HTML forms with method other than <code>GET</code> and <code>HEAD</code>, you need to add a hidden field containing generated token. Otherwise, you won't be able to pass the form and you'll get the 419 Invalid Token error.</p>
 
-    <p>To add the token field just use the @raw @csrf @/raw directive:</p>
+    <p>To add the token field just use the <code>@raw @csrf @/raw</code> directive:</p>
 
     @raw
       <pre class="code-block">
