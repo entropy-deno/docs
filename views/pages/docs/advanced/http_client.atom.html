@@ -1,0 +1,75 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>HTTP Client</h1>
+
+    <p>Web applications often need to fetch some data with HTTP requests. Entropy ships with a handy <code>HttpClient</code> service that helps creating API requests.</p>
+
+    <h2>Getting started</h2>
+
+    <p>To get started with the client, simply import and inject the <code>HttpClient</code> service:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/movies/movie.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpClient } from '@entropy/http';
+
+export class MovieController extends Controller {
+  private readonly http = inject(HttpClient);
+}</code></pre>
+
+    <h2>Sending requests</h2>
+
+    <p>To fetch some data from an origin, use one of available methods (<code>get</code>, <code>patch</code>, <code>post</code>, <code>put</code>, <code>options</code>, <code>trace</code>, <code>head</code>, and <code>delete</code>):</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/movies/movie.controller.ts</p>
+      </header><code class="code-block__code language-ts">interface Movie {
+  title: string;
+  url: string;
+  duration: number;
+}
+
+const movies = await this.http.get&lt;Movie[]>('https://movie-api.com/movies');</code></pre>
+
+    <div class="info">Response type declaration is only build-time check so you should handle errors in case the response is invalid.</div>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/middleware">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Middleware
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/localization">
+        Localization
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section

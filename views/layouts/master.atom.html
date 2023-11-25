@@ -80,9 +80,20 @@
     <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
       @if ($request.path.includes('docs'))
         <nav class="docs__nav">
-          <p>Sections</p>
+          <p>Essentials</p>
 
-          @for ([link, label] in navigationLinks)
+          @for ([link, label] in navigationLinks.essentials)
+            <a
+              class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
+              href="/docs{{ link }}"
+            >
+              {{ label }}
+            </a>
+          @/for
+
+          <p>Advanced</p>
+
+          @for ([link, label] in navigationLinks.advanced)
             <a
               class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"

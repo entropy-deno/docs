@@ -291,6 +291,10 @@ main {
 .docs__nav p {
   font-weight: 600;
   margin-bottom: 14px;
+
+  &:not(:first-child) {
+    margin-top: 22px;
+  }
 }
 
 .docs__nav-link {
