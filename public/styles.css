@@ -351,7 +351,7 @@ main {
     opacity: 0.9;
   }
 
-  & :is(p, li, .info, .tip, .warning) {
+  & :is(p:not(.code-block__file), li, .info, .tip, .warning) {
     font-size: 17px;
     line-height: 1.6;
     opacity: 0.8;
@@ -519,7 +519,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 8px 20px;
+  padding: 16px 20px;
   border-radius: 18px 18px 0 0;
   gap: 8px;
 }
@@ -548,6 +548,8 @@ main {
   margin-left: 8px;
   display: flex;
   align-items: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .code-block__code {

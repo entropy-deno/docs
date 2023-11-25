@@ -9,6 +9,8 @@ export class LinkService {
       ['/essentials/requests', 'Requests'],
       ['/essentials/views', 'Views'],
       ['/essentials/dependency-injection', 'Dependency Injection'],
+      ['/essentials/session', 'Session'],
+      ['/essentials/middleware', 'Middleware'],
     ];
   }
 }

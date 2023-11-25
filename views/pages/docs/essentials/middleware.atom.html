@@ -1,0 +1,93 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Middleware</h1>
+
+    <p>HTTP middleware is an useful mechanism in web apps. It is responsible for filtering and altering incoming requests.</p>
+
+    <h2>Basic middleware</h2>
+
+    <p>To create a middleware, you can leverage the CLI:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">terminal</p>
+      </header><code class="code-block__code language-sh">entropy make middleware auth</code></pre>
+
+    <p>An example midleware class for authentication may look like this:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/auth/auth.middleware.ts</p>
+      </header><code class="code-block__code language-ts">import { HttpRequest, Middleware } from '@entropy/http';
+
+export class AuthMiddleware implements Middleware {
+  public async handle(request: HttpRequest): Promise<void> {
+    if (!await request.session.get('authenticated')) {
+      // Redirect user...
+    }
+  }
+}</code></pre>
+
+    <p>Middleware is called by the <code>handle</code> method before a controller action.</p>
+
+    <h2>Using middleware</h2>
+
+    <p>In order to use a middleware, you should register it for a route using the <code>middleware</code> route option:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest } from '@entropy/http';
+
+export class UserController extends Controller {
+  @Route.Get('/users/:id/dashboard', {
+    middleware: [AuthMiddleware],
+  })
+  public dashboard([id]: [string], request: HttpRequest) {
+    // This route is visible only for authenticated users
+  }
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/session">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        Session
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/middleware">
+        Middleware
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
