@@ -24,6 +24,10 @@
   margin-bottom: 14px;
 }
 
+.docs__nav p:not(:first-child) {
+  margin-top: 20px;
+}
+
 .docs__nav-link {
   text-decoration: none;
   color: inherit;

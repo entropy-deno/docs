@@ -1,0 +1,61 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Utilities</h1>
+
+    <p>The framework comes with several useful predefined util functions that you can use in your app.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.test.ts</p>
+      </header><code class="code-block__code language-ts">import { $ } from '@entropy/utils';
+
+$`deno run -A some_module.ts`;  // Shell command running utility</code></pre>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.test.ts</p>
+      </header><code class="code-block__code language-ts">import { Utils } from '@entropy/utils';
+
+const range = Utils.range(5, 8);  // Generated range array: [5, 6, 7, 8]
+
+const merged = Utils.deepMerge(a, b);  // Deeply merge two objects</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/advanced/csrf-protection">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+        </svg>
+        CSRF Protection
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/testing">
+        Testing
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
