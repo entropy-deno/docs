@@ -58,7 +58,7 @@
 
     <h2>Form request methods</h2>
 
-    <p>Entropy lets you to use all HTTP methods in forms thanks to @raw @method @/raw directive. Just pass a method name and you'll be able to use <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code> and other methods in HTML forms.</p>
+    <p>Entropy lets you to use all HTTP methods in forms thanks to the <code>@raw @method @/raw</code>directive. Just pass a method name and you'll be able to use <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code> and other methods in HTML forms.</p>
 
     @raw
       <pre class="code-block">
@@ -75,7 +75,7 @@
 
     <h2>JSON serialization</h2>
 
-    <p>Sometimes you need to pass some data from backend to frontend using HTML <code>&lt;script /></code> tag. You can accomplish that by converting data to JSON with <code>@raw @json @/raw</code> directive:</p>
+    <p>Sometimes you need to pass some data from backend to frontend using HTML <code>&lt;script /></code> tag. You can accomplish that by converting data to JSON with <code>@raw @json @/raw</code>directive:</p>
 
     @raw
       <pre class="code-block">
@@ -92,7 +92,7 @@
 
     <h2>Partials</h2>
 
-    <p>Entropy provides support for partials. You can split your view into smaller pieces using @raw @include /@raw directive:</p>
+    <p>Entropy provides support for partials. You can split your view into smaller pieces using the <code>@raw @include @/raw</code>directive:</p>
 
     @raw
       <pre class="code-block">
@@ -113,7 +113,7 @@
 
     <p>Anytime you define HTML forms with method other than <code>GET</code> and <code>HEAD</code>, you need to add a hidden field containing generated token. Otherwise, you won't be able to pass the form and you'll get the 419 Invalid Token error.</p>
 
-    <p>To add the token field just use the <code>@raw @csrf @/raw</code> directive:</p>
+    <p>To add the token field just use the <code>@raw @csrf @/raw</code>directive:</p>
 
     @raw
       <pre class="code-block">
@@ -130,7 +130,7 @@
 
     <h2>Raw template</h2>
 
-    <p>Sometimes you may want to left some parts of code uncompiled. For example, when you are using some frontend framework, you may want not to parse the code with template engine. That's why Entropy comes with a <code>@raw @raw @/raw</code> directive:</p>
+    <p>Sometimes you may want to left some parts of code uncompiled. For example, when you are using some frontend framework, you may want not to parse the code with template engine. That's why Entropy comes with a <code>@raw @raw @/raw</code>directive:</p>
 
     @raw
       <pre class="code-block">
