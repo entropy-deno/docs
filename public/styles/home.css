@@ -99,7 +99,7 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 0;
+  gap: 12px;
 
   text-align: center;
 
@@ -109,7 +109,7 @@ main {
 }
 
 .home__hero {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .home__hero-header {
@@ -118,11 +118,11 @@ main {
   line-height: 1;
   margin-bottom: 6px;
   text-align: center;
-  transform: scale(0.7);
+  transform: scale(0.55);
   font-weight: 600;
 
-  @media (min-width: 446px) {
-    transform: scale(0.8);
+  @media (min-width: 400px) {
+    transform: scale(0.7);
   }
 
   @media (min-width: 1041px) {
@@ -164,16 +164,16 @@ main {
   justify-content: center;
   gap: 26px;
 
-  margin-top: 38px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   & .code-block {
     width: calc(100vw - 40px);
-    height: 400px;
+    height: 100%;
     text-align: left;
 
     @media (min-width: 572px) {
       width: 530px;
-      height: auto;
     }
   }
 
