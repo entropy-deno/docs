@@ -20,16 +20,18 @@
           <div class="code-block__control"></div>
 
           <p class="code-block__file">views/home.atom.html</p>
-        </header><code class="code-block__code language-html">&lt;main>
+        </header><code class="code-block__code language-html">&lt;nav>
+  @if (!user.authenticated)
+    &lt;h2>You have to log in.&lt;/h2>
+  @/if
+&lt;/nav>
+
+&lt;main>
   @for (post in posts)
     &lt;article class="post">{{ post.content }}&lt;/article>
   @empty
     &lt;p>There are no posts yet.&lt;/p>
   @/for
-
-  @if (!user)
-    &lt;h2>You have to log in.&lt;/h2>
-  @/if
 &lt;/main></code></pre>
     @/raw
 

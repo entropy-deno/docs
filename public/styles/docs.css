@@ -82,7 +82,7 @@
     opacity: 0.9;
   }
 
-  & :is(p, li, .info, .tip, .warning) {
+  & :is(p:not(.code-block__file), li, .info, .tip, .warning) {
     font-size: 17px;
     line-height: 1.6;
     opacity: 0.8;

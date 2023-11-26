@@ -2,16 +2,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 :root {
   color-scheme: dark;
+  scroll-behavior: smooth;
 
   --bg: #111827;
   --bg-block: #1b263e;
+  --bg-button: #1f2c47;
   --bg-soft: #161f33;
   --bg-navbar: rgba(7, 7, 8, 0.25);
+  --bg-scrollbar: #3a4660;
 
   --selection: #2eade3;
   --theme: #38bdf8;
@@ -30,6 +32,51 @@
 ::selection {
   background: var(--selection);
   color: var(--text-dark);
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+  background-color: var(--bg-scrollbar);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    display: none;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 body {
@@ -52,8 +99,27 @@ body {
   color: var(--theme);
 }
 
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  animation: fade 40ms ease 0.4s forwards;
+  z-index: 1000;
+}
 
-/* Navigation Bar Styling */
+.loader__spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid var(--theme);
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
 
 .navbar {
   position: fixed;
@@ -128,8 +194,6 @@ body {
   opacity: 1;
 }
 
-/* Code Block Component Styling */
-
 .code-block {
   overflow-x: auto;
   background: var(--bg-soft);
@@ -143,7 +207,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 8px 20px;
+  padding: 12px 20px;
   border-radius: 18px 18px 0 0;
   gap: 8px;
 }
@@ -167,7 +231,6 @@ body {
 }
 
 .code-block__file {
-  opacity: 0.9;
   font-family: var(--font-sans);
   margin-left: 8px;
   display: flex;
@@ -218,16 +281,19 @@ body {
   opacity: 0.9;
 }
 
-.button > svg {
+.button--secondary {
+  background: var(--bg-button);
+  color: var(--text-gray);
+}
+
+.button svg {
   width: 20px;
   height: 20px;
-
-  stroke: var(--text-dark);
-  fill: var(--text-dark);
+  opacity: 0.9;
 }
 
 .footer {
-  height: 230px;
+  height: 250px;
   padding: 50px;
   display: flex;
   justify-content: center;

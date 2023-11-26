@@ -20,7 +20,12 @@
       href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Roboto+Mono:wght@400&display=swap"
     >
 
-    @embed(['/styles/master.css', '/styles/home.css', '/styles/docs.css', '/styles/prism.css'])
+    @embed([
+      '/styles/master.css',
+      '/styles/home.css',
+      '/styles/docs.css',
+      '/styles/prism.css',
+    ])
 
     <script src="/scripts/prism.js" @nonceProp defer></script>
 
@@ -36,6 +41,10 @@
   </head>
 
   <body>
+    <div class="loader">
+      <div class="loader__spinner"></div>
+    </div>
+
     <header>
       <nav class="navbar">
         <a href="/" class="navbar__logo">
@@ -77,10 +86,6 @@
     </header>
 
     <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
-      <div class="loader">
-        <div class="loader__spinner"></div>
-      </div>
-
       @if ($request.path.includes('docs'))
         <nav class="docs__nav">
           <p>Essentials</p>
