@@ -59,7 +59,7 @@ const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
 import { RootModule } from './root.module.ts';
 
 if (import.meta.main) {
-  using server = await createServer({
+  const server = await createServer({
     config: {
       contentSecurityPolicy: {
         allowedOrigins: [

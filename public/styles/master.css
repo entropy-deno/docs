@@ -11,12 +11,13 @@
   --bg: #111827;
   --bg-block: #1b263e;
   --bg-button: #1f2c47;
+  --bg-button-hover: #243251;
   --bg-soft: #161f33;
   --bg-navbar: rgba(7, 7, 8, 0.25);
   --bg-scrollbar: #3a4660;
 
   --selection: #2eade3;
-  --theme: #38bdf8;
+  --theme: #a78bfa;
   --green: #34d399;
   --orange: #f8af27;
 
@@ -274,7 +275,7 @@ body {
 
   user-select: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .button:hover {
@@ -284,6 +285,10 @@ body {
 .button--secondary {
   background: var(--bg-button);
   color: var(--text-gray);
+}
+
+.button--secondary:hover {
+  background: var(--bg-button-hover);
 }
 
 .button svg {

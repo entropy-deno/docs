@@ -151,7 +151,7 @@ export class ChatModule implements Module {
 import { RootModule } from './root.module.ts';
 
 if (import.meta.main) {
-  using server = await createServer({
+  const server = await createServer({
     modules: [RootModule],
   });
 
