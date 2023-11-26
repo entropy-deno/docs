@@ -164,7 +164,8 @@ main {
   justify-content: center;
   gap: 26px;
 
-  margin-top: 38px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   & .code-block {
     width: calc(100vw - 40px);
