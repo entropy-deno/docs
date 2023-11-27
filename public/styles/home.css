@@ -83,10 +83,6 @@ section:nth-of-type(2n+1) {
   }
 }
 
-main {
-  margin-top: var(--navbar-height);
-}
-
 .home {
   background: var(--bg-soft);
 }
