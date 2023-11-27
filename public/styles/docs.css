@@ -7,7 +7,7 @@
 
 .docs__nav {
   width: 310px;
-  max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 200px);
   position: sticky;
   top: 166px;
   display: flex;
@@ -17,6 +17,7 @@
   border-radius: 14px;
   padding: 32px;
   position: sticky;
+  overflow-y: auto;
 }
 
 .docs__nav p {

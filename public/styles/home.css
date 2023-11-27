@@ -67,8 +67,7 @@ section {
   }
 }
 
-section:nth-of-type(2n)
-{
+section:nth-of-type(2n) {
   background-color: var(--bg);
 
   & .code-block__code {
@@ -76,8 +75,7 @@ section:nth-of-type(2n)
   }
 }
 
-section:nth-of-type(2n+1)
-{
+section:nth-of-type(2n+1) {
   background-color: var(--bg-soft);
 
   & .code-block__code {
@@ -86,7 +84,7 @@ section:nth-of-type(2n+1)
 }
 
 main {
-  margin-top: --var(navbar-height);
+  margin-top: var(--navbar-height);
 }
 
 .home {
