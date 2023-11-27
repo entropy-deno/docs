@@ -30,15 +30,15 @@ import { Route } from '@entropy/router';
 
 export class RootController extends Controller {
   @Route.Get('/')
-  public index() {
-    return this.render('home', {
+  public async index() {
+    return await this.render('home', {
       message: 'Hello, world!',
     });
   }
 
   @Route.Error(HttpStatus.NotFound)
-  public notFound() {
-    return this.render('404');
+  public async notFound() {
+    return await this.render('404');
   }
 }</code></pre>
 
@@ -180,8 +180,8 @@ import { Route } from '@entropy/router';
 
 export class RootController {
   @Route.Error(HttpStatus.NotFound)
-  public notFound() {
-    return this.render('404');
+  public async notFound() {
+    return await this.render('404');
   }
 }</code></pre>
 
@@ -272,7 +272,7 @@ return '<h1>Hello World</h1>';</code></pre>
 
         <p class="code-block__file">src/users/user.controller.ts</p>
       </header><code class="code-block__code language-ts">// HTML response (text/html MIME type)
-return this.render('./views/profile');</code></pre>
+return await this.render('./views/profile');</code></pre>
 
     <p>And this will redirect the user to the <code>/login</code> page:</p>
     <pre class="code-block">
