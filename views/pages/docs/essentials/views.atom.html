@@ -37,7 +37,7 @@
 
     <h2>Conditional blocks</h2>
 
-    <p>You can specify a conditional block using special @raw<code>@if</code>@/raw directive</p>
+    <p>You can specify a conditional block using special @raw<code>@if</code>@/raw directive. You may also provide an @raw<code>@else</code>@/raw block that will render if condition is falsy.</p>
 
     @raw
       <pre class="code-block">
@@ -48,7 +48,7 @@
 
           <p class="code-block__file">views/home.atom.html</p>
         </header><code class="code-block__code language-html">&lt;nav>
-  @if (user.logged)
+  @if (user.authenticated)
     &lt;div>{{ user.name }}&lt;/div>
   @else
     &lt;p>You are not logged in.&lt;/p>
