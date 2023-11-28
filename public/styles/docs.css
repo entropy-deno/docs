@@ -225,6 +225,7 @@
 }
 
 .pager__link {
+  text-decoration: none !important;
   padding: 14px 16px;
   border-radius: 12px;
   border: 2px solid var(--theme);
