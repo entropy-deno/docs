@@ -95,7 +95,7 @@
   }
 
   & h3 {
-    font-size: calc(0.50 * var(--h-size-order));
+    font-size: calc(0.6 * var(--h-size-order));
     margin: calc(var(--h-margin-order) * 2) 0 var(--h-margin-order);
     font-weight: var(--h-weight);
   }
