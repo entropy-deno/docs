@@ -21,7 +21,7 @@
 
     height: fit-content;
     max-height: 70vh;
-    min-width: fit-content;
+    min-width: 280px;
     top: calc(var(--navbar-height) + 4rem);
 
     padding: 32px;
@@ -35,11 +35,11 @@
 .docs__nav p {
   font-weight: 600;
 
-  --half-margin: 0.6rem;
+  --half-margin: 0.4rem;
   margin-bottom: var(--half-margin);
 
   &:not(:first-child) {
-    margin-top: var(--half-margin);
+    margin-top: calc(var(--half-margin) * 1.8);
   }
 }
 
@@ -72,7 +72,7 @@
   max-width: min(86ch, 100%);
   height: fit-content;
 
-  --h-size-order: 2.75rem;
+  --h-size-order: 2.1rem;
   --h-margin-order: 8px;
   --h-weight: 600;
 
@@ -86,7 +86,6 @@
     font-size: var(--h-size-order);
     margin: calc(var(--h-margin-order) * 3) 0 var(--h-margin-order);
     font-weight: var(--h-weight);
-
   }
 
   & h2 {
