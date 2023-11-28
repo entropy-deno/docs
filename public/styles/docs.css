@@ -35,7 +35,7 @@
 .docs__nav p {
   font-weight: 600;
 
-  --half-margin: 2rem;
+  --half-margin: 0.6rem;
   margin-bottom: var(--half-margin);
 
   &:not(:first-child) {
@@ -69,7 +69,7 @@
   flex-direction: column;
   gap: 14px;
 
-  max-width: min(70ch, 100%);
+  max-width: min(86ch, 100%);
   height: fit-content;
 
   --h-size-order: 2.75rem;
@@ -114,13 +114,30 @@
 
   & :is(p:not(.code-block__file), li, .info, .tip, .warning) {
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.7;
     opacity: 0.8;
   }
 
+  & ul {
+    list-style: none;
+  }
+
   & li {
-    margin-left: 20px;
-    & ::marker { color: var(--theme); }
+    margin-left: 24px;
+    position: relative;
+    line-height: 1.8;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--theme);
+      border-radius: 50%;
+      position: absolute;
+      left: -20px;
+      top: 10px;
+    }
   }
 
   & .info, .tip, .warning {

@@ -178,7 +178,7 @@ export class RootController extends Controller {
       </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
 import { Route } from '@entropy/router';
 
-export class RootController {
+export class RootController extends Controller {
   @Route.Error(HttpStatus.NotFound)
   public async notFound() {
     return await this.render('404');
@@ -196,7 +196,7 @@ export class RootController {
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/users/user.controller.ts</p>
-      </header><code class="code-block__code language-ts">export class UserController {
+      </header><code class="code-block__code language-ts">export class UserController extends Controller {
   @Route.Get('/users', {
     name: 'users.index',
     redirectTo: '/users/create',
