@@ -24,7 +24,7 @@ export class UserController extends Controller {
   @Route.Get('/users')
   public index([], request: HttpRequest) {
     return this.render('users/index', {
-      path: request.path,
+      path: request.path(),
     });
   }
 }</code></pre>
