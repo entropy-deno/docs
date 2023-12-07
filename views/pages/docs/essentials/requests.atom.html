@@ -8,7 +8,7 @@
 
     <h2>Request object</h2>
 
-    <p>In order to get access to the request object, you need to explicitly type-hint it:</p>
+    <p>In order to get access to the request object, you need to explicitly define route param:</p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -24,7 +24,7 @@ export class UserController extends Controller {
   @Route.Get('/users')
   public index([], request: HttpRequest) {
     return this.render('users/index', {
-      path: request.path,
+      path: request.path(),
     });
   }
 }</code></pre>
