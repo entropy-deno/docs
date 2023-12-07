@@ -2,7 +2,7 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 0rem;
+  gap: 0;
 
   @media (min-width: 900px) {
     gap: 5rem;
@@ -65,6 +65,19 @@
   font-weight: 600;
 }
 
+.table-of-contents-item {
+  margin-bottom: 5px;
+}
+
+.table-of-contents-item--level-1 {
+  font-weight: 600;
+}
+
+.table-of-contents-item--level-2 {
+  position: relative;
+  left: 24px;
+}
+
 .docs__content {
   display: flex;
   flex-direction: column;
@@ -87,6 +100,7 @@
   & :is(h1, h2, h3) {
     font-weight: 600;
     text-transform: capitalize;
+    scroll-margin-top: calc(var(--navbar-height) + 2rem);
   }
 
   & h1 {

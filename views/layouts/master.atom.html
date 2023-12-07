@@ -37,6 +37,49 @@
       })(window, document, "clarity", "script", "i7tpxjfjbc");
     </script>
 
+    @if ($request.path().includes('/docs'))
+      <script @nonceProp>
+        const kebabCase = string => string
+          .replace(/([a-z])([A-Z])/g, "$1-$2")
+          .replace(/[\s_]+/g, '-')
+          .toLowerCase();
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const headerElements = document.querySelectorAll('.docs :is(h2, h3)');
+
+          const headers = [...headerElements].map((header) => ({
+            type: Number(header.tagName[1]) - 1,
+            content: header.innerText,
+          }));
+
+          headerElements.forEach((header) => header.setAttribute('id', kebabCase(header.innerText)));
+
+          const list = document.createElement('ul');
+
+          list.classList.add('table-of-contents');
+
+          headers.forEach((header) => {
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+
+            item.appendChild(link);
+            link.setAttribute('href', `#${kebabCase(header.content)}`);
+
+            link.innerHTML = header.content;
+
+            item.classList.add('table-of-contents-item');
+            item.classList.add(`table-of-contents-item--level-${header.type}`);
+
+            list.appendChild(item);
+          })
+
+          document.querySelector('.docs__content').insertBefore(list, document.querySelector('.docs__content h1').nextSibling);
+
+          console.log(headers)
+        });
+      </script>
+    @/if
+
     @hotReload
   </head>
 
