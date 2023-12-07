@@ -14,7 +14,7 @@
     </h1>
 
     <p class="home__info">
-      Entropy is a simple backend framework that <span class="text-theme">transcends</span> the creation and maintenance of awesome web applictions built on the bleeding-edge TypeScript runtime.
+      Entropy is a simple backend framework that transcends the creation and maintenance of awesome web applictions built on the bleeding-edge TypeScript runtime.
     </p>
 
     <div class="home__button-strip">
@@ -52,11 +52,11 @@
 
   <section class="home__examples" id="about">
     <h1 class="header header--small">
-      A <strong>simple</strong> yet <strong>powerful</strong> framework solution
+      A <strong>simple</strong> yet <strong>powerful</strong> framework
     </h1>
 
     <p class="home__info"> 
-      Our primary goal is to provide a framework that is <span class="text-theme">easy</span> to
+      Our goal is to provide a framework that is <span class="text-theme">easy</span> to
       use, <span class="text-theme">simple</span>, and <span class="text-theme">powerful</span>, proving a great fit
       for any kind of project. An instance of this philosophy is the build-in
       <span class="text-theme">templating engine</span> allowing the developer to express complex
@@ -71,20 +71,19 @@
 <div class="code-block__control"></div>
 <p class="code-block__file">views/posts/index.atom.html</p>
 @raw
-</header><code class="code-block__code language-html">&lt;nav>
-  @if (!user.authenticated)
-    &lt;h2>You have to log in.&lt;/h2>
-  @/if
-&lt;/nav>
+</header><code class="code-block__code language-html">@layout('../layouts/master')
 
-&lt;main>
-  @for (post in posts)
-    <article class="post">{{ post.content }}</article>
-  @empty
-    <p>There are no posts yet.</p>
-  @/for
-&lt;/main>
-</code></pre>
+@section('content')
+  &lt;main>
+    @for (post in posts)
+      &lt;article class="post">
+        {{ post.content }}
+      &lt;/article>
+    @empty
+      &lt;p>There are no posts yet.&lt;/p>
+    @/for
+  &lt;/main>
+@/section</code></pre>
 @/raw
 
       <p style="max-width:20%">
@@ -98,11 +97,8 @@
     </h1>
 
     <p class="home__info">
-      Entropy offers a ruch suite of <span class="text-theme">out-of-the-box
-        tools</span> for implementing common backend functionality patterns,
-      and writing your own solutions. Using the carefully designed utilities,
-      you can create fast and secure web apps with ease, accompanied by awesome
-      developer experience.
+      Entropy offers a rich suite of <span class="text-theme">out-of-the-box tools</span> for common backend functionality. Using the carefully designed utilities,
+      you can create fast and secure web apps with ease, accompanied by awesome developer experience.
     </p>
 
     <div class="home__examples-blocks">
@@ -143,7 +139,7 @@ export class UserController extends Controller {
     </div>
 
     <a class="button" href="/docs">
-      Documentation
+      Get Started
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
