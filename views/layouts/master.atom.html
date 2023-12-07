@@ -56,7 +56,7 @@
           <li class="navbar__link">
             <a
               href="/"
-              class="navbar__link-item{{ $request.path === '/' ? ' navbar__link-item--active' : '' }}"
+              class="navbar__link-item{{ $request.path() === '/' ? ' navbar__link-item--active' : '' }}"
             >
               Home
             </a>
@@ -65,7 +65,7 @@
           <li class="navbar__link">
             <a
               href="/docs"
-              class="navbar__link-item{{ $request.path.includes('/docs') ? ' navbar__link-item--active' : '' }}"
+              class="navbar__link-item{{ $request.path().includes('/docs') ? ' navbar__link-item--active' : '' }}"
             >
               Docs
             </a>
@@ -85,14 +85,14 @@
       </nav>
     </header>
 
-    <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
-      @if ($request.path.includes('docs'))
+    <main class="{{ $request.path() === '/' ? 'home' : $request.path().includes('docs') ? 'docs' : '' }}">
+      @if ($request.path().includes('docs'))
         <nav class="docs__nav">
           <p>Essentials</p>
 
           @for ([link, label] in navigationLinks.essentials)
             <a
-              class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
+              class="docs__nav-link{{ $request.path() === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
             >
               {{ label }}
@@ -103,7 +103,7 @@
 
           @for ([link, label] in navigationLinks.advanced)
             <a
-              class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
+              class="docs__nav-link{{ $request.path() === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
             >
               {{ label }}

@@ -23,6 +23,7 @@
 
   --border: #4b5563;
   --text: #f3f4f6;
+  --text-docs: #d1d7e3;
   --text-gray: #c4cbd9;
   --text-dark: #052133;
 
@@ -127,15 +128,12 @@ body {
   left: 0;
   top: 0;
   z-index: 50;
-
   width: 100%;
   height: var(--navbar-height);
   padding: 16px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: var(--bg-navbar);
   -webkit-backdrop-filter: blur(6px) saturate(140%);
   backdrop-filter: blur(6px) saturate(140%);
@@ -190,6 +188,7 @@ body {
   opacity: 0.7;
   border-radius: 10px;
   transition: opacity 0.2s ease;
+  user-select: none;
 
   @media (min-width: 420px) {
     padding: 7px 12px;

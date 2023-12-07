@@ -15,6 +15,9 @@ if (import.meta.main) {
         robots: true,
         sitemap: true,
       },
+      session: {
+        clearOnRestart: true,
+      },
     },
     modules: [
       RootModule,
