@@ -99,7 +99,6 @@
 
   & :is(h1, h2, h3) {
     font-weight: 600;
-    text-transform: capitalize;
     scroll-margin-top: calc(var(--navbar-height) + 2rem);
   }
 

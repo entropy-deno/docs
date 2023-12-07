@@ -7,7 +7,6 @@
 :root {
   color-scheme: dark;
   scroll-behavior: smooth;
-  /* scroll-margin-top: var(--navbar-height); */
 
   --bg: #111827;
   --bg-block: #1b263e;
