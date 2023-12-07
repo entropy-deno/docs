@@ -69,7 +69,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  max-width: min(86ch, 100%);
+  max-width: min(80ch, 100%);
   height: fit-content;
   color: var(--text-docs);
 
@@ -104,7 +104,7 @@
     margin: calc(var(--h-margin-order) * 2) 0 var(--h-margin-order);
   }
 
-  & a {
+  & a:not(.pager__link) {
     text-decoration: none;
     font-weight: 600;
     color: #fff;
@@ -137,7 +137,7 @@
     list-style: none;
   }
 
-  & li {
+  & ul > li {
     margin-left: 24px;
     position: relative;
     line-height: 1.8;
@@ -261,9 +261,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--text-gray);
+  transition: all 0.2s ease;
 
   & svg {
     width: 18px;
     height: 18px;
+  }
+
+  &:hover {
+    color: #fff;
   }
 }
