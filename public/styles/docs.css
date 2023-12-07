@@ -2,9 +2,10 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 0rem;
 
   @media (min-width: 900px) {
+    gap: 5rem;
     padding: 3rem 7rem;
   }
 }
@@ -68,46 +69,61 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-
-  max-width: min(86ch, 100%);
+  max-width: min(80ch, 100%);
   height: fit-content;
+  color: var(--text-docs);
 
   --h-size-order: 2.1rem;
   --h-margin-order: 8px;
-  --h-weight: 600;
 
   @media (min-width: 460px) {
     --h-margin-order: 12px;
   }
 
-  & > *:first-child { margin-top: 0; }
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & :is(h1, h2, h3) {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
 
   & h1 {
     font-size: var(--h-size-order);
     margin: calc(var(--h-margin-order) * 3) 0 var(--h-margin-order);
-    font-weight: var(--h-weight);
   }
 
   & h2 {
     font-size: calc(0.75 * var(--h-size-order));
     margin: calc(var(--h-margin-order) * 3) 0 var(--h-margin-order);
-    font-weight: var(--h-weight);
   }
 
   & h3 {
     font-size: calc(0.6 * var(--h-size-order));
     margin: calc(var(--h-margin-order) * 2) 0 var(--h-margin-order);
-    font-weight: var(--h-weight);
   }
 
-  & a {
+  & a:not(.pager__link) {
     text-decoration: none;
-    color: var(--theme);
-    font-weight: 500;
+    font-weight: 600;
+    color: #fff;
     transition: opacity 0.2s ease-in-out;
+    position: relative;
 
-    &:hover {
-      opacity: 0.8;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 1px;
+      width: 100%;
+      background: var(--theme);
+    }
+
+    &:hover::before {
+      height: 2px;
+      bottom: -3px;
     }
   }
 
@@ -121,7 +137,7 @@
     list-style: none;
   }
 
-  & li {
+  & ul > li {
     margin-left: 24px;
     position: relative;
     line-height: 1.8;
@@ -238,15 +254,22 @@
 }
 
 .pager__link {
+  text-decoration: none !important;
   padding: 14px 16px;
   border-radius: 12px;
   border: 2px solid var(--theme);
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--text-gray);
+  transition: all 0.2s ease;
 
   & svg {
     width: 18px;
     height: 18px;
+  }
+
+  &:hover {
+    color: #fff;
   }
 }
