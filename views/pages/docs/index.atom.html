@@ -2,33 +2,92 @@
 
 @section('content')
   <section class="docs__content">
-    <h1>Getting started</h1>
+    <h1>Getting Started</h1>
 
-    <p>In this section you are going to make familiar with Entropy framework and its installation / project creating process.</p>
+    <p>
+      <span class="text-theme">Entropy</span> is a <span class="text-theme">web development backend framework</span> designed
+      to serve as an efficient, robust, and versatile backend systems engineering solution. 
+      It is perfect as a choice for developing systems of varied complexity and purpose in a wide array of project archetypes. 
+      The main philosophy of Entropy revolves around accessibility and <span class="text-theme">developer experience</span> in creating efficient, secure backend applications.
+    </p>
 
-    <h2>Introducing Entropy</h2>
+    <p>
+      Entropy is written in and
+      operates strictly on the <a>Deno</a> TypeScript runtime. The <code>Introduction</code> module
+      will make you familiar with the fundamentals of Entropy, providing you
+      with a <strong>quick overview</strong> of the most significant features.
+    </p>
 
-    <p>Entropy is a modern and declarative backend framework for <a href="https://deno.com" target="_blank" rel="noopener noreferrer">Deno</a>. It makes it easy to create fast and secure web applications with awesome developer experience.</p>
+    <p><strong>It is recommended to read this module thoroughly before proceeding.</strong></p>
 
-    <h2>Philosophy and features</h2>
-
-    <p>Entropy provides a strong architecture which makes it easier to create highly scalable apps.</p>
-
-    <p>The framework uses <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a> to provide best type safety. We believe that this language is the best option for secure Deno app development.</p>
+    <div class="tip">
+      If you are looking for detailed technical specification of the framework
+      modules or further information on concrete topics, view the navigation
+      bar to the side and feel free to proceed to a point of interest.
+    </div>
 
     <h2>Prerequisites</h2>
 
-    <p>To learn Entropy you will need to have a basic knowlege of:</p>
+    <p>
+      Although this module aims to convey the basics of Entropy in a
+      beginner-friendly manner, it is nonetheless recommended to consider the
+      following basic prerequisites for understanding presented material.
+    </p>
 
-    <ul>
-      <li>Deno runtime</li>
-      <li>TypeScript language</li>
-      <li>Basics of HTTP and MVC (optional)</li>
-    </ul>
+    <ol>
+      <li>
+        <strong><a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a></strong> – Entropy utilizes TypeScript with
+        native out-of-the-box support provided by the Deno runtime in order to
+        ensure project scalability through a top of the range type-safety
+        solution. A solid understanding of JavaScript and the fundamentals of
+        TypeScript is highly recommended.
+      </li>
+
+      <br>
+
+      <li>
+        <strong><a href="https://deno.com" target="_blank" rel="noopener noreferrer">Deno</a></strong> – It is recommended to have a solid understanding
+        of the main <span class="text-theme">runtime</span> for backend
+        applications in the Entropy ecosystem. If you are familiar with other
+        runtimes such as <code>node</code> along with <code>npm</code>, Deno is
+        likely to feel natural. <strong>You are required to have Deno installed on
+        your device in order to be able to work on Entropy applications.</strong>
+      </li>
+
+      <br>
+
+      <li>
+        <strong>General Backend Knowledge</strong> - It is also recommended to have a
+        solid understanding of <span class="text-theme">common backend engineering patterns and terminology</span>. This is <strong>not</strong>,
+        however, a prerequisite with heavy emphasis, due to the
+        beginner-friendly introductory nature of this module and the
+        novice-developer accessibility of Entropy.
+      </li>
+    </ol>
+
+    <div class="info">
+      The <span class="text-theme">Entropy</span> learning curve is still (to
+      some extent) dependent on your existing knowledge of backend development
+      beyond explanations of this chapter and selected topics in concrete
+      pages. 
+    </div>
 
     <h2>Installation</h2>
 
-    <p>Entropy requires no installation process of any additional tooling for creating new projects. You can use the following command in order to launch Entropy project creator:</p>
+    <p>
+      Before you are able to use Entropy, you must have the Deno runtime
+      installed on your device. In order to install Deno, please follow the
+        instructions under <a
+          href="https://docs.deno.com/runtime/manual/getting_started/installation">
+          this link</a>.
+    </p>
+
+    <p>
+      Entropy does not require the installation of any additional tooling for
+      project initialization. You can use the following command in order to
+      initialize a new project through <span class="text-theme">Entropy project
+      creator</span>:
+    </p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -39,7 +98,12 @@
         <p class="code-block__file">terminal</p>
       </header><code class="code-block__code language-sh">deno run -A https://deno.land/x/entropy_cli/init.ts</code></pre>
 
-    <p>When the installation is ready, you can launch the project:</p>
+    <p>
+      In order to run a local Entropy server, run the following command from
+      your project folder. You should see information about the running
+      <code>localhost</code> port of your application drawn from the project
+      configuration.
+    </p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -48,11 +112,7 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">terminal</p>
-      </header><code class="code-block__code language-sh">cd my-project  # Your project directory
-
-deno task dev</code></pre>
-
-    <p>Now you are able to explore the core concepts of Entropy in next sections.</p>
+      </header><code class="code-block__code language-sh">deno task dev</code></pre>
 
     <section class="pager">
       <a class="pager__link" href="/docs/essentials/overview">
@@ -64,11 +124,7 @@ deno task dev</code></pre>
           stroke-width="1.5"
           stroke="currentColor"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-          >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
         </svg>
       </a>
     </section>
