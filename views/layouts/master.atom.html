@@ -40,7 +40,7 @@
     @if ($request.path().includes('/docs'))
       <script @nonceProp>
         const kebabCase = string => string
-          .replace(/([a-z])([A-Z])/g, "$1-$2")
+          .replace(/([a-z])([A-Z])/g, '$1-$2')
           .replace(/[\s_]+/g, '-')
           .toLowerCase();
 
@@ -67,15 +67,20 @@
 
             link.innerHTML = header.content;
 
-            item.classList.add('table-of-contents-item');
-            item.classList.add(`table-of-contents-item--level-${header.type}`);
+            item.classList.add('table-of-contents__item');
+            item.classList.add(`table-of-contents__item--level-${header.type}`);
 
             list.appendChild(item);
-          })
+          });
 
-          document.querySelector('.docs__content').insertBefore(list, document.querySelector('.docs__content h1').nextSibling);
+          const contentParent = document.querySelector('.docs__content');
+          const title = document.createElement('p');
 
-          console.log(headers)
+          title.classList.add('table-of-contents__title');
+          title.textContent = 'Table of Contents';
+
+          contentParent.insertBefore(list, contentParent.querySelector('h1').nextSibling);
+          contentParent.insertBefore(title, contentParent.querySelector('h1').nextSibling);
         });
       </script>
     @/if

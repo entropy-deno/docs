@@ -15,13 +15,12 @@
 
   @media (min-width: 900px) {
     position: sticky;
-
     display: flex;
     flex-direction: column;
     gap: 4px;
 
     height: fit-content;
-    max-height: 70vh;
+    max-height: 80vh;
     min-width: 280px;
     top: calc(var(--navbar-height) + 4rem);
 
@@ -34,9 +33,8 @@
 }
 
 .docs__nav p {
-  font-weight: 600;
-
   --half-margin: 0.4rem;
+  font-weight: 600;
   margin-bottom: var(--half-margin);
 
   &:not(:first-child) {
@@ -48,7 +46,6 @@
   font-size: 16px;
   color: inherit;
   opacity: 0.9;
-
   padding: 9px 12px;
   border-radius: 8px;
   text-decoration: none;
@@ -65,15 +62,24 @@
   font-weight: 600;
 }
 
-.table-of-contents-item {
-  margin-bottom: 5px;
-}
-
-.table-of-contents-item--level-1 {
+.table-of-contents__title {
   font-weight: 600;
 }
 
-.table-of-contents-item--level-2 {
+.table-of-contents__item {
+  margin-bottom: 5px;
+
+  &::before {
+    width: 12px;
+    border-radius: 3px;
+  }
+}
+
+.table-of-contents__item--level-1 {
+  font-weight: 600;
+}
+
+.table-of-contents__item--level-2 {
   position: relative;
   left: 24px;
 }
