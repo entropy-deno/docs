@@ -40,7 +40,7 @@
     @if ($request.path().includes('/docs'))
       <script @nonceProp>
         const kebabCase = string => string
-          .replace(/([a-z])([A-Z])/g, "$1-$2")
+          .replace(/([a-z])([A-Z])/g, '$1-$2')
           .replace(/[\s_]+/g, '-')
           .toLowerCase();
 
@@ -52,30 +52,28 @@
             content: header.innerText,
           }));
 
-          headerElements.forEach((header) => header.setAttribute('id', kebabCase(header.innerText)));
+          headerElements.forEach((header) => {
+            header.setAttribute('id', kebabCase(header.innerText));
 
-          const list = document.createElement('ul');
+            header.innerHTML = header.innerHTML.replace(
+              header.innerText,
+              `<a href="#${kebabCase(header.innerText)}">${header.innerText}</a>`,
+            );
+          });
 
-          list.classList.add('table-of-contents');
+          const list = document.querySelector('.outline');
 
           headers.forEach((header) => {
-            const item = document.createElement('li');
             const link = document.createElement('a');
 
-            item.appendChild(link);
             link.setAttribute('href', `#${kebabCase(header.content)}`);
 
             link.innerHTML = header.content;
+            link.classList.add('outline__item');
+            link.classList.add(`outline__item--level-${header.type}`);
 
-            item.classList.add('table-of-contents-item');
-            item.classList.add(`table-of-contents-item--level-${header.type}`);
-
-            list.appendChild(item);
-          })
-
-          document.querySelector('.docs__content').insertBefore(list, document.querySelector('.docs__content h1').nextSibling);
-
-          console.log(headers)
+            list.appendChild(link);
+          });
         });
       </script>
     @/if
@@ -157,6 +155,12 @@
 
       @slot('content')
     </main>
+
+    @if ($request.path().includes('docs'))
+      <aside class="outline">
+        <p class="outline__title">On this page</p>
+      </aside>
+    @/if
 
     <footer class="footer">
       <img src="/logo-full.png" alt="Entropy logo" width="164">
