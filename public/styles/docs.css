@@ -29,13 +29,14 @@
   }
 }
 
-.docs__nav p {
+.docs__nav-title {
   --half-margin: 0.4rem;
   font-weight: 600;
   margin-bottom: var(--half-margin);
+  color: var(--theme);
 
   &:not(:first-child) {
-    margin-top: calc(var(--half-margin) * 1.8);
+    margin-top: calc(var(--half-margin) * 1.9);
   }
 }
 
@@ -62,7 +63,7 @@
 .outline {
   display: none;
 
-  @media (min-width: 1900px) {
+  @media (scripting: enabled) and (min-width: 1900px) {
     position: fixed;
     display: flex;
     flex-direction: column;

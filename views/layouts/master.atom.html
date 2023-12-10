@@ -129,7 +129,7 @@
     <main class="{{ $request.path() === '/' ? 'home' : $request.path().includes('docs') ? 'docs' : '' }}">
       @if ($request.path().includes('docs'))
         <nav class="docs__nav">
-          <p>Essentials</p>
+          <p class="docs__nav-title">Essentials</p>
 
           @for ([link, label] in navigationLinks.essentials)
             <a
@@ -140,7 +140,7 @@
             </a>
           @/for
 
-          <p>Advanced</p>
+          <p class="docs__nav-title">Advanced</p>
 
           @for ([link, label] in navigationLinks.advanced)
             <a
