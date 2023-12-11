@@ -6,7 +6,7 @@
 
     <p>App configuration in Entropy is stored in two main files: <code>src/main.ts</code> and <code>.env</code>.</p>
 
-    <h2>Environment configuration</h2>
+    <h2>Environment Configuration</h2>
 
     <p>A default Entropy project contains a file called <code>.env</code>. This file is the place where things like database credentials and environment-specific settings should be stored. Entropy automatically reads all environment variables. The default <code>.env</code> file contains following variables:</p>
 
@@ -25,7 +25,7 @@ HOST=localhost
 PORT=5050
 SESSION_LIFETIME=30  # days</code></pre>
 
-    <h2>Reading environment data</h2>
+    <h2>Reading Environment Data</h2>
 
     <p>You can read environment variables using <code>env</code> generic function:</p>
 
@@ -41,11 +41,11 @@ SESSION_LIFETIME=30  # days</code></pre>
 const port = env&lt;number>('PORT');  // 5050
 const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
 
-    <h2>Example .env file</h2>
+    <h2>Example .env File</h2>
 
     <p>Developers often use version control systems like <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer">Git</a> to work in teams. You should remember not to store <code>.env</code> files in repositories for security reasons (they contain database passwords etc.). That's why we should exclude these files from version control and only publish an example <code>.env.example</code> file synced with the original one.</p>
 
-    <h2>App configuration</h2>
+    <h2>App Configuration</h2>
 
     <p>Any other, app-specific configuration is passed into the <code>createServer</code> function in <code>src/main.ts</code> file. The configuration looks like this:</p>
 
@@ -239,7 +239,7 @@ const server = await createServer({
   // ...
 });</code></pre>
 
-    <h3>Automatic sitemap and <code>robots.txt</code> file generating</h3>
+    <h3>Automatic Sitemap and <code>robots.txt</code> File Generation</h3>
 
     <p>Entropy has built-in feature of auto-generating <code>sitemap.xml</code> and <code>robots.txt</code> SEO files.</p>
 
