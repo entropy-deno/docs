@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ pageTitle }} • Entropy - Modern and Declarative Deno Framework</title>
+    <title>{{ pageTitle }} • Entropy – Modern and Declarative Deno Framework</title>
 
     <meta
       name="description"
@@ -37,6 +37,71 @@
       })(window, document, "clarity", "script", "i7tpxjfjbc");
     </script>
 
+    @if ($request.path().includes('/docs'))
+      <script @nonceProp>
+        const kebabCase = string => string
+          .replace(/([a-z])([A-Z])/g, '$1-$2')
+          .replace(/[\s_]+/g, '-')
+          .toLowerCase();
+
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const headerElements = document.querySelectorAll('.docs :is(h2, h3)');
+
+          const headers = [...headerElements].map((header) => ({
+              type: Number(header.tagName[1]) - 1,
+              content: header.innerText
+          }));
+
+          headerElements.forEach((header) => {
+            header.setAttribute('id', kebabCase(header.innerText));
+
+            header.innerHTML = header.innerHTML.replace(
+              header.innerText,
+              `<a href="#${kebabCase(header.innerText)}">${header.innerText}</a>`,
+            );
+          });
+
+          const list = document.querySelector('.outline');
+
+          headers.forEach((header) => {
+            const link = document.createElement('a');
+
+            link.setAttribute('href', `#${kebabCase(header.content)}`);
+
+            link.innerHTML = header.content;
+            link.classList.add('outline__item');
+            link.classList.add(`outline__item--level-${header.type}`);
+
+            list.appendChild(link);
+          });
+
+          const highlightAsideLinks = () => {
+            headerElements.forEach((header) => {
+              const navLink = document.querySelector(`a.outline__item[href="#${header.id}"]`);
+              if (isInViewport(header)) {
+                navLink.classList.add('active');
+              } else {
+                navLink.classList.remove('active');
+              }
+            });
+          }
+
+          window.addEventListener('scroll', highlightAsideLinks);
+          highlightAsideLinks();
+        });
+      </script>
+    @/if
+
     @hotReload
   </head>
 
@@ -56,7 +121,7 @@
           <li class="navbar__link">
             <a
               href="/"
-              class="navbar__link-item{{ $request.path === '/' ? ' navbar__link-item--active' : '' }}"
+              class="navbar__link-item{{ $request.path() === '/' ? ' navbar__link-item--active' : '' }}"
             >
               Home
             </a>
@@ -65,7 +130,7 @@
           <li class="navbar__link">
             <a
               href="/docs"
-              class="navbar__link-item{{ $request.path.includes('/docs') ? ' navbar__link-item--active' : '' }}"
+              class="navbar__link-item{{ $request.path().includes('/docs') ? ' navbar__link-item--active' : '' }}"
             >
               Docs
             </a>
@@ -85,25 +150,25 @@
       </nav>
     </header>
 
-    <main class="{{ $request.path === '/' ? 'home' : $request.path.includes('docs') ? 'docs' : '' }}">
-      @if ($request.path.includes('docs'))
+    <main class="{{ $request.path() === '/' ? 'home' : $request.path().includes('docs') ? 'docs' : '' }}">
+      @if ($request.path().includes('docs'))
         <nav class="docs__nav">
-          <p>Essentials</p>
+          <p class="docs__nav-title">Essentials</p>
 
           @for ([link, label] in navigationLinks.essentials)
             <a
-              class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
+              class="docs__nav-link{{ $request.path() === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
             >
               {{ label }}
             </a>
           @/for
 
-          <p>Advanced</p>
+          <p class="docs__nav-title">Advanced</p>
 
           @for ([link, label] in navigationLinks.advanced)
             <a
-              class="docs__nav-link{{ $request.path === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
+              class="docs__nav-link{{ $request.path() === `/docs${link}` ? ' docs__nav-link--active' : '' }}"
               href="/docs{{ link }}"
             >
               {{ label }}
@@ -113,7 +178,14 @@
       @/if
 
       @slot('content')
+
+      @if ($request.path().includes('docs'))
+        <aside class="outline">
+          <p class="outline__title">On this page</p>
+        </aside>
+      @/if
     </main>
+
 
     <footer class="footer">
       <img src="/logo-full.png" alt="Entropy logo" width="164">

@@ -19,6 +19,7 @@ export class LinkService {
         ['/advanced/localization', 'Localization'],
         ['/advanced/websocket', 'WebSocket'],
         ['/advanced/csrf-protection', 'CSRF Protection'],
+        ['/advanced/task-scheduling', 'Task Scheduling'],
         ['/advanced/utilities', 'Utilities'],
         ['/advanced/testing', 'Testing'],
       ],

@@ -1,0 +1,118 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Task Scheduling</h1>
+
+    <p>Entropy provides a simple way to schedule tasks with CRON or interval. The task scheduling is based on simple controller methods decorated with <code>Schedule</code>, <code>Interval</code> and <code>Timeout</code> decorators.</p>
+
+    <h2>Defining scheduled CRON tasks</h2>
+
+    <p>The example implementation of CRON-scheduled task you can see below:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/newsletters/newsletter.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Schedule } from '@entropy/scheduler';
+
+@Controller()
+export class NewsletterController extends Controller {
+  // ...
+
+  @Schedule('0 30 9 * * 1-5')  // Execute from Monday to Friday at 9:30am
+  public async sendEmails() {
+    await this.mailer.send(...);
+    // ...
+  }
+}</code></pre>
+
+    <p>This task will be executed every Monday to Friday at 9:30am.</p>
+
+    <h2>Interval tasks</h2>
+
+    <p>To schedule a task to be executed every <code>n</code> milliseconds, you can use <code>Interval</code> decorator:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/newsletters/newsletter.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Interval, TimeUnit } from '@entropy/scheduler';
+
+@Controller()
+export class NewsletterController extends Controller {
+  // ...
+
+  @Interval(60 * TimeUnit.Second)  // Execute every 60 seconds
+  public checkActivity() {
+    // Check users activity...
+  }
+}</code></pre>
+
+    <h2>Timeout server startup tasks</h2>
+
+    <p>In order to execute a task after a certain amount of time, you can use <code>Timeout</code> decorator:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/root.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Timeout, TimeUnit } from '@entropy/scheduler';
+
+@Controller()
+export class RootController extends Controller {
+  // ...
+
+  // Run 7 seconds after server startup (if controller is registered in module)
+  @Timeout(7 * TimeUnit.Second)
+  public setupSystem() {
+    // ...
+  }
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/advanced/csrf-protection">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          >
+        </svg>
+        CSRF Protection
+      </a>
+
+      <a class="pager__link" href="/docs/advanced/utilities">
+        Utilities
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          >
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section

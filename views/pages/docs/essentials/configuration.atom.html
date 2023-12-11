@@ -8,7 +8,7 @@
 
     <h2>Environment configuration</h2>
 
-    <p>A default Entropy project contains a file called .env. This file is the place where things like database credentials and environment-specific settings should be stored. Entropy automatically reads all .env variables. The default .env file contains following variables:</p>
+    <p>A default Entropy project contains a file called <code>.env</code>. This file is the place where things like database credentials and environment-specific settings should be stored. Entropy automatically reads all environment variables. The default <code>.env</code> file contains following variables:</p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -17,11 +17,12 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">.env</p>
-      </header><code class="code-block__code language-ts">HOST=localhost
-PORT=5050
+      </header><code class="code-block__code language-ts">CACHE_MAX_AGE=0  # days
+COOKIE_MAX_AGE=30  # days
 DATABASE_URL=mysql://root:@localhost/entropy
 ENCRYPTION_KEY=
-COOKIE_MAX_AGE=30  # days
+HOST=localhost
+PORT=5050
 SESSION_LIFETIME=30  # days</code></pre>
 
     <h2>Reading environment data</h2>
@@ -37,12 +38,12 @@ SESSION_LIFETIME=30  # days</code></pre>
         <p class="code-block__file">src/main.ts</p>
       </header><code class="code-block__code language-js">import { env } from '@entropy/configurator';
 
-const port = env&lt;number>('PORT');  // 7000
+const port = env&lt;number>('PORT');  // 5050
 const host = env&lt;string | null>('HOST');  // 'localhost' or null</code></pre>
 
     <h2>Example .env file</h2>
 
-    <p>Developers often use version control systems like Git to work in teams. You should remember not to store <code>.env</code> files in repositories for security reasons (they contain database passwords etc.). That's why we should exclude these files from version control and only publish an example <code>.env.example</code> file synced with the original one.</p>
+    <p>Developers often use version control systems like <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer">Git</a> to work in teams. You should remember not to store <code>.env</code> files in repositories for security reasons (they contain database passwords etc.). That's why we should exclude these files from version control and only publish an example <code>.env.example</code> file synced with the original one.</p>
 
     <h2>App configuration</h2>
 
@@ -77,7 +78,187 @@ if (import.meta.main) {
   await server.start();
 }</code></pre>
 
-    <p>To customize app settings, pass configuration options through the <code>config</code> field.</p>
+    <p>To customize app settings, pass configuration options through the <code>config</code> field. Available options are listed below.</p>
+
+    <h3>Cache</h3>
+
+    <p>To enable caching and to set cache lifetime, use the <code>cache.enabled</code> and <code>cache.maxAge</code> options.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    cache: {
+      enabled: true,
+      maxAge: 20,  // default is set in CACHE_MAX_AGE option in .env file
+    },
+  },
+  // ...
+});</code></pre>
+
+<h3>Content Security Policy</h3>
+
+<p>To control Content Security Policy configuration, use following options:</p>
+
+<pre class="code-block">
+  <header class="code-block__header">
+    <div class="code-block__control"></div>
+    <div class="code-block__control"></div>
+    <div class="code-block__control"></div>
+
+    <p class="code-block__file">src/main.ts</p>
+  </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    contentSecurityPolicy: {
+      allowInlineScripts: false,
+      allowInlineStyles: true,
+      allowedOrigins: [
+        'https://fonts.googleapis.com',
+      ],
+    },
+  },
+  // ...
+});</code></pre>
+
+    <h3>Cookies</h3>
+
+    <p>Managing cookies is simple. You can leverage the <code>cookies.maxAge</code> option to set cookie expiry time.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    cookies: {
+      maxAge: 30,  // default is set in COOKIE_MAX_AGE option in .env file
+    },
+  },
+  // ...
+});</code></pre>
+
+    <h3>CORS</h3>
+
+    <p>Setting CORS is done using <code>cors.allowed{Headers,Methods,Origins}</code> options. You can set expiry time with <code>cors.maxAge</code> option.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">import { HttpMethod } from '@entropy/http';
+
+const server = await createServer({
+  config: {
+    cors: {
+      allowedMethods: [
+        HttpMethod.Get,
+      ],
+      allowedOrigins: [
+        'https://some-website.com',
+      ],
+      maxAge: 15,
+    },
+  },
+  // ...
+});</code></pre>
+
+    <h3>CSRF Protection</h3>
+
+    <p>You can disable the built-in CSRF protection for form requests using <code>csrfProtection</code> option.</p>
+
+    <div class="warning">
+      Disabling the CSRF protection is not recommended as it may expose your application to malicious attacks. Note that Entropy automatically disables this feature in testing environments so you don't have to do it manually.
+    </div>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    cookies: {
+      maxAge: 30,  // default is set in COOKIE_MAX_AGE option in .env file
+    },
+  },
+  // ...
+});</code></pre>
+
+    <h3>Locales</h3>
+
+    <p>You may set the application supported locales along with the default one for localization.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    locales: {
+      default: 'en',
+      supported: ['de', 'en', 'fr', 'pl'],
+    },
+  },
+  // ...
+});</code></pre>
+
+  <h3>Logger</h3>
+
+  <p>You can entirely disable logger logs setting <code>logger.enabled</code> to <code>false</code>.</p>
+
+  <pre class="code-block">
+    <header class="code-block__header">
+      <div class="code-block__control"></div>
+      <div class="code-block__control"></div>
+      <div class="code-block__control"></div>
+
+      <p class="code-block__file">src/main.ts</p>
+    </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    logger: {
+      enabled: false,
+      staticFileRequests: true,  // Log server file requests
+    },
+  },
+  // ...
+});</code></pre>
+
+    <h3>Automatic sitemap and <code>robots.txt</code> file generating</h3>
+
+    <p>Entropy has built-in feature of auto-generating <code>sitemap.xml</code> and <code>robots.txt</code> SEO files.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">const server = await createServer({
+  config: {
+    seo: {
+      robots: true,
+      sitemap: true, 
+    },
+  },
+  // ...
+});</code></pre>
 
     <section class="pager">
       <a class="pager__link" href="/docs/essentials/overview">
@@ -88,7 +269,11 @@ if (import.meta.main) {
           stroke-width="1.5"
           stroke="currentColor"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          >
         </svg>
         Overview
       </a>
@@ -102,7 +287,11 @@ if (import.meta.main) {
           stroke-width="1.5"
           stroke="currentColor"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          >
         </svg>
       </a>
     </section>
