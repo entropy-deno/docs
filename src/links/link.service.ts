@@ -8,6 +8,7 @@ export class LinkService {
         ['/essentials/modules', 'Modules'],
         ['/essentials/controllers-and-routes', 'Controllers and Routes'],
         ['/essentials/requests', 'Requests'],
+        ['/essentials/forms', 'Forms'],
         ['/essentials/views', 'Views'],
         ['/essentials/dependency-injection', 'Dependency Injection'],
         ['/essentials/session', 'Session'],

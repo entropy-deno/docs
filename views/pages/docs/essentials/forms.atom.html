@@ -1,0 +1,132 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Forms</h1>
+
+    <p>Web apps have to deal with forms almost every time. Entropy exposes a handful API that helps developers handle form requests in a simple way.</p>
+
+    <p>An example form for a feature like user registration may look like this:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/register.atom.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="/users" method="post" enctype="multipart/form-data">
+  &lt;input type="text" name="name" placeholder="Username">
+  &lt;input type="email" name="email" placeholder="E-mail">
+  &lt;input type="file" name="avatar">
+
+  &lt;button>Register&lt;/button>
+&lt;/form></code></pre>
+    @/raw
+
+    <h2>Retrieving form fields</h2>
+
+    <p>To obtain form control values, you need to explicitly define route request param of type <code>Request</code>:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest } from '@entropy/http';
+import { Route } from '@entropy/router';
+
+export class UserController extends Controller {
+  @Route.Post('/users')
+  public async store([], request: HttpRequest) {
+    const name = await request.input('name');
+
+    return `Hello ${name}!`;
+  }
+}</code></pre>
+
+    <p>As you can see, you can easly get access to form fields using <code>request.input</code> method.</p>
+
+    <h2>File uploading</h2>
+
+    <p>Entropy provides a simple form file uploading API as well, so you can easly send files through HTML forms without any additional configuration.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">export class UserController extends Controller {
+  @Route.Post('/users')
+  public async store([], request: HttpRequest) {
+    const file = await request.file('avatar');
+
+    await file.upload('public/avatars', 'avatar.png');
+
+    return 'User avatar uploaded successfully';
+  }
+}</code></pre>
+
+    <p>Basically all you have to do is to provide file destination (in this case <code>public/avatars</code>) and Entropy will handle everything for you.</p>
+
+    <p>In case you don't provide file name argument, Entropy will generate a unique name for the uploaded file. It is very useful and recommended to use for features like posting images.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/posts/post.controller.ts</p>
+      </header><code class="code-block__code language-ts">export class PostController extends Controller {
+  @Route.Post('/posts')
+  public async store([], request: HttpRequest) {
+    const file = await request.file('image');
+    const filename = await file.upload('public/images');
+
+    return `Successfully uploaded post image public/images/${filename}`;
+  }
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/requests">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          >
+        </svg>
+        Requests
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/views">
+        Views
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          >
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
