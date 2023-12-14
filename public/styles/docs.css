@@ -66,26 +66,21 @@
   @media (scripting: enabled) and (min-width: 800px) {
     position: sticky;
     top: calc(var(--navbar-height) + 4rem);
-
     height: fit-content;
     max-height: 80vh;
     min-width: 200px;
-
+    max-width: 260px;
     display: flex;
     flex-direction: column;
     gap: 14px;
-
     padding: 0.5rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-    color: var(--theme);
   }
 }
 
 .outline__title {
   font-weight: 600;
-  text-transform: uppercase;
   margin-bottom: 12px;
+  font-size: 1.1rem;
 }
 
 .outline__item {
@@ -95,7 +90,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  transition: opacity, color 0.3s ease;
+  transition: all 0.1s ease;
   position: relative;
   padding-left: 1rem;
 
@@ -104,13 +99,12 @@
   }
 
   &::before {
-    transition: all ease-in-out 0.3s;
-    content: " ";
+    transition: all ease-in-out 0.1s;
+    content: '';
     display: block;
     position: absolute;
     top: 7px;
     left: 0;
-
     width: 8px;
     height: 8px;
     border-radius: 2rem;
@@ -125,11 +119,11 @@
 .outline__item--level-2 {
   position: relative;
   left: 16px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-.outline__item.active {
-  color: white;
+.outline__item--active {
+  color: var(--theme);
   opacity: 1;
 
   &::before{
