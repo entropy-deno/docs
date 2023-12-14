@@ -44,12 +44,22 @@
           .replace(/[\s_]+/g, '-')
           .toLowerCase();
 
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
           const headerElements = document.querySelectorAll('.docs :is(h2, h3)');
 
           const headers = [...headerElements].map((header) => ({
-            type: Number(header.tagName[1]) - 1,
-            content: header.innerText,
+              type: Number(header.tagName[1]) - 1,
+              content: header.innerText
           }));
 
           headerElements.forEach((header) => {
@@ -74,6 +84,20 @@
 
             list.appendChild(link);
           });
+
+          const highlightAsideLinks = () => {
+            headerElements.forEach((header) => {
+              const navLink = document.querySelector(`a.outline__item[href="#${header.id}"]`);
+              if (isInViewport(header)) {
+                navLink.classList.add('active');
+              } else {
+                navLink.classList.remove('active');
+              }
+            });
+          }
+
+          window.addEventListener('scroll', highlightAsideLinks);
+          highlightAsideLinks();
         });
       </script>
     @/if
@@ -154,13 +178,14 @@
       @/if
 
       @slot('content')
+
+      @if ($request.path().includes('docs'))
+        <aside class="outline">
+          <p class="outline__title">On this page</p>
+        </aside>
+      @/if
     </main>
 
-    @if ($request.path().includes('docs'))
-      <aside class="outline">
-        <p class="outline__title">On this page</p>
-      </aside>
-    @/if
 
     <footer class="footer">
       <img src="/logo-full.png" alt="Entropy logo" width="164">
