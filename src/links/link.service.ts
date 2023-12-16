@@ -11,6 +11,7 @@ export class LinkService {
         ['/essentials/forms', 'Forms'],
         ['/essentials/views', 'Views'],
         ['/essentials/dependency-injection', 'Dependency Injection'],
+        ['/essentials/validation', 'Validation'],
         ['/essentials/session', 'Session'],
         ['/essentials/middleware', 'Middleware'],
         ['/essentials/cli', 'CLI'],

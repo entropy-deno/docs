@@ -224,7 +224,6 @@
   & .info, .tip, .warning {
     font-size: 16px;
     color: var(--propagated-color);
-
     padding: 16px 18px;
     border: 2px solid var(--propagated-color);
     border-radius: 12px;
@@ -283,6 +282,7 @@
 
       & div {
         padding: 14px 18px;
+        min-width: 200px;
       }
 
       & code {

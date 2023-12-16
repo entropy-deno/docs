@@ -1,0 +1,345 @@
+@layout('../../../layouts/master')
+
+@section('content')
+  <section class="docs__content">
+    <h1>Validation</h1>
+
+    <p>Web apps always need some kind of form data validation. Entropy ships with a built-in validator with many useful validation rules.</p>
+
+    <h2>Validating Form Requests</h2>
+
+    <p>In order to check if request input data is valid, use the <code>assert</code> field in route config. Example validation may look like this:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest } from '@entropy/http';
+
+export class UserController extends Controller {
+  @Route.Post('/users', {
+    assert: {
+      name: {
+        minLength: 3,
+        maxLength: 25,  // must be between 3 and 25 characters long
+      },
+      age: {
+        min: 18,  // must be at least 18 years old
+      },
+      email: {
+        email: true,  // must be a valid email address
+      },
+      terms: {
+        accepted: true,  // checkbox must be checked
+      },
+    },
+  })
+  public async store([], request: HttpRequest) {
+    // ...
+  }
+}</code></pre>
+
+    <h2>Available rules</h2>
+
+    <p>Below you have listed all available validator rules:</p>
+
+    <div class="table">
+      <div class="table__row">
+        <div>Rule</div>
+        <div>Type</div>
+        <div>Description</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>accepted</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be <code>true</code>, <code>'true'</code>, <code>'yes'</code>, <code>'on'</code>, <code>'1'</code>, or <code>1</code></div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>boolean</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be <code>true</code>, <code>false</code>, <code>'true'</code>, <code>'false'</code>, <code>'1'</code>, <code>'0'</code>, <code>1</code>, or <code>0</code></div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>date</code></div>
+        <div><code>string | Date</code></div>
+        <div>The field must be a valid date</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>declined</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be <code>false</code>, <code>'false'</code>, <code>'no'</code>, <code>'off'</code>, <code>'0'</code>, or <code>0</code></div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>doesntEndWith</code></div>
+        <div><code>string</code></div>
+        <div>The field must not end with the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>doesntStartWith</code></div>
+        <div><code>string</code></div>
+        <div>The field must not start with the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>endsWith</code></div>
+        <div><code>string</code></div>
+        <div>The field must end with the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>email</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a valid email</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>float</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a floating point number</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>in</code></div>
+        <div><code>string[]</code></div>
+        <div>The field must be included in the given list of values</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>integer</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be an integer number</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>ip</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a valid IP address</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>ipv4</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a valid IPv4 address</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>ipv6</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a valid IPv6 address</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>json</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a valid JSON string</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>length</code></div>
+        <div><code>number</code></div>
+        <div>The field must have a length of the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>lowercase</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must have a value that is a lowercased string</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>max</code></div>
+        <div><code>number</code></div>
+        <div>The field must be less than given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>maxLength</code></div>
+        <div><code>number</code></div>
+        <div>The field must have a length less than given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>maxOrEqual</code></div>
+        <div><code>number</code></div>
+        <div>The field must be less than or equal to given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>maxOrEqualLength</code></div>
+        <div><code>number</code></div>
+        <div>The field must have a length less than or equal to given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>min</code></div>
+        <div><code>number</code></div>
+        <div>The field must be greater than given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>minLength</code></div>
+        <div><code>number</code></div>
+        <div>The field must have a length greater than given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>minOrEqual</code></div>
+        <div><code>number</code></div>
+        <div>The field must be greater than or equal to given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>minOrEqualLength</code></div>
+        <div><code>number</code></div>
+        <div>The field must have a length greater than or equal to given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>notIn</code></div>
+        <div><code>string[]</code></div>
+        <div>The field must not be included in the given list of values</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>numeric</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a numeric value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>otherThan</code></div>
+        <div><code>string</code></div>
+        <div>The field must be other than the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>regexp</code></div>
+        <div><code>RegExp</code></div>
+        <div>The field must match the given RegExp pattern</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>required</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be present and not empty</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>sameAs</code></div>
+        <div><code>string</code></div>
+        <div>The field must be the same as the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>startsWith</code></div>
+        <div><code>string</code></div>
+        <div>The field must start with the given value</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>uppercase</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must have a value that is an uppercased string</div>
+      </div>
+    
+      <div class="table__row">
+        <div><code>username</code></div>
+        <div><code>boolean</code></div>
+        <div>The field must be a valid username and must not start with a number. Allowed characters are: <code>[a-zA-Z0-9 _-]</code></div>
+      </div>
+    </div>
+
+    <h2>Custom rules</h2>
+
+    <p>You can also create your own validation rules. To do so, you need to adjust the server configuration:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/main.ts</p>
+      </header><code class="code-block__code language-js">const server = await createServer({
+        validationRules: [
+          {
+            name: 'dateMonthFormat',
+            errorMessage: 'Field :field must be a valid date in format MM/YYYY',
+            validate: ([value]) => {
+              return value?.match(/^\d{2}\/\d{4}$/);
+            },
+          },
+        ],
+  // ...
+});</code></pre>
+
+    <p>Then you can use it in validation assertions:</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, HttpRequest } from '@entropy/http';
+
+export class UserController extends Controller {
+  @Route.Post('/users', {
+    assert: {
+      birthDate: {
+        dateMonthFormat: true,
+      },
+    },
+  })
+  public async store([], request: HttpRequest) {
+    // ...
+  }
+}</code></pre>
+
+    <section class="pager">
+      <a class="pager__link" href="/docs/essentials/dependency-injection">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          >
+        </svg>
+        Dependency Injection
+      </a>
+
+      <a class="pager__link" href="/docs/essentials/session">
+        Session
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          >
+        </svg>
+      </a>
+    </section>
+  </section>
+@/section
