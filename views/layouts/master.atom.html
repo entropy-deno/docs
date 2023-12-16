@@ -22,10 +22,18 @@
 
     @embed([
       '/styles/master.css',
-      '/styles/home.css',
-      '/styles/docs.css',
       '/styles/prism.css',
     ])
+
+    @switch (true)
+      @case ($request.path() === '/')
+        @embed('/styles/home.css')
+      @/case
+
+      @case ($request.path().includes('/docs'))
+        @embed('/styles/docs.css')
+      @/case
+    @/switch
 
     <script src="/scripts/prism.js" @nonceProp defer></script>
 

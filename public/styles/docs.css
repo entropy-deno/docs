@@ -103,7 +103,7 @@
     content: '';
     display: block;
     position: absolute;
-    top: 7px;
+    top: 6px;
     left: 0;
     width: 8px;
     height: 8px;
@@ -282,7 +282,7 @@
 
       & div {
         padding: 14px 18px;
-        min-width: 200px;
+        min-width: 212px;
       }
 
       & code {
