@@ -97,18 +97,23 @@
   &:hover {
     opacity: 0.9;
   }
+}
+
+.outline__item--active {
+  color: var(--theme);
+  opacity: 1;
 
   &::before {
     transition: all ease-in-out 0.1s;
     content: '';
     display: block;
     position: absolute;
-    top: 6px;
+    top: 0;
     left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 2rem;
-    border: solid 2px var(--theme);
+    width: 4px;
+    height: 18px;
+    border-radius: 1rem;
+    background: var(--theme);
   }
 }
 
@@ -120,15 +125,6 @@
   position: relative;
   left: 16px;
   opacity: 0.7;
-}
-
-.outline__item--active {
-  color: var(--theme);
-  opacity: 1;
-
-  &::before{
-    background-color: var(--theme);
-  }
 }
 
 .docs__content {
@@ -153,6 +149,19 @@
   & :is(h1, h2, h3) {
     font-weight: 600;
     scroll-margin-top: calc(var(--navbar-height) + 2rem);
+    position: relative;
+
+    & a::before {
+      background: none !important;
+    }
+
+    &:hover a::before {
+      content: '#' !important;
+      color: var(--theme);
+      position: absolute;
+      left: -28px;
+      top: 0;
+    }
   }
 
   & h1 {
