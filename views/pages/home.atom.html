@@ -52,28 +52,28 @@
 
   <section class="home__examples" id="about">
     <h1 class="header header--small">
-      A <strong>simple</strong> yet <strong>powerful</strong> framework
+      <strong>Simple</strong> and <strong>powerful</strong> framework
     </h1>
 
     <p class="home__info"> 
       Our goal is to provide a framework that is <span class="text-theme">simple</span>, <span class="text-theme">easy</span> to
-      use yet <span class="text-theme">powerful</span>.
+      use and <span class="text-theme">powerful</span>.
     </p>
 
     <p class="home__info"> 
-      An instance of this philosophy is the build-in
+      An instance of this philosophy is the built-in
       <span class="text-theme">templating engine</span> allowing the developer to express complex
-      logic with simple syntax.
+      logic with a simple and memorable syntax.
     </p>
 
     <div class="home__examples-blocks">
-      <pre class="code-block">
+      @raw
+        <pre class="code-block">
 <header class="code-block__header">
 <div class="code-block__control"></div>
 <div class="code-block__control"></div>
 <div class="code-block__control"></div>
 <p class="code-block__file">views/posts/index.atom.html</p>
-@raw
 </header><code class="code-block__code language-html">@layout('../layouts/master')
 
 @section('content')
@@ -87,8 +87,8 @@
     @/for
   &lt;/main>
 @/section</code></pre>
-@/raw
-    </div>
+      </div>
+    @/raw
   </section>
 
   <section class="home__examples">

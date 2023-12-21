@@ -378,9 +378,12 @@ section:nth-of-type(2n+1) {
   align-items: center;
   flex-direction: column;
   font-size: 14px;
-  border-radius: 22px 22px 0 0;
   background: var(--bg);
-  gap: 22px;
+  gap: 10px;
+}
+
+.footer__logo {
+  margin-bottom: 16px;
 }
 
 .footer__info {
