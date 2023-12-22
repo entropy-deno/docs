@@ -12,7 +12,7 @@
 
     <p>Basically, a controller is just a class with methods assigned to URLs. Each route handles incoming requests. Controllers contain methods decorated with appropriate HTTP verbs.</p>
 
-    <h3>Controller structure</h3>
+    <h3>Controller Structure</h3>
 
     <p>Entropy comes with one controller in <code>src/root.controller.ts</code> file by default.</p>
 
@@ -25,8 +25,8 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/root.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
-import { Route } from '@entropy/router';
+      </header><code class="code-block__code language-ts">import { HttpStatus } from '@entropy/http';
+import { Controller, Route } from '@entropy/router';
 
 export class RootController extends Controller {
   @Route.Get('/')
@@ -46,7 +46,7 @@ export class RootController extends Controller {
       Controller methods should always return some value. Entropy automatically sends proper headers based on returned data. In case of object or array, the response has the JSON type. When returned value is text or a view object, it will be rendered as HTML.
     </div>
 
-    <h3>Creating and registering controllers</h3>
+    <h3>Creating and Registering Controllers</h3>
 
     <p>It is recommended to use the CLI to create new controllers:</p>
 
@@ -90,8 +90,8 @@ export class PostModule implements Module {
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/root.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
-import { Route } from '@entropy/router';
+      </header><code class="code-block__code language-ts">import { HttpStatus } from '@entropy/http';
+import { Controller, Route } from '@entropy/router';
 
 export class RootController extends Controller {
   @Route.Get('/users')
@@ -118,7 +118,7 @@ export class RootController extends Controller {
       Controller action methods should be as short as possible - they are only responsible for handling web requests and returning a response. To add more business logic you can familiarize yourself with the concept of <strong>services</strong>.
     </div>
 
-    <h3>URL patterns</h3>
+    <h3>URL Patterns</h3>
 
     <p>Routes in Entropy can be dynamic. This means that you can use the <code>:param</code> syntax to declare a dynamic route URL that accepts multiple values:</p>
 
@@ -132,7 +132,7 @@ export class RootController extends Controller {
       </header><code class="code-block__code language-ts">// Match paths like `/users/james_bond` or `/users/56328`
 @Route.Get('/users/:name')</code></pre>
 
-    <h3>Optional parameters</h3>
+    <h3>Optional Parameters</h3>
 
     <p>To make a paramater optional, use the question mark. The following route will match both <code>/users</code> and <code>/users/luke_skywalker</code> paths:</p>
 
@@ -145,7 +145,7 @@ export class RootController extends Controller {
         <p class="code-block__file">src/root.controller.ts</p>
       </header><code class="code-block__code language-ts">@Route.Get('/users/:name?')</code></pre>
 
-    <h3>Regular expressions</h3>
+    <h3>Regular Expressions</h3>
 
     <p>You can also define RegExp patterns for route parameters:</p>
 
@@ -162,7 +162,7 @@ export class RootController extends Controller {
 // This route will accept IDs in form of `aaa-bbb`
 @Route.Get('/users/:id(^\\d{3}-\\d{3})')</code></pre>
 
-    <h2>Error handler routes</h2>
+    <h2>Error Handler Routes</h2>
 
     <p>A typical web app often returns errors like <code>404 Not Found</code> or <code>500 Internal Server Error</code>. The framework exposes a simple API for custom error handling logic.</p>
 
@@ -175,8 +175,8 @@ export class RootController extends Controller {
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/root.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { Controller, HttpStatus } from '@entropy/http';
-import { Route } from '@entropy/router';
+      </header><code class="code-block__code language-ts">import { HttpStatus } from '@entropy/http';
+import { Controller, Route } from '@entropy/router';
 
 export class RootController extends Controller {
   @Route.Error(HttpStatus.NotFound)
@@ -185,7 +185,7 @@ export class RootController extends Controller {
   }
 }</code></pre>
 
-    <h2>Route options</h2>
+    <h2>Route Options</h2>
 
     <p>You can pass additional options to the <code>Route</code> decorator:</p>
 
@@ -222,7 +222,7 @@ export class RootController extends Controller {
         <p class="code-block__file">src/users/user.controller.ts</p>
       </header><code class="code-block__code language-ts">return this.redirect({ name: 'users.index' }});</code></pre>
 
-    <h2>Response types</h2>
+    <h2>Response Types</h2>
 
     <p>Entropy automatically discovers response type based on the returned value from the controller.</p>
 

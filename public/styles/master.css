@@ -306,6 +306,7 @@ section:nth-of-type(2n+1) {
   align-items: center;
   text-overflow: ellipsis;
   flex: 1;
+  letter-spacing: 0.2px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -333,41 +334,48 @@ section:nth-of-type(2n+1) {
   display: flex;
   align-items: center;
   gap: 10px;
-
   border: none;
   border-radius: 12px;
-
   font: inherit;
-
   background: var(--theme);
   color: var(--text-dark);
-
   padding: 12px 16px;
   text-decoration: none;
   margin-top: 12px;
-
   user-select: none;
   cursor: pointer;
   transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  & svg {
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+  }
 }
 
-.button:hover {
-  opacity: 0.9;
+.button--animated {
+  &:hover {
+    & svg {
+      translate: 3px;
+    }
+  }
+
+  & svg {
+    transition: all 0.25s ease;
+  }
 }
 
 .button--secondary {
   background: var(--bg-button);
   color: var(--text-gray);
-}
 
-.button--secondary:hover {
-  background: var(--bg-button-hover);
-}
-
-.button svg {
-  width: 20px;
-  height: 20px;
-  opacity: 0.9;
+  &:hover {
+    background: var(--bg-button-hover);
+  }
 }
 
 .footer {
