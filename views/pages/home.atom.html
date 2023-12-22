@@ -56,8 +56,8 @@
     </h1>
 
     <p class="home__info"> 
-      Our goal is to provide a framework that is <span class="text-theme">simple</span>, <span class="text-theme">easy</span> to
-      use and <span class="text-theme">powerful</span>.
+      Our goal is to provide a tool that is <span class="text-theme">simple</span>, <span class="text-theme">easy</span> to
+      use and <span class="text-theme">powerful</span> for modern web app development.
     </p>
 
     <p class="home__info"> 
@@ -125,13 +125,12 @@ export class UserModule implements Module {
 <div class="code-block__control"></div>
 <div class="code-block__control"></div>
 <p class="code-block__file">src/user.controller.ts</p>
-</header><code class="code-block__code language-ts">import { Controller } from '@entropy/http';
-import { Route } from '@entropy/router';
+</header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
 
 export class UserController extends Controller {
   @Route.Get('/users/:id')
-  public show(params: [string]) {
-    return this.render('pages/users/profile', {
+  public async show(params: [string]) {
+    return await this.render('pages/users/profile', {
       id: params.id,
     });
   }
