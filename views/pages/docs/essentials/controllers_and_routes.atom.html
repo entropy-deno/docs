@@ -4,19 +4,27 @@
   <section class="docs__content">
     <h1>Controllers and Routes</h1>
 
-    <p>Typically, web applications are based on route mappings. Route, or an endpoint is an URL with assigned function called when user asks for the URL.</p>
+    <p>
+      Typically, web applications are based on route mappings. Route, or an endpoint is an URL with assigned function called when user asks for the URL.
+    </p>
 
     <p>Routing system in Entropy is based on <strong>controller classes</strong>.</p>
 
     <h2>Controllers</h2>
 
-    <p>Basically, a controller is just a class with methods assigned to URLs. Each route handles incoming requests. Controllers contain methods decorated with appropriate HTTP verbs.</p>
+    <p>
+      Basically, a controller is just a class with methods assigned to URLs. Each route handles incoming requests. Controllers contain methods decorated with appropriate HTTP verbs.
+    </p>
 
     <h3>Controller Structure</h3>
 
-    <p>Entropy comes with one controller in <code>src/root.controller.ts</code> file by default.</p>
+    <p>
+      Entropy comes with one controller in <code>src/root.controller.ts</code> file by default.
+    </p>
 
-    <p>The app controller defines an <code>index</code> method which is decorated with <code>Route.Get</code> decorator. This decorator tells Entropy that the <code>index</code> method should be called when the user requests for the <code>/</code> route.</p>
+    <p>
+      The root controller defines an <code>index</code> method which is placed with the <code>Route.Get</code> decorator. This decorator tells Entropy that the <code>index</code> method should be called when the user requests for the <code>/</code> route. In the same way you can define your own routes like <code>/login</code> etc.
+    </p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -25,8 +33,8 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/root.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { HttpStatus } from '@entropy/http';
-import { Controller, Route } from '@entropy/router';
+      </header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
+import { HttpStatus } from '@entropy/http';
 
 export class RootController extends Controller {
   @Route.Get('/')

@@ -60,6 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const currentHeader = [...headerElements].find((header) => isVisibleInViewport(header));
 
+    if (!currentHeader) {
+      return;
+    }
+
     const navLink = document.querySelector(
       `.outline__item[href="#${currentHeader.id}"]`,
     );

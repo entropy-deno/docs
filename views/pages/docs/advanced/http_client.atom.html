@@ -17,7 +17,8 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/movies/movie.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { Controller, HttpClient } from '@entropy/http';
+      </header><code class="code-block__code language-ts">import { HttpClient } from '@entropy/http';
+import { Controller } from '@entropy/router';
 
 export class MovieController extends Controller {
   private readonly http = inject(HttpClient);
