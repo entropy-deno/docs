@@ -6,7 +6,7 @@
 
     <p>Entropy comes with handy built-in view template engine. View templates in your app are placed in <code>/views</code> directory and inside modules. View files have the <code>*.atom.html</code> extension.</p>
 
-    <h2>Template engine</h2>
+    <h2>Template Engine</h2>
 
     <p>Entropy template engine allows you to create loops, conditionals and variable interpolation.</p>
 
@@ -35,7 +35,7 @@
 &lt;/main></code></pre>
     @/raw
 
-    <h2>Conditional blocks</h2>
+    <h2>Conditional Blocks</h2>
 
     <p>You can specify a conditional block using special @raw<code>@if</code>@/raw directive. You may also provide an @raw<code>@else</code>@/raw block that will render if condition is falsy.</p>
 
@@ -56,7 +56,7 @@
 &lt;/nav></code></pre>
     @/raw
 
-    <h2>Form request methods</h2>
+    <h2>Form Request Methods</h2>
 
     <p>Entropy lets you to use all HTTP methods in forms thanks to the <code>@raw @method @/raw</code>directive. Just pass a method name and you'll be able to use <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code> and other methods in HTML forms.</p>
 
@@ -73,7 +73,7 @@
 &lt;/form></code></pre>
     @/raw
 
-    <h2>JSON serialization</h2>
+    <h2>JSON Serialization</h2>
 
     <p>Sometimes you need to pass some data from backend to frontend using HTML <code>&lt;script /></code> tag. You can accomplish that by converting data to JSON with <code>@raw @json @/raw</code>directive:</p>
 
@@ -107,7 +107,7 @@
 &lt;/main></code></pre>
     @/raw
 
-    <h2>CSRF token</h2>
+    <h2>CSRF Token</h2>
 
     <p>For every user session Entropy generates a unique token to protect your application from Cross-Site Request Forgery attacks.</p>
 
@@ -128,7 +128,7 @@
 &lt;/form></code></pre>
     @/raw
 
-    <h2>Raw template</h2>
+    <h2>Raw Templates</h2>
 
     <p>Sometimes you may want to left some parts of code uncompiled. For example, when you are using some frontend framework, you may want not to parse the code with template engine. That's why Entropy comes with a <code>@raw @raw @/raw</code>directive:</p>
 
@@ -321,7 +321,7 @@
         </header><code class="code-block__code language-html">{{-- This is a comment --}}</code></pre>
     @/raw
 
-    <h2>Global constants</h2>
+    <h2>Global Constants</h2>
 
     <p>Entropy exposes few global constants you can use in your views:</p>
 

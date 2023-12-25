@@ -19,7 +19,7 @@
         <p class="code-block__file">.env</p>
       </header><code class="code-block__code language-ts">PORT=5050</code></pre>
 
-    <h2>WebSocket channels</h2>
+    <h2>WebSocket Channels</h2>
 
     <p>First though, you should be introduced to a concept of WebSocket channels. Channel is a single class used for transmitting events with authorization logic.</p>
 
@@ -49,7 +49,7 @@ export class ChatChannel extends Broadcaster implements Authorizer {
 
     <p>String argument passed to decorator is channel name with dynamic parameter. The <code>authorize</code> method is used to determine whether authenticated user is authorized to join the channel on the client side.</p>
 
-    <h2>Emitting events on server</h2>
+    <h2>Server Event Emitting</h2>
 
     <p>Emitting events on the server side can be done using the <code>broadcast</code> method of <code>Broadcaster</code> class.</p>
 
@@ -76,7 +76,7 @@ public sendMessage(message: string, id: number) {
 this.chatChannel.sendMessage(`Hello, ${user.name}!`, chat.id);
 </code></pre>
 
-    <h2>Receiving events on the client side</h2>
+    <h2>Client Side Event Receiving</h2>
 
     <p>Now we are able to receive broadcasts on the client side using JavaScript WebSocket API. The example implementation you can see below:</p>
 

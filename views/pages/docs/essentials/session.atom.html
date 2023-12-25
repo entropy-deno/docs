@@ -21,7 +21,7 @@
         <p class="code-block__file">.env</p>
       </header><code class="code-block__code language-ts">SESSION_LIFETIME=30  # days</code></pre>
 
-    <h2>Storing data</h2>
+    <h2>Storing Data</h2>
 
     <p>To save a variable to the session, use the <code>set</code> method. You only have to provide name for your piece of data and its value:</p>
 
@@ -32,8 +32,8 @@
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/users/user.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { HttpRequest } from '@entropy/http';
-import { Controller, Route } from '@entropy/router';
+      </header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
+import { HttpRequest } from '@entropy/http';
 
 export class UserController extends Controller {
   @Route.Get('/users/:id?')
@@ -44,7 +44,7 @@ export class UserController extends Controller {
   }
 }</code></pre>
 
-    <h2>Retrieving data</h2>
+    <h2>Retrieving Data</h2>
 
     <p>In order to retrieve saved session data, use the <code>get</code> method:</p>
 
@@ -57,7 +57,7 @@ export class UserController extends Controller {
         <p class="code-block__file">src/users/user.controller.ts</p>
       </header><code class="code-block__code language-ts">const username = await request.session.get('username') ?? 'Unknown';</code></pre>
 
-    <h2>Deleting data</h2>
+    <h2>Deleting Data</h2>
 
     <p>Use the <code>delete</code> method in order to remove a session value by its key:</p>
 
@@ -70,7 +70,7 @@ export class UserController extends Controller {
         <p class="code-block__file">src/users/user.controller.ts</p>
       </header><code class="code-block__code language-ts">await request.session.delete('username');</code></pre>
     
-    <h2>Destroying session</h2>
+    <h2>Destroying Session</h2>
 
     <p>Sometimes you need to clear all session entries and completely unset the session, for example for logging out the user. In order to do that, use the <code>destroy</code> method:</p>
 
@@ -84,7 +84,7 @@ export class UserController extends Controller {
       </header><code class="code-block__code language-ts">await request.session.destroy();</code></pre>
 
     <section class="pager">
-      <a class="pager__link" href="/docs/essentials/dependency-injection">
+      <a class="pager__link" href="/docs/essentials/validation">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -98,7 +98,7 @@ export class UserController extends Controller {
             d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
           >
         </svg>
-        Dependency Injection
+        Validation
       </a>
 
       <a class="pager__link" href="/docs/essentials/middleware">
