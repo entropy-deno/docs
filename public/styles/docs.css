@@ -22,9 +22,6 @@
     max-height: 80vh;
     min-width: 280px;
     top: calc(var(--navbar-height) + 4rem);
-    padding: 32px;
-    background: var(--bg);
-    border-radius: 14px;
     overflow-y: auto;
   }
 }
@@ -33,47 +30,59 @@
   --half-margin: 0.4rem;
   font-weight: 600;
   margin-bottom: var(--half-margin);
-  color: var(--theme);
+  color: var(--text-gray);
 
   &:not(:first-child) {
-    margin-top: calc(var(--half-margin) * 1.9);
+    margin-top: calc(var(--half-margin) * 3.2);
   }
 }
 
 .docs__nav-link {
   font-size: 16px;
   color: inherit;
-  opacity: 0.9;
-  padding: 7px 10px;
-  border-radius: 8px;
+  opacity: 0.75;
+  padding: 7px 0;
   text-decoration: none;
+  transition: opacity 0.2s ease;
   user-select: none;
 
   &:not(.docs__nav-link--active):hover {
-    background: var(--bg-block);
-  }
+    opacity: 1;
+  } 
 }
 
 .docs__nav-link--active {
   background: var(--bg-soft);
   color: var(--theme);
   font-weight: 600;
+  opacity: 1;
 }
 
 .outline {
   display: none;
+  --offset-right: -20px;
 
   @media (scripting: enabled) and (min-width: 800px) {
     position: sticky;
     top: calc(var(--navbar-height) + 4rem);
+    margin-right: var(--offset-right);
     height: fit-content;
     max-height: 80vh;
-    min-width: 200px;
-    max-width: 260px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 0.5rem;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: var(--offset-right);
+      width: 4px;
+      height: 100%;
+      background: var(--border);
+      border-radius: 6px;
+    }
   }
 }
 
@@ -230,6 +239,7 @@
       font-weight: 600;
       display: block;
       margin-bottom: 8px;
+      color: var(--text-gray);
     }
 
     & code {
@@ -239,17 +249,17 @@
 
   & .info {
     --propagated-color: var(--theme);
-    --propagated-caption: "info";
+    --propagated-caption: 'Info';
   }
 
   & .tip {
     --propagated-color: var(--green);
-    --propagated-caption: "tip";
+    --propagated-caption: 'Tip';
   }
 
   & .warning {
     --propagated-color: var(--orange);
-    --propagated-caption: "warning";
+    --propagated-caption: 'Warning';
   }
 
   & .table {
@@ -294,9 +304,11 @@
     font-family: var(--font-mono);
     color: var(--text-gray);
     border-radius: 5px;
-    padding: 3px 6px;
+    padding: 3px 7px;
     margin: 0 2px;
-    background: var(--bg);
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    font-weight: 600;
   }
 }
 

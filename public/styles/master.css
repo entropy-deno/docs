@@ -12,8 +12,9 @@
   --bg-block: #182137;
   --bg-button: #192339;
   --bg-button-hover: #202d4a;
+  --bg-code: #1c2539;
   --bg-soft: #0d131f;
-  --bg-navbar: rgba(0, 0, 0, 0.25);
+  --bg-navbar: rgba(8, 8, 8, 0.28);
   --bg-scrollbar: #3a4660;
 
   --border: #2e3a4c;
@@ -143,9 +144,9 @@ section:nth-of-type(2n+1) {
   justify-content: space-between;
   align-items: center;
   background: var(--bg-navbar);
-  -webkit-backdrop-filter: blur(6px) saturate(140%);
-  backdrop-filter: blur(6px) saturate(140%);
-  border-bottom: 1px solid rgba(60, 62, 81, 0.177);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border-bottom: 1px solid rgba(28, 30, 42, 0.208);
 
   @media (min-width: 600px) {
     padding: 32px;
@@ -214,8 +215,9 @@ section:nth-of-type(2n+1) {
 }
 
 .code-block {
+  --border-radius: 16px;
   background: var(--bg-soft);
-  border-radius: 18px;
+  border-radius: var(--border-radius);
   padding-top: 0;
   font-size: 15px;
   color: #b0b7c4;
@@ -226,7 +228,7 @@ section:nth-of-type(2n+1) {
   display: flex;
   align-items: center;
   padding: 12px 20px;
-  border-radius: 18px 18px 0 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
   gap: 8px;
 }
 
