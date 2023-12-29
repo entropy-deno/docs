@@ -31,6 +31,7 @@
   font-weight: 600;
   margin-bottom: var(--half-margin);
   color: var(--text-gray);
+  font-size: 1.1rem;
 
   &:not(:first-child) {
     margin-top: calc(var(--half-margin) * 3.2);
@@ -78,7 +79,7 @@
       display: block;
       position: absolute;
       left: var(--offset-right);
-      width: 4px;
+      width: 2px;
       height: 100%;
       background: var(--border);
       border-radius: 6px;
@@ -87,7 +88,7 @@
 }
 
 .outline__title {
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 6px;
   font-size: 1.1rem;
 }
@@ -102,7 +103,6 @@
   overflow: hidden;
   transition: all 0.1s ease;
   position: relative;
-  font-weight: 600;
 
   &:hover {
     opacity: 0.7;
@@ -111,6 +111,7 @@
 
 .outline__item--active {
   color: var(--theme);
+  font-weight: 500;
   opacity: 1;
 }
 
@@ -132,6 +133,20 @@
 
   @media (min-width: 460px) {
     --h-margin-order: 12px;
+
+    & :is(h2, h3) {
+      position: relative;
+      left: -26px;
+  
+      & a::before {
+        content: '#' !important;
+        background: none !important;
+        color: var(--theme);
+        position: static !important;
+        margin-right: 8px;
+        font-weight: 400;
+      }
+    }
   }
 
   & > *:first-child {
@@ -139,21 +154,9 @@
   }
 
   & :is(h1, h2, h3) {
-    font-weight: 600;
+    font-weight: 500;
+    color: #fff;
     scroll-margin-top: calc(var(--navbar-height) + 2rem);
-    position: relative;
-
-    & a::before {
-      background: none !important;
-    }
-
-    &:hover a::before {
-      content: '#' !important;
-      color: var(--theme);
-      position: absolute;
-      left: -28px;
-      top: 0;
-    }
 
     & code {
       font-size: calc(var(--h-size-order) * 0.5) !important;
@@ -161,18 +164,19 @@
   }
 
   & h1 {
-    font-size: var(--h-size-order);
+    font-size: calc(1.05 * var(--h-size-order));
     margin: calc(var(--h-margin-order) * 3) 0 var(--h-margin-order);
   }
 
   & h2 {
-    font-size: calc(0.85 * var(--h-size-order));
+    font-size: calc(0.75 * var(--h-size-order));
     margin: calc(var(--h-margin-order) * 3) 0 var(--h-margin-order);
   }
 
   & h3 {
-    font-size: calc(0.6 * var(--h-size-order));
+    font-size: calc(0.7 * var(--h-size-order));
     margin: calc(var(--h-margin-order) * 2) 0 var(--h-margin-order);
+    left: -21px;
   }
 
   & a:not(.pager__link) {
@@ -209,20 +213,20 @@
   }
 
   & ul > li {
-    margin-left: 24px;
+    margin-left: 28px;
     position: relative;
     line-height: 1.8;
 
     &::before {
       content: '';
       display: block;
-      width: 8px;
-      height: 8px;
-      background: var(--theme);
+      width: 6px;
+      height: 6px;
+      background: var(--list-bullet);
       border-radius: 50%;
       position: absolute;
-      left: -20px;
-      top: 10px;
+      left: -24px;
+      top: 11px;
     }
   }
 
@@ -260,6 +264,10 @@
   & .warning {
     --propagated-color: var(--orange);
     --propagated-caption: 'Warning';
+  }
+
+  & strong {
+    font-weight: 500;
   }
 
   & .table {

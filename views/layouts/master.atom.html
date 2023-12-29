@@ -17,12 +17,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Roboto+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400&display=swap"
     >
 
     @embed([
       '/styles/master.css',
       '/styles/prism.css',
+      '/scripts/navbar.js',
     ])
 
     @switch (true)
@@ -52,11 +53,40 @@
     <header>
       <nav class="navbar">
         <a href="/" class="navbar__logo">
-          <img class="navbar__logo-image navbar__logo-image--desktop" src="/logo-full.png" draggable="false" alt="Entropy logo" width="124">
-          <img class="navbar__logo-image navbar__logo-image--mobile" src="/logo.png" draggable="false" alt="Entropy logo" width="32">
+          <img
+            class="navbar__logo-image navbar__logo-image--desktop"
+            src="/logo-full.png"
+            draggable="false"
+            alt="Entropy logo"
+            width="124"
+          >
+
+          <img
+            class="navbar__logo-image navbar__logo-image--mobile"
+            src="/logo.png"
+            draggable="false"
+            alt="Entropy logo"
+            width="32"
+          >
         </a>
 
-        <ul class="navbar__links">
+        <button class="navbar__mobile-toggler">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            >
+          </svg>
+        </button>
+
+        <ul class="navbar__menu">
           <li class="navbar__link">
             <a
               href="/"
