@@ -370,6 +370,58 @@
         </header><code class="code-block__code language-html">&lt;h1>This app is running on Entropy version {{ $VERSION }}&lt;/h1></code></pre>
     @/raw
 
+    <h2>Predefined Variables</h2>
+
+    <p>Yout can also access some request-related data with predefined variables:</p>
+
+    <div class="table">
+      <div class="table__row">
+        <div>Variable</div>
+        <div>Description</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$errors</code></div>
+        <div>Form validation error bag</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$input</code></div>
+        <div>Previous request form input</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$request</code></div>
+        <div>Current HTTP request object</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$session</code></div>
+        <div>Request session object</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$token</code></div>
+        <div>CSRF security token</div>
+      </div>
+
+      <div class="table__row">
+        <div><code>$translate</code></div>
+        <div>Translator util function</div>
+      </div>
+    </div>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/pages/home.atom.html</p>
+        </header><code class="code-block__code language-html">&lt;p>You are visiting {{ $request.path() }} route&lt;/p></code></pre>
+    @/raw
+
     <section class="pager">
       <a class="pager__link" href="/docs/essentials/requests">
         <svg

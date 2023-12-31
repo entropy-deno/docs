@@ -118,6 +118,7 @@ section:nth-of-type(2n+1) {
 .header--small {
   font-size: 30px;
   font-weight: 400;
+  letter-spacing: -0.5px;
 
   @media (min-width: 500px) {
     font-size: 40px;

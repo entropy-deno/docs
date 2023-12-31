@@ -89,7 +89,7 @@ export class PostModule implements Module {
 
     <h2>Routes</h2>
 
-    <p>In order to declare application routes, add new controller method and decorate it with a proper HTTP verb decorator:</p>
+    <p>In order to declare application routes, add new controller method and decorate it with a proper HTTP verb decorator like so:</p>
 
     <pre class="code-block">
       <header class="code-block__header">
@@ -97,11 +97,10 @@ export class PostModule implements Module {
         <div class="code-block__control"></div>
         <div class="code-block__control"></div>
 
-        <p class="code-block__file">src/root.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { HttpStatus } from '@entropy/http';
-import { Controller, Route } from '@entropy/router';
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
 
-export class RootController extends Controller {
+export class UserController extends Controller {
   @Route.Get('/users')
   public index() {
     // ...
@@ -118,9 +117,74 @@ export class RootController extends Controller {
   }
 }</code></pre>
 
+    <h3>Route Methods</h3>
+
+    <p>Entropy supports all available HTTP methods. Each method has a corresponding route decorator.</p>
+
     <div class="info">
-      Use the <code>Route.Any</code> decorator to accept all HTTP verbs and the <code>Route.Methods</code> decorator to handle multiple chosen HTTP verbs.
+      Use the <code>Route.Any</code> decorator to accept all HTTP verbs and the <code>Route.Methods</code> decorator to handle multiple chosen HTTP verbs like so:
     </div>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
+import { HttpMethod } from '@entropy/http';
+
+export class UserController extends Controller {
+  @Route.Methods([HttpMethod.Get, HttpMethod.Head], '/users')
+  public index() {
+    // ...
+  }
+}</code></pre>
+
+    <div class="tip">
+      Since HTML forms only support <code>GET</code> and <code>POST</code> HTTP methods, when you're defining a route with a different method, your form (or AJAX request) will need to spoof the HTTP verb. You can achieve this by adding @raw<code>&ltinput type="hidden" name="_method" value="DELETE"></code> or <code>@method('DELETE')</code>@/raw snippet inside your form:
+    </div>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/home.atom.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="/users" method="post">
+  @method('DELETE')
+
+  &lt;button>Delete user&lt;/button>
+&lt;/form></code></pre>
+    @/raw
+
+    <h3>Route Actions</h3>
+
+    <p>Route actions are methods of a controller class with associated route decorator. They are responsible for handling incoming requests and returning a response.</p>
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
+
+export class UserController extends Controller {
+  @Route.Get('/users')
+  public index() {
+    return [
+      { name: 'James Bond' },
+      { name: 'Luke Skywalker' },
+    ];
+  }
+}</code></pre>
+
+    <p>When user enters <code>http://localhost:5050/users</code> route, they will see a JSON list of provided users.</p>
 
     <div class="tip">
       Controller action methods should be as short as possible - they are only responsible for handling web requests and returning a response. To add more business logic you can familiarize yourself with the concept of <strong>services</strong>.
@@ -136,7 +200,7 @@ export class RootController extends Controller {
         <div class="code-block__control"></div>
         <div class="code-block__control"></div>
 
-        <p class="code-block__file">src/root.controller.ts</p>
+        <p class="code-block__file">src/users/user.controller.ts</p>
       </header><code class="code-block__code language-ts">// Match paths like `/users/james_bond` or `/users/56328`
 @Route.Get('/users/:name')</code></pre>
 
@@ -183,8 +247,8 @@ export class RootController extends Controller {
         <div class="code-block__control"></div>
 
         <p class="code-block__file">src/root.controller.ts</p>
-      </header><code class="code-block__code language-ts">import { HttpStatus } from '@entropy/http';
-import { Controller, Route } from '@entropy/router';
+      </header><code class="code-block__code language-ts">import { Controller, Route } from '@entropy/router';
+import { HttpStatus } from '@entropy/http';
 
 export class RootController extends Controller {
   @Route.Error(HttpStatus.NotFound)
