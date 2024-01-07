@@ -53,47 +53,6 @@
 
   <section class="home__examples" id="about">
     <h1 class="header header--small">
-      <strong>Simple</strong> and <strong>powerful</strong> framework
-    </h1>
-
-    <p class="home__info"> 
-      Our goal is to provide a tool that is <span class="text-theme">simple</span>, <span class="text-theme">easy</span> to
-      use and <span class="text-theme">powerful</span> for modern web app development.
-    </p>
-
-    <p class="home__info"> 
-      An instance of this philosophy is the built-in
-      <span class="text-theme">templating engine</span> allowing the developer to express complex
-      logic with a simple and memorable syntax.
-    </p>
-
-    <div class="home__examples-blocks">
-      @raw
-        <pre class="code-block">
-<header class="code-block__header">
-<div class="code-block__control"></div>
-<div class="code-block__control"></div>
-<div class="code-block__control"></div>
-<p class="code-block__file">views/posts/index.atom.html</p>
-</header><code class="code-block__code language-html">@layout('../layouts/master')
-
-@section('content')
-  &lt;main>
-    @for (post in posts)
-      &lt;article class="post">
-        {{ post.content }}
-      &lt;/article>
-    @empty
-      &lt;p>There are no posts yet.&lt;/p>
-    @/for
-  &lt;/main>
-@/section</code></pre>
-      </div>
-    @/raw
-  </section>
-
-  <section class="home__examples">
-    <h1 class="header header--small">
       The <strong>number one</strong> choice for Deno applications
     </h1>
 
@@ -154,5 +113,24 @@ export class UserController extends Controller {
         >
       </svg>
     </a>
+  </section>
+
+  <section class="home__examples">
+    <h1 class="header header--small">
+      The <strong>simplest</strong> and most <strong>powerful</strong> framework
+    </h1>
+
+    <p class="home__info"> 
+      Take a look at the list of features that Entropy offers out-of-the-box.
+    </p>
+
+    <ul class="home__examples-features">
+      <li>Simple routing system</li>
+      <li>Dependency injection</li>
+      <li>HTTP controllers and middleware</li>
+      <li>Modularity</li>
+      <li>WebSocket support</li>
+      <li>Templating engine with memorable syntax</li>
+    </ul>
   </section>
 @/section

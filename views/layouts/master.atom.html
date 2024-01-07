@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400&display=swap"
     >
 
     @embed([
@@ -61,7 +61,7 @@
             src="/logo-full.png"
             draggable="false"
             alt="Entropy logo"
-            width="124"
+            width="148"
           >
 
           <img
@@ -105,6 +105,17 @@
               class="navbar__link-item{{ $request.path().includes('/docs') ? ' navbar__link-item--active' : '' }}"
             >
               Docs
+            </a>
+          </li>
+
+          <li class="navbar__link">
+            <a
+              href="https://deno.land/x/entropy/mod.ts"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="navbar__link-item"
+            >
+              API Reference
             </a>
           </li>
 
