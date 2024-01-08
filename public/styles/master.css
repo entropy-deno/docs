@@ -17,7 +17,7 @@
   --bg-navbar: rgba(24, 24, 24, 0.28);
   --bg-scrollbar: #2c3441;
 
-  --border: #2e3a4c;
+  --border: #262e39;
   --list-bullet: #4a5667;
 
   --selection: #c4b5fd;
@@ -35,7 +35,7 @@
   --font-sans: 'Inter', sans-serif;
 
   --navbar-height: 66px;
-  --navbar-height-desktop: 86px;
+  --navbar-height-desktop: 74px;
 }
 
 ::selection {
@@ -81,7 +81,7 @@ section {
   padding-left: 20px;
   padding-right: 20px;
 
-  @media (min-width:640px) {
+  @media (min-width: 640px) {
     --padding-generic: 130px;
   }
 
@@ -194,7 +194,7 @@ section:nth-of-type(2n+1) {
 
 .navbar__menu {
   list-style-type: none;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -219,7 +219,7 @@ section:nth-of-type(2n+1) {
     display: flex;
     flex-direction: row;
     position: static;
-    height: unset;
+    height: unset !important;
     background: none;
     padding: 0;
     width: auto;
