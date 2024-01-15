@@ -48,7 +48,43 @@ export class UserController extends Controller {
   }
 }</code></pre>
 
-    <p>As you can see, you can easly get access to form fields using <code>request.input</code> method.</p>
+    <p>As you can see, you can easly get access to form text fields using <code>request.input</code> method.</p>
+
+    <p>To easly obtain boolean values like <code>type="checkbox"</code> HTML inputs, use the <code>request.boolean</code> method:</p>
+
+    @raw
+      <pre class="code-block">
+        <header class="code-block__header">
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+          <div class="code-block__control"></div>
+
+          <p class="code-block__file">views/register.atom.html</p>
+        </header><code class="code-block__code language-html">&lt;form action="/users" method="post">
+  &lt;!-- ... -->
+  &lt;input type="checkbox" name="newsletter">
+
+  &lt;button>Register&lt;/button>
+&lt;/form></code></pre>
+    @/raw
+
+    <pre class="code-block">
+      <header class="code-block__header">
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+        <div class="code-block__control"></div>
+
+        <p class="code-block__file">src/users/user.controller.ts</p>
+      </header><code class="code-block__code language-ts">export class UserController extends Controller {
+  @Route.Post('/users')
+  public async store([], request: HttpRequest) {
+    const subscribe = await request.boolean('newsletter');
+
+    if (subscribe) {
+      // Subscribe user to newsletter
+    }
+  }
+}</code></pre>
 
     <h2>File Uploading</h2>
 
