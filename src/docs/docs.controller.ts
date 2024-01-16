@@ -1,7 +1,7 @@
-import { Controller, HttpError, HttpStatus } from '@entropy/http';
+import { Controller, Route } from '@entropy/router';
+import { HttpError, HttpStatus } from '@entropy/http';
 import { inject } from '@entropy/injector';
 import { SnakeCasePipe } from '@entropy/pipes';
-import { Route } from '@entropy/router';
 import { LinkService } from '../links/link.service.ts';
 
 export class DocsController extends Controller {
