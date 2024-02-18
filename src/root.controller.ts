@@ -1,6 +1,5 @@
-import { Controller } from '@entropy/http';
 import { inject } from '@entropy/injector';
-import { Route } from '@entropy/router';
+import { Controller, Route } from '@entropy/router';
 import { LinkService } from './links/link.service.ts';
 
 export class RootController extends Controller {

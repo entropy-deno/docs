@@ -54,8 +54,8 @@
   },
   "lock": false,
   "tasks": {
-    "dev": "deno run -A --unstable --unstable-hmr --quiet ./src/main.ts --dev --open",
-    "prod": "deno run -A --unstable ./src/main.ts",
+    "dev": "deno run -A --unstable-hmr --unstable-kv --quiet ./src/main.ts --dev --open",
+    "prod": "deno run -A --unstable-kv ./src/main.ts",
     "repl": "deno repl -A --eval 'import * as Entropy from \"@entropy\"'",
     "test": "deno test -A --env=.env.testing --no-check --parallel",
     "test:cov": "deno test -A --coverage=coverage --env=.env.testing",
