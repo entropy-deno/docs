@@ -10,6 +10,13 @@
     ],
     "strict": true
   },
+  "deploy": {
+    "exclude": [
+      ".github",
+      "LICENSE",
+      "readme.md"
+    ]
+  },
   "fmt": {
     "include": [
       "src/",

@@ -53,7 +53,7 @@
         <p class="code-block__file">src/posts/post.controller.ts</p>
       </header><code class="code-block__code language-ts">// Locale is automatically detected from request...
 
-const message = request.translate('Hello World');</code></pre>
+const message = await request.translate('Hello World');</code></pre>
 
     <h2>Pluralization</h2>
 
@@ -68,7 +68,7 @@ const message = request.translate('Hello World');</code></pre>
         <p class="code-block__file">src/posts/post.controller.ts</p>
       </header><code class="code-block__code language-ts">// Automatically determine whether to translate singular or plural word
 
-const message = request.translate('New user', users.length);</code></pre>
+const message = await request.translate('New user', users.length);</code></pre>
 
     <p>In translation file you can define pluralization rules by using <code>|</code> delimiter and passing an array of translations. The first translation is used for singular, the second for plural:</p>
 
