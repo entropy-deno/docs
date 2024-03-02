@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": false,
     "lib": [
       "deno.ns",
       "dom",
